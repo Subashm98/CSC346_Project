@@ -1,5 +1,9 @@
 body {
-    background-color: lightgray;
+    /* background-color: lightgray; */
+    /* background-image: url("milkeyWay.jpeg"); */
+    /* background-image: url("backgrounds-blank-blue-953214.jpg");
+    background-image: url("backgrounds-blank-blue-953214.jpg"); */
+    background-image: url("abstract-art-artistic-1020315_C2.jpg");
     margin: 0;
     padding: 0;
  
@@ -28,20 +32,20 @@ nav{
 }
 
 .navigation-bar{
-    position : fixed;
+    top: 0;
     width: 100%;
+    position : fixed; 
+    
 
-
+    
 }
 
-#logo{
-    width : 90px;
-    height: 50px;
-    max-width: 100%;
-    max-height: 10%;
 
-    /* height: 110%; */
-    margin: 0;
+
+#logo{
+    width : 60px;
+    height: 50px;
+    margin: 0px 0px 0px 0px;
     padding:0;
 }
 
@@ -82,10 +86,25 @@ nav{
     background-color: red;
   }
 
-  .h{
-      border: solid red;
-      width : 80%;
-      height: 1000px;
+
+
+
+
+.container{
+    width : 80%;
+    /* height: */
+    margin-top: 45px;
+    margin-left: 10%;
+    margin-right: 10%;
+    /* background-color: rgb(76, 99, 91); */
+    background-image: url("abstract-attractive-backdrop-988872.jpg")
+   
+
+}
+.h{
+    
+      /* border: solid red; */
+      /* height: 1000px; */
 
   }
 
