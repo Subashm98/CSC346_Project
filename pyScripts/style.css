@@ -1,0 +1,92 @@
+body {
+    background-color: lightgray;
+    margin: 0;
+    padding: 0;
+ 
+}
+
+nav{
+    width : 100%;
+    height: 20%;
+    overflow: auto;
+
+}
+
+
+/* .logo img{
+    position: absolute;
+    width: 80px;
+    height: 10%;
+
+} */
+
+
+#userImg{
+    width : 50px;
+    height: 35px;
+    margin: 5px 5px 0px 5px;
+}
+
+.navigation-bar{
+    position : fixed;
+    width: 100%;
+
+
+}
+
+#logo{
+    width : 90px;
+    height: 50px;
+    max-width: 100%;
+    max-height: 10%;
+
+    /* height: 110%; */
+    margin: 0;
+    padding:0;
+}
+
+
+
+#nav-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#56ABE4;
+
+    ;
+  }
+  
+  #nav-ul li {
+    /* float: left; */
+    margin: 0 0 -10px 0;
+  }
+#navLeft{
+    float : left;
+}
+
+  #navRight {
+      float : right;
+  }
+  
+  #nav-ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  #nav-ul li a:hover {
+    background-color: red;
+  }
+
+  .h{
+      border: solid red;
+      width : 80%;
+      height: 1000px;
+
+  }
+
+  
