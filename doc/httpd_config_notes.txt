@@ -31,6 +31,7 @@
 
 
 Links:
+  https://docs.python.org/3.4/library/cgi.html
   https://docs.python.org/3.4/howto/webservers.html
   https://aws.amazon.com/getting-started/tutorials/create-mysql-db/
       - public DB not required if you configure with command line
