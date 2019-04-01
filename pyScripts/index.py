@@ -26,6 +26,13 @@ print("""
                 </nav>
                 
         </div>
+	<div class = "container">
+	</div>
+
+
+
+</body>
+</html>
  
 """)
 
@@ -56,7 +63,7 @@ print("""
 
 
 
-        </style>
+       
 
         nav{
                 width : 100%;
@@ -98,7 +105,6 @@ print("""
                 overflow: hidden;
                 background-color:#56ABE4;
 
-        ;
         }
         
         #nav-ul li {
@@ -137,15 +143,10 @@ print("""
                 /* background-color: rgb(76, 99, 91); */
                 background-image: url("abstract-attractive-backdrop-988872.jpg") 
         }
-
+	</style>
 
 """)
-
-
-
-
-print(""" </body> </html> """")
-
+#print(""" </body> </html> """")
 
 
 
