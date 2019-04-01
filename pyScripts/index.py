@@ -15,10 +15,10 @@ print("""
         <div class="navigation-bar">
                 <nav>
                     <ul id = "nav-ul">
-                            <li id = "navLeft"><img id = "logo" src="logo.png"></li>
+                            <li id = "navLeft"><img id = "logo" src="http://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
                             <li id = "navLeft"><a href="default.asp">Home</a></li>
                             <li id = "navLeft"><a href="news.asp">Contact</a></li>
-                            <li id = "navRight"><img id = "userImg" src="default_logImg.png"></li>
+                            <li id = "navRight"><img id = "userImg" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/default_logImg.png"></li>
                             <li id = "navRight"><a href="contact.asp">Login</a></li>
                             <li id = "navRight"><a href="about.asp">Register</a></li>
                             
