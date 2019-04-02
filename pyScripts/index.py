@@ -22,8 +22,7 @@ print("""
                                <!-- <li id = "navRight"><a href="contact.asp">Login</a></li> -->
                               <!--  <li id = "navRight"><a href="about.asp">Register</a></li> -->
                                 <li id = "navRight">
-                                        <form id = "loginForm" method ="POST">
-                                                <!-- First name -->
+                                        <form id = "loginForm" method = "POST">
                                                 <input type="text"  placeholder="username" name="username">
                                                 <!-- Last name -->
                                                 <input type="password" placeholder  = "password" name="password">
@@ -52,7 +51,7 @@ print("""
 form = cgi.FieldStorage()
 
 
-if 'loginForm' not in form:
+if "username" not in form and "password" not in form:
         print(""" 
                 <div class = "container">
                         <div class = "signUpInfo">
@@ -81,7 +80,11 @@ if 'loginForm' not in form:
         
         
                 </div>
-        """)       
+        """)
+
+#if "loginForm" in form:
+#	print """ <h1>Hello</h1> """
+      
 
 
 
@@ -210,7 +213,7 @@ print("""
                 margin : 20px;
                 margin-right: 10%;
                 margin-left: 10%;
-                height: 100%;
+                height: 40%;
 
 
         }
@@ -220,7 +223,7 @@ print("""
                 margin-right: 10%;
                 margin-left: 10%;
                 margin-bottom: 10%;
-                height: 100%;
+                height: 40%;
 
         }
 
@@ -233,7 +236,7 @@ print("""
 
         }
         #rInputI{
-                width: 480px;
+                width: 430px;
                 font-size: 16px;
                 padding: 25px;
                 text-align: center;
@@ -244,7 +247,7 @@ print("""
         #registerBtn{
                 border: none;
                 padding: 10px 32px;
-                margin-left: 240px;
+                margin-left: 210px;
                 margin-bottom: 20px;
                 font-size: 16px;
                 text-align: center;
