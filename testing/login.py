@@ -14,10 +14,7 @@ print()
 form = cgi.FieldStorage()
 
 
-conn = MySQLdb.connect(host = "csc346-db.cszwdclaffoa.us-east-1.rds.amazonaws.com",
-		       user = "CSC346_SC",
-		       passwd = "S123456789C",
-		       db = "csc346db")
+conn = MySQLdb.connect()
 
 cursor = conn.cursor()
 cursor.execute("""INSERT INTO users(username,password) VALUES(%s,%s);""", (form["username"].value, form["password"].value))
