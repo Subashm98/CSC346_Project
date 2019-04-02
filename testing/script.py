@@ -15,9 +15,9 @@ if "firstname"  in form and "lastname" in form:
 	print("""Your first name is %s and your last name is %s""" % (form["firstname"].value, form["lastname"].value))	
 else:
 	print("""
-		<form>
-		  First name: <input type="text" name="firstname">
-		  Last name: <input type="text" name="lastname">
+		<form action = "login.py" method="POST">
+		  First name: <input type="text" name="username">
+		  Last name: <input type="password" name="password">
 		  <input type="submit" value="Submit">
 		</form>
 		""")
