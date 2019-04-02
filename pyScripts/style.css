@@ -51,15 +51,16 @@ nav{
 
 
 
-#nav-ul {
+#nav-ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color:#56ABE4;
 
-    ;
   }
+
+
   
   #nav-ul li {
     /* float: left; */
@@ -80,6 +81,23 @@ nav{
     padding: 14px 16px;
     text-decoration: none;
   }
+
+  #loginBtn{
+    background-color: #56ABE4 ;
+    border: none;
+    color: white;
+    padding: 10px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /* margin: 4px 2px; */
+    cursor: pointer;
+  }
+
+  #loginBtn:hover{
+    background-color: red;
+  }
   
   /* Change the link color to #111 (black) on hover */
   #nav-ul li a:hover {
@@ -90,8 +108,11 @@ nav{
 
 
 
+
 .container{
+    border: solid red;
     width : 80%;
+    height: 100%;
     /* height: */
     margin-top: 45px;
     margin-left: 10%;
@@ -102,11 +123,61 @@ nav{
    
 
 }
-.h{
-    
-      /* border: solid red; */
-      /* height: 1000px; */
 
-  }
+
+.signUpInfo{
+  background-color: lightgrey;
+  border: solid red;
+  margin : 20px;
+  margin-right: 10%;
+  margin-left: 10%;
+  height: 100%;
+
+
+}
+.singUpForm{
+  background-color: lightgrey;
+  border: solid red;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 10%;
+  height: 100%;
+
+}
+
+#rInput{
+  width: 200px;
+  font-size: 16px;
+  padding: 25px;
+  text-align: center;
+  margin: 15px;
+
+}
+#rInputI{
+  width: 480px;
+  font-size: 16px;
+  padding: 25px;
+  text-align: center;
+  margin: 20px;
+
+}
+
+#registerBtn{
+  border: none;
+  padding: 10px 32px;
+  margin-left: 240px;
+  margin-bottom: 20px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  background-color: lightblue;
+
+
+}
+
+#becomeMem{
+  margin: 20px;
+}
 
   
