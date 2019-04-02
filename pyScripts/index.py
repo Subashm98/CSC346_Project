@@ -48,11 +48,11 @@ print("""
 """)
 
 
-form = cgi.FieldStorage()
 
 
-if "username" not in form and "password" not in form:
-        print(""" 
+
+def print_register():
+        print (""" 
                 <div class = "container">
                         <div class = "signUpInfo">
                                 <h3>Sign up to experience the full glory of , where you can post new  content </h3>
@@ -81,6 +81,45 @@ if "username" not in form and "password" not in form:
         
                 </div>
         """)
+
+
+
+form = cgi.FieldStorage()
+
+if "username" not in form and "password" not in form:
+	print_register()
+
+str = "hello"
+pss = "hello"
+
+#if "username" in form and "password" in form:
+#	print(""" <h2>You are Alomst there</h2> """")
+	#if form["password"].value == pss  and form["username"].value == str :
+	#	print """ <h2>You are connected </h2> """"
+#else:
+#	print_register()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
 
 #if "loginForm" in form:
 #	print """ <h1>Hello</h1> """
