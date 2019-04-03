@@ -16,7 +16,7 @@ def style():
                 /* background-image: url("milkeyWay.jpeg"); */
                 /* background-image: url("backgrounds-blank-blue-953214.jpg");
                 background-image: url("backgrounds-blank-blue-953214.jpg"); */
-                background-image: url("abstract-art-artistic-1020315_C2.jpg");
+                background-image: url("https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/abstract-art-artistic-1020315_C2.jpg");
                 margin: 0;
                 padding: 0;     
         }
@@ -105,10 +105,10 @@ def hNavBar():
         <div class="navigation-bar">
                 <nav>
                     <ul id = "nav-ul">
-                            <li id = "navLeft"><img id = "logo" src="logo.png"></li>
+                            <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
                             <li id = "navLeft"><a href="index.html">Home</a></li>
                             <li id = "navLeft"><a href="news.asp">Add Post</a></li>
-                            <li id = "navRight"><img id = "userImg" src="default_logImg.png"></li>
+                            <li id = "navRight"><img id = "userImg" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/default_logImg.png"></li>
                                        
                              <li id = "navRight">
                                 <label for="uname" class="label">Username</label>
