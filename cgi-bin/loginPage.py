@@ -345,7 +345,7 @@ def registerDiv():
                     <div class="row row-space">
                         <div class="col-2">
                             <div class="input-group">
-                                <label class="label">user name</label>
+                                <label class="label">username</label>
                                 <input class="input--style-4" type="text" name="user_name" required>
                             </div>
                         </div>
