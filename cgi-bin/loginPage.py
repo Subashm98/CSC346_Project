@@ -341,18 +341,18 @@ def registerDiv():
         <div class="card card-4">
             <div class="card-body">
                 <h2 class="title">Become A Member</h2>
-                <form method="POST">
+                <form method="POST" action=auth.py>
                     <div class="row row-space">
                         <div class="col-2">
                             <div class="input-group">
-                                <label class="label">first name</label>
-                                <input class="input--style-4" type="text" name="first_name" required>
+                                <label class="label">user name</label>
+                                <input class="input--style-4" type="text" name="user_name" required>
                             </div>
                         </div>
                         <div class="col-2">
                             <div class="input-group">
-                                <label class="label">last name</label>
-                                <input class="input--style-4" type="text" name="last_name" required>
+                                <label class="label">full name</label>
+                                <input class="input--style-4" type="text" name="full_name" required>
                             </div>
                         </div>
                     </div>

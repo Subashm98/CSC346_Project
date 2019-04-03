@@ -5,8 +5,7 @@ import cgi
 import cgitb
 cgitb.enable()
 #from passlib.hash import pbkdf2_sha256
-#pass = "hello"
-#usr  = "hello"
+
 def main():
 	num = 123
 	al  = "como"
@@ -24,6 +23,8 @@ def main():
 			print("<h1>Wrong</h1>")
 	else:
 		print("<h1>OH NO something went wrong</h1>")
+
+	adasd
 
 print("Content-Type:text/html")
 print()
