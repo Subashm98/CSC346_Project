@@ -133,18 +133,18 @@ pss = "hello"
 
 
 # style the html
-print("""
-
+def style():
+        print("""
         <style>
-                body {
-                        /* background-color: lightgray; */
-                        /* background-image: url("milkeyWay.jpeg"); */
-                        /* background-image: url("backgrounds-blank-blue-953214.jpg");
-                        background-image: url("backgrounds-blank-blue-953214.jpg"); */
-                        background-image: url("abstract-art-artistic-1020315_C2.jpg");
-                        margin: 0;
-                        padding: 0;     
-                }
+        body {
+                /* background-color: lightgray; */
+                /* background-image: url("milkeyWay.jpeg"); */
+                /* background-image: url("backgrounds-blank-blue-953214.jpg");
+                background-image: url("backgrounds-blank-blue-953214.jpg"); */
+                background-image: url("abstract-art-artistic-1020315_C2.jpg");
+                margin: 0;
+                padding: 0;     
+        }
 
 
 
@@ -205,7 +205,7 @@ print("""
         float : right;
         }
         
-        #nav-ul li a {
+        #nav-ul li a, label {
                 display: block;
                 color: white;
                 text-align: center;
@@ -214,101 +214,55 @@ print("""
                 text-decoration: none;
         }
 
-        #loginBtn{
-                background-color: #56ABE4 ;
-                border: none;
-                color: white;
-                padding: 10px 32px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                /* margin: 4px 2px; */
-                cursor: pointer;
-        }
 
-        #loginBtn:hover{
-                background-color: red;
-        }
         
         /* Change the link color to #111 (black) on hover */
         #nav-ul li a:hover {
                 background-color: red;
         }
-
-        .container{
-                width : 80%;
-                /* height: */
-                margin-top: 45px;
-                margin-left: 10%;
-                margin-right: 10%;
-                /* background-color: rgb(76, 99, 91); */
-                background-image: url("abstract-attractive-backdrop-988872.jpg") 
-        }
-
-        .signUpInfo{
-                background-color: lightgrey;
-                border: solid red;
-                margin : 20px;
-                margin-right: 10%;
-                margin-left: 10%;
-                height: 40%;
+        </style>
+        
+        """)
 
 
-        }
-        .singUpForm{
-                background-color: lightgrey;
-                border: solid red;
-                margin-right: 10%;
-                margin-left: 10%;
-                margin-bottom: 10%;
-                height: 40%;
-
-        }
-
-        #rInput{
-                width: 200px;
-                font-size: 16px;
-                padding: 25px;
-                text-align: center;
-                margin: 15px;
-
-        }
-        #rInputI{
-                width: 430px;
-                font-size: 16px;
-                padding: 25px;
-                text-align: center;
-                margin: 20px;
-
-        }
-
-        #registerBtn{
-                border: none;
-                padding: 10px 32px;
-                margin-left: 210px;
-                margin-bottom: 20px;
-                font-size: 16px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                background-color: lightblue;
+def hNavBar():
+        print("""
+        <div class="navigation-bar">
+                <nav>
+                    <ul id = "nav-ul">
+                            <li id = "navLeft"><img id = "logo" src="logo.png"></li>
+                            <li id = "navLeft"><a href="index.html">Home</a></li>
+                            <li id = "navLeft"><a href="news.asp">Add Post</a></li>
+                            <li id = "navRight"><img id = "userImg" src="default_logImg.png"></li>
+                                       
+                             <li id = "navRight">
+                                <label for="uname" class="label">Username</label>
+                            </li>
 
 
-        }
-
-        #becomeMem{
-                margin: 20px;
-        }
-
-
-
+                            
+                    </ul>
+                </nav>
+                
+        </div>
+        """)
 
 
-	</style>
-
-""")
-#print(""" </body> </html> """")
-
+def main():
+    print("<html>")
+    print("<head>")
+    print("<title>Discourse</title>")
+    style()
+    print("</head>")
+    print("<body>")
+    hNavBar()
+    
+    #loginDiv()
+    #registerDiv()
+    print("</body>")
+    print("</html>")
+print("Content-Type: text/html;charset=utf-8")
+print()
+main()
 
 
