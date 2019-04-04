@@ -44,7 +44,7 @@ def create_database(conn):
 	if (post_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
 		cursor.execute("""CREATE TABLE post (
 				  post_id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
-				  user_name		INT NOT NULL,
+				  user_name		VARCHAR (30) NOT NULL,
 				  msg_as_html	VARCHAR (256) NOT NULL,
 				  CONSTRAINT PK_POST PRIMARY KEY (post_id),
 				  CONSTRAINT FK_USER_POST FOREIGN KEY (user_name) REFERENCES user (user_name)
