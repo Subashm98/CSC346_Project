@@ -339,10 +339,8 @@ def printPost(cursor):
     cursor.execute("""SELECT * FROM post;""")
     results = cursor.fetchall()
 
-    postResult = [ptuple[0] for ptuple in results]
-
-    for post in postResult:
-        showPost(post[1], post[2], post[3], post[4])
+    for post in results:
+         showPost(post[1], post[2], post[3], post[4])
 
     print("""</div>""")
 
