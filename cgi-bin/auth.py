@@ -53,17 +53,20 @@ def create_database(conn):
 						  """)
 
 	if (comment_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
-		cursor.execute("""CREATE TABLE comment (
-				  		  comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT,
-						  post_id		INT NOT NULL,
-						  user_name		VARCHAR (30) NOT NULL,
-						  msg_as_html	VARCHAR (256) NOT NULL,
-					  	  CONSTRAINT PK_COMMENT PRIMARY KEY (comment_id),
-						  CONSTRAINT FK_COMMENT_POST FOREIGN KEY (post_id) REFERENCES post (post_id),
-						  CONSTRAINT FK_COMMENT_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
-						  );
-						  """)
-
+		try:
+			cursor.execute("""CREATE TABLE comment (
+							comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT,
+							post_id		INT NOT NULL,
+							user_name		VARCHAR (30) NOT NULL,
+							msg_as_html	VARCHAR (256) NOT NULL,
+							CONSTRAINT PK_COMMENT PRIMARY KEY (comment_id),
+							CONSTRAINT FK_COMMENT_POST FOREIGN KEY (post_id) REFERENCES post (post_id),
+							CONSTRAINT FK_COMMENT_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
+							);
+							""")
+		except Exception as e:
+			print(e)
+			
 	cursor.close()
 
 def pHash(password):
