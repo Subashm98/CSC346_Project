@@ -9,7 +9,7 @@ import MySQLdb
 from secret import secret
 
 def print_users(cursor):
-	cursor.execute("SELECT * FROM user;")
+	cursor.execute("SELECT password FROM user;")
 	print(cursor.fetchall())
 	# for account in cursor.fetchall():
 	# 	print(account)
