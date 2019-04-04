@@ -327,15 +327,22 @@ def showPost(title,op,cont,likes):
     <br>
     """%(title,op,cont,likes))
 
-def printPost():
+def printPost(cursor):
     print("""
     <br>
     <br>
     <div class="page-wrapper font-poppins"> 
     """)
-    for i in range(10):
-    	showPost("title %s " % i,"user", " content %s " % i, i)
+    # for i in range(10):
+    # 	showPost("title %s " % i,"user", " content %s " % i, i)
 
+    cursor.execute("""SELECT title,user_name,msg_as_html,likes FROM post;""")
+    results = cursor.fetchall()
+
+    postResult = [ptuple[0] for ptuple in results]
+
+    for post in postResult:
+        showPost(post[0], post[1], post[2], post[3])
 
     print("""</div>""")
 
@@ -366,7 +373,7 @@ def main():
     
     user = usrResult[0]
     hNavBar(user)
-    printPost()
+    printPost(cursor)
     #loginDiv()
     #registerDiv()
     print("</body>")
