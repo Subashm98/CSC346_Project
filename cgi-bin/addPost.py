@@ -303,6 +303,8 @@ def main():
     print("</body>")
     print("</html>")
 
+    form = cgi.FieldStorage()
+
     ip = str(os.environ["SERVER_ADDR"])
 
     conn = MySQLdb.connect(host = secret.SQL_HOST,
@@ -317,11 +319,20 @@ def main():
 
     usrResult = [utuple[0] for utuple in results]
     user = usrResult[0]
+    
 
-    form = cgi.FieldStorage()
+    titl = form["newpost_title"].value
+    content = form["newpost_content"].value
 
-    print(form["newpost_title"].value)
-    print(form["newpost_content"].value)
+    cursor.execute("""INSERT INTO post (title,user_name,msg_as_html,likes)
+						VALUES (%s,%s,%s,%s);""",
+						(titl, user, content, 0))
+
+    cursor.close()
+    conn.commit()
+    conn.close()
+
+    print("""<body onLoad="location.href='index.py'"></body>""")
 
 print("Content-Type: text/html;charset=utf-8")
 print()
