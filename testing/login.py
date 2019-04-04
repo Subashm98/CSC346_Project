@@ -30,11 +30,11 @@ def main():
 
 	try:
 		cursor = conn.cursor()
-		cursor.execute("""INSERT INTO user (first_name,last_name,pass_hash,gender,email,phone_number) 
-				  VALUES (%s,%s,%s,%s,%s,%s);""", 
-				(form["first_name"].value, form["last_name"].value, 
-				 pHash(form["password"].value), form["gender"].value,
-				 form["email"].value, form["phone_number"].value))
+		cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
+							VALUES (%s,%s,%s,%s,%s,%s);""", 
+							(form["user_name"].value, form["full_name"].value, 
+							pHash(form["password"].value), form["gender"].value,
+							form["email"].value, form["phone"].value))
 
 		print_users(cursor)	
 
