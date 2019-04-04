@@ -97,8 +97,8 @@ def main():
 	if(form.getvalue("uname") and form.getvalue("psw")):
 		cursor.execute("""SELECT password FROM user WHERE user_name = %s;""" % form["uname"].value)
 		results = cursor.fetchall()
-		
-		pwdResult = [ptuple[0] for ptuple in pwd]
+
+		pwdResult = [ptuple[0] for ptuple in results]
 
 		if(form["psw"].value == pwdResult[0]):
 			print("""<body onLoad="location.href='index.py'"><h1>Hurray you got in</h1>""")	
