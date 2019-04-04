@@ -15,7 +15,7 @@ def print_users(cursor):
 	# 	print(account)
 	# 	print("<hr>")
 	x = 'Subash'
-	pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (x,)
+	pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (x,))
 	print(pwd)
 	pwd = pwd.fetchall()
 	print(pwd)
