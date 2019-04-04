@@ -355,7 +355,7 @@ def main():
 	)
 
     for x in form:
-        print(x)
+        print("""<h1>%s</h1>""" % x)
     #print(form)
     user = "Subash" #form["uname"].value
     hNavBar(user)
