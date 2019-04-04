@@ -45,7 +45,7 @@ def main():
 		# 					form["email"].value, form["phone"].value))
 
 		# print_users(cursor)
-		x = 'Subash'
+		x = "Subash"
 		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (x,))
 		print(pwd)
 		pwd = pwd.fetchall()
