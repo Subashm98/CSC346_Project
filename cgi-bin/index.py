@@ -342,7 +342,7 @@ def main():
     form = cgi.FieldStorage()
 
     for x in form:
-        print("""form value: %s""" % x)
+        print("""<h1>form value: %s</h1>""" % x)
 
     # print("<html>")
     # print("<head>")
