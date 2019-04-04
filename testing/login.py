@@ -19,8 +19,7 @@ def print_users(cursor):
 	try:
 		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = \"%s\";""" % x)
 		print("First pwd print")
-		print(pwd)
-		pwd = pwd.fetchall()
+		pwd = cursor.fetchall()
 		print(pwd)
 		pwdResult = [ptuple[0] for ptuple in pwd]
 		print(pwdResult)
