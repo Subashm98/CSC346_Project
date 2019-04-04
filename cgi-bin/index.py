@@ -95,12 +95,189 @@ def style():
         #nav-ul li a:hover {
                 background-color: red;
         }
+       /* 
+        #FONT
+        */
+        .font-robo {
+            font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
+        }
+        
+        .font-poppins {
+            font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+        }
+        
+        /* 
+            #GRID
+        */
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        } 
+        html {
+            box-sizing: border-box;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
+        
+        body,
+        h1, h2, h3, h4, h5, h6,
+        blockquote, p, pre,
+        dl, dd, ol, ul,
+        figure,
+        hr,
+        fieldset, legend {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li > ol,
+        li > ul {
+            margin-bottom: 0;
+        }
+        
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+        
+        fieldset {
+            min-width: 0;
+            border: 0;
+        }
+        
+        button {
+            margin-top: 5px;
+            outline: none;
+            background: none;
+            border: none;
+        }
+        
+        /* ==========================================================================
+            #PAGE WRAPPER
+            ========================================================================== */
+        .page-wrapper {
+            min-height: 100vh;
+        }
+        
+        body {
+            font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+        }
+            
+        /* ==========================================================================
+            #WRAPPER
+            ========================================================================== */
+        .wrapper {
+            margin: 0 auto;
+        }
+        
+        .wrapper--w960 {
+            max-width: 960px;
+        }
+        
+        .wrapper--w780 {
+            max-width: 780px;
+        }
+        
+        .wrapper--w680 {
+            max-width: 680px;
+        }
+        
+        /* ==========================================================================
+            #BUTTON
+            ========================================================================== */
+        .btn {
+            display: inline-block;
+            line-height: 25px;
+            padding: 0 20px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            font-size: 14px;
+            color: #fff;
+            font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+        }
+        
+        .btn--radius {
+            border-radius: 3px;
+        }
+        
+        .btn--radius-2 {
+        
+            border-radius: 5px;
+        }
+            
+        .btn--blue {
+            background: #4272d7;
+        }
+        
+        .btn--blue:hover {
+            background: #2859c5;
+        }
+        
+        
+        /* 
+            #FORM
+        */
+        
+        
+        .label {
+            font-size: 16px;
+            color: #555;
+            text-transform: capitalize;
+            display: block;
+            margin-bottom: 5px;
+            margin-top: 5px;
+        }
+        
+
+        
+        /* ==========================================================================
+            #TITLE
+            ========================================================================== */
+        .title {
+            font-size: 22px;
+            color: #525252;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+        
+        /* 
+            #CARD
+        */
+        .card {
+            border-radius: 3px;
+            background: #fff;
+        }
+        
+        .card-4 {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-4 .card-body {
+            padding: 40px 45px;
+            padding-bottom: 20px;
+        }
+	p{
+	    margin-left: 10px;
+	} 
+
+
         </style>
         
         """)
 
 
-def hNavBar():
+def hNavBar(user):
         print("""
         <div class="navigation-bar">
                 <nav>
@@ -111,7 +288,7 @@ def hNavBar():
                             <li id = "navRight"><img id = "userImg" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/default_logImg.png"></li>
                                        
                              <li id = "navRight">
-                                <label for="uname" class="label">Username</label>
+                                <label for="uname" class="label">%s</label>
                             </li>
 
 
@@ -120,7 +297,46 @@ def hNavBar():
                 </nav>
                 
         </div>
-        """)
+        """ % user)
+
+def showPost(title,op,cont,likes):
+    print("""
+    <br>
+    <br>
+    <div class="wrapper wrapper--w960">
+        <div class="card card-4">
+	    <div class="card-body">
+	        <h4 class="title">%s , by:%s<h4>
+		<hr>
+		<form method="POST">
+          	    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">%s</label>
+                            </div>
+			   <p>%s likes</p>
+                        </div>
+                    </div>
+                    <div class="p-t-15">
+                    	<button class="btn btn--radius-2 btn--blue" type="submit">Like</button>
+               	    </div>
+        	</form>
+	    </div>
+        </div>
+    </div>
+    <br>
+    """%(title,op,cont,likes))
+
+def printPost():
+    print("""
+    <br>
+    <br>
+    <div class="page-wrapper font-poppins"> 
+    """)
+    for i in range(10):
+    	showPost("title %s " % i, " content %s " % i,"user", i)
+
+    print("""</div>""")
 
 
 def main():
@@ -130,8 +346,9 @@ def main():
     style()
     print("</head>")
     print("<body>")
-    hNavBar()
-    
+    user = "Subash"
+    hNavBar(user)
+    printPost()
     #loginDiv()
     #registerDiv()
     print("</body>")
