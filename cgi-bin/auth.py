@@ -93,7 +93,7 @@ def update_user(cursor, user):
 	ip = os.environ["SERVER_ADDR"]
 	try:
 		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
-						VALUES (%s,%s)""",
+						VALUES (%s,%s);""",
 						(str(ip), user))
 	except Exception as e:
 		print(e)
@@ -120,6 +120,7 @@ def main():
 		try:
 			if(form["psw"].value == pwdResult[0]):
 				update_user(cursor, form["uname"].value)
+				conn.commit()
 
 				cursor.close()
 				conn.close()
