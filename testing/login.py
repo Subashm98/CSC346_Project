@@ -14,13 +14,13 @@ from secret import secret
 	# for account in cursor.fetchall():
 	# 	print(account)
 	# 	print("<hr>")
-	# x = 'Subash'
-	# pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (x,))
-	# print(pwd)
-	# pwd = pwd.fetchall()
-	# print(pwd)
-	# pwdResult = [ptuple[0] for ptuple in pwd]
-	# print(pwdResult)
+	x = "\"Subash\""
+	pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (x,))
+	print(pwd)
+	pwd = pwd.fetchall()
+	print(pwd)
+	pwdResult = [ptuple[0] for ptuple in pwd]
+	print(pwdResult)
 
 def pHash(pword):
 	# To be Implemented
@@ -38,20 +38,13 @@ def main():
 
 	try:
 		cursor = conn.cursor()
-		# cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
-		# 					VALUES (%s,%s,%s,%s,%s,%s);""", 
-		# 					(form["user_name"].value, form["full_name"].value, 
-		# 					pHash(form["password"].value), form["gender"].value,
-		# 					form["email"].value, form["phone"].value))
+		cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
+							VALUES (%s,%s,%s,%s,%s,%s);""", 
+							(form["user_name"].value, form["full_name"].value, 
+							pHash(form["password"].value), form["gender"].value,
+							form["email"].value, form["phone"].value))
 
-		# print_users(cursor)
-		x = "Subash"
-		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (x,))
-		print(pwd)
-		pwd = pwd.fetchall()
-		print(pwd)
-		pwdResult = [ptuple[0] for ptuple in pwd]
-		print(pwdResult)
+		print_users(cursor)
 
 		cursor.close()
 		conn.commit()
