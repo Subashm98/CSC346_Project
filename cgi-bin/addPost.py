@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 import cgi
 import cgitb
 
@@ -290,12 +291,16 @@ def main():
     style()
     print("</head>")
     print("<body>")
-
-    addNewpost()
-
-    print("<body>")
+    try:
+        addNewpost()
+    except Exception as e:
+        print(e)
+    print("</body>")
     print("</html>")
 
 print("Content-Type: text/html;charset=utf-8")
 print()
-main()
+try:  
+    main()
+except Exception as e:
+    print(e)
