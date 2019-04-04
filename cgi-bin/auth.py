@@ -96,15 +96,14 @@ def main():
 
 	if(form.getvalue("uname") and form.getvalue("psw")):
 		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (form["uname"].value))
-		print("""<p>%s</p>""" % pwd)
 
-		# if(form["psw"].value == pwd):
-		# 	print("""<body onLoad="location.href='index.py'"><h1>Hurray you got in</h1>""")	
-		# else:
-		# 	cursor.close()
-		# 	conn.close()
-		# 	print("<h1>Username and password or password is invalid</h1>")
-		# 	print("""<body onLoad="location.href='loginPage.py'"></body>""")
+		if(form["psw"].value == pwd):
+			print("""<body onLoad="location.href='index.py'"><h1>Hurray you got in</h1>""")	
+		else:
+			cursor.close()
+			conn.close()
+			print("<h1>Username and password or password is invalid</h1>")
+			print("""<body onLoad="location.href='loginPage.py'"></body>""")
 	else:
 		try:
 			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
