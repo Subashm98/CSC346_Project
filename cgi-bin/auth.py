@@ -104,7 +104,7 @@ def main():
 			print("<h1>Username and password or password is invalid</h1>")
 			print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
-	else if ("regbtn" in form):
+	elif ("regbtn" in form):
 		try:
 			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
 							VALUES (%s,%s,%s,%s,%s,%s);""", 
