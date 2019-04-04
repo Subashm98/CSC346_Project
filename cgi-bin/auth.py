@@ -10,23 +10,6 @@ cgitb.enable()
 import MySQLdb
 from secret import secret
 
-# def main():
-# 	num = 123
-# 	al  = "como"
-# 	p = "hello"
-# 	u  = "hello"
-# 	#form = cgi.FieldStorage()
-# 	form = cgi.FieldStorage()
-# 	if(form.getvalue("uname") and form.getvalue("psw")):
-# 		if(form["uname"].value == u and form["psw"].value == p):
-# 			print("""<body onLoad="location.href='index.py'"><h1>Hurray you got in</h1>""")
-# 			#execfile("loginPage.py")
-# 			#print("""<p onLoad="index.py"></p>""")			
-# 		else:
-# 			print("""<body onLoad="location.href='loginPage.py'"></body>""")
-# 			print("<h1>Wrong</h1>")
-# 	else:
-# 		print("<h1>OH NO something went wrong</h1>")
 
 def create_database(conn):
 	user_tbl = 'user'
@@ -124,13 +107,11 @@ def main():
 
 			print("""<body onLoad="location.href='index.py'"></body>""")
 			
-		except Exception as e:
+		except:
 			conn.rollback()
 			cursor.close()
 			conn.close()
-			print("<h1>Duplicate username found in database</h1>")
-			print(e)
-			#print("""<body onLoad="location.href='loginPage.py'"></body>""")
+			print("""<body onLoad="location.href='loginPage.py'">Username or Email Taken</body>""")
 
 
 print("Content-Type:text/html")
