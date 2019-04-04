@@ -355,7 +355,7 @@ def main():
 	)
 
 
-    user = form["user_name"].value
+    user = form["uname"].value
     hNavBar(user)
     printPost()
     #loginDiv()
