@@ -24,6 +24,7 @@ def print_users(cursor):
 		pwdResult = [ptuple[0] for ptuple in pwd]
 		print(pwdResult)
 	except Exception as e:
+		print("x = " % x)
 		print(e)
 
 def pHash(pword):
