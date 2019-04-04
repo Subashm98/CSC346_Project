@@ -40,6 +40,7 @@ def create_database(conn):
 						  CONSTRAINT PK_USER PRIMARY KEY (user_name)
 						  );
 						  """)
+						  #CONSTRAINT PK_USER PRIMARY KEY (user_name)
 
 	if (post_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
 		cursor.execute("""CREATE TABLE post (
@@ -56,8 +57,8 @@ def create_database(conn):
 		try:
 			cursor.execute("""CREATE TABLE comment (
 							comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT,
-							post_id		INT NOT NULL,
-							user_name		VARCHAR (30) NOT NULL,
+							post_id		INT UNSIGNED NOT NULL,
+							user_name	VARCHAR (30) NOT NULL,
 							msg_as_html	VARCHAR (256) NOT NULL,
 							CONSTRAINT PK_COMMENT PRIMARY KEY (comment_id),
 							CONSTRAINT FK_COMMENT_POST FOREIGN KEY (post_id) REFERENCES post (post_id),
@@ -69,15 +70,22 @@ def create_database(conn):
 
 	cursor.close()
 
+
 def pHash(password):
 	#To be Implemented
 	return password
 
+
+
 def gotoPage(pageName):
 	print("""<body onLoad="location.href='%s'"></body>""" % pageName)
 
+
+
 def delayPage(sec, pageName):
 	threading.Timer(sec, gotoPage, [pageName]).start()
+
+
 
 def main():
 	form = cgi.FieldStorage()
@@ -102,13 +110,12 @@ def main():
 				cursor.close()
 				conn.close()
 
-				# gotoPage("index.py")
-				#print("""<body onLoad="location.href='index.py'"></body>""")
+				gotoPage("index.py")
 
 		except:
 			cursor.close()
 			conn.close()
-			#print("""<body onLoad="location.href='loginPage.py'"><h1>Bad Login</h1></body>""")
+			
 			print("<h1>Bad Login, redirecting back to login page...</h1>")
 			delayPage(3, "loginPage.py")
 
@@ -125,7 +132,6 @@ def main():
 			conn.close()
 
 			gotoPage("index.py")
-			#print("""<body onLoad="location.href='index.py'"></body>""")
 			
 		except:
 			conn.rollback()
@@ -134,7 +140,6 @@ def main():
 			
 			print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
 			delayPage(4, "loginPage.py")
-			#print("""<body onLoad="location.href='loginPage.py'">Username or Email Taken</body>""")
 
 
 print("Content-Type:text/html")
