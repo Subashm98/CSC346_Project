@@ -24,13 +24,7 @@ def create_database(conn):
 
 	all_tables = [tabletuple[0] for tabletuple in results]
 	
-
-
-#		cursor.execute("DROP TABLE user;")
-#		cursor.execute("DROP TABLE post;")
-#		cursor.execute("DROP TABLE comment;")
-if (user_tbl not in all_tables or post_tbl not in all_tables or comment_tbl not in all_tables):
-	# if (user_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
+	if (user_tbl not in all_tables):
 		cursor.execute("""CREATE TABLE user (
 						  user_name	VARCHAR (30) NOT NULL,
 						  full_name	VARCHAR (30) NOT NULL,
@@ -41,9 +35,8 @@ if (user_tbl not in all_tables or post_tbl not in all_tables or comment_tbl not 
 						  CONSTRAINT PK_USER PRIMARY KEY (user_name)
 						  );
 						  """)
-						  #CONSTRAINT PK_USER PRIMARY KEY (user_name)
 
-	# if (post_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
+	if (post_tbl not in all_tables):
 		cursor.execute("""CREATE TABLE post (
 						  post_id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
 						  user_name		VARCHAR (30) NOT NULL,
@@ -54,8 +47,7 @@ if (user_tbl not in all_tables or post_tbl not in all_tables or comment_tbl not 
 						  );
 						  """)
 
-	# if (comment_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
-
+	if (comment_tbl not in all_tables):
 		cursor.execute("""CREATE TABLE comment (
 						comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT,
 						post_id		INT UNSIGNED NOT NULL,
