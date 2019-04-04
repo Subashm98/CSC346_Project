@@ -8,7 +8,7 @@ cgitb.enable()
 import MySQLdb
 from secret import secret
 
-# def print_users(cursor):
+def print_users(cursor):
 	# cursor.execute("SELECT password FROM user;")
 	# print(cursor.fetchall())
 	# for account in cursor.fetchall():
