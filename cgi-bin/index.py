@@ -332,7 +332,7 @@ def printPost():
     <div class="page-wrapper font-poppins"> 
     """)
     for i in range(10):
-    	showPost("title %s " % i, " content %s " % i,"user", i)
+    	showPost("title %s " % i,"user", " content %s " % i, i)
 
     print("""</div>""")
 
