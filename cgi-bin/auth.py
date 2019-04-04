@@ -100,9 +100,13 @@ def main():
 
 		pwdResult = [ptuple[0] for ptuple in results]
 
-		if(form["psw"].value == pwdResult[0]):
-			print("""<body onLoad="location.href='index.py'"><h1>Hurray you got in</h1></body>""")	
-		else:
+		try:
+			if(form["psw"].value == pwdResult[0]):
+				cursor.close()
+				conn.close()
+				print("""<body onLoad="location.href='index.py'"><h1>Hurray you got in</h1></body>""")
+		
+		except:
 			cursor.close()
 			conn.close()
 			print("""<body onLoad="location.href='loginPage.py'"><h1>Username and password or password is invalid</h1></body>""")
