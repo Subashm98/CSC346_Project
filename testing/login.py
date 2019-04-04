@@ -18,13 +18,13 @@ def print_users(cursor):
 
 	try:
 		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""" % x)
-		print(pwd)
+		print("First pwd print" + pwd)
 		pwd = pwd.fetchall()
 		print(pwd)
 		pwdResult = [ptuple[0] for ptuple in pwd]
 		print(pwdResult)
 	except Exception as e:
-		print(x)
+		print("In exception" + x)
 		print(e)
 
 def pHash(pword):
