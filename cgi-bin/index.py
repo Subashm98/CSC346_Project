@@ -233,8 +233,6 @@ def style():
             color: #555;
             text-transform: capitalize;
             display: block;
-            margin-bottom: 5px;
-            margin-top: 5px;
         }
         
 
