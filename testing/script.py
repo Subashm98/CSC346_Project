@@ -64,14 +64,13 @@ def create_database():
 	
 	if (user not in results):
 		cursor.execute("""CREATE TABLE user (
-				  user_id	INT UNSIGNED AUTO_INCREMENT,
-				  first_name	VARCHAR (15) NOT NULL,
-				  last_name	VARCHAR (15) NOT NULL,
-				  pass_hash	VARCHAR (15) NOT NULL,
+				  user_name	VARCHAR (30) NOT NULL,
+				  full_name	VARCHAR (30) NOT NULL,
+				  password	VARCHAR (30) NOT NULL,
 				  gender	VARCHAR (7)  NOT NULL,
 				  email		VARCHAR (30) NOT NULL UNIQUE,
-				  phone_number	VARCHAR (11) NOT NULL,
-				  CONSTRAINT PK_USER PRIMARY KEY (user_id)
+				  phone	VARCHAR (12) NOT NULL,
+				  CONSTRAINT PK_USER PRIMARY KEY (user_name)
 				  );
 				  """)
 
