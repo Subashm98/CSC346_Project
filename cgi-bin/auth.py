@@ -94,46 +94,39 @@ def main():
 	create_database(conn)
 	cursor = conn.cursor()
 
-	print(form.getvalue("regbtn"))
-	return
+	if(form.getvalue("uname") and form.getvalue("psw")):
+		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (form["uname"].value))
+		print(pwd)
 
-	# if(form.getvalue("logbtn")):
-	# 	if(form.getvalue("uname") and form.getvalue("psw")):
-	# 		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (form["uname"].value))
-	# 		print(pwd)
-	# 	else:
-	# 		cursor.close()
-	# 		conn.close()
-	# 		print("<h1>Username and password or password is invalid</h1>")
-	# 		print("""<body onLoad="location.href='loginPage.py'"></body>""")
+		# if(form["psw"].value == pwd):
+		# 	print("""<body onLoad="location.href='index.py'"><h1>Hurray you got in</h1>""")	
+		# else:
+		# 	cursor.close()
+		# 	conn.close()
+		# 	print("<h1>Username and password or password is invalid</h1>")
+		# 	print("""<body onLoad="location.href='loginPage.py'"></body>""")
+	else:
+		try:
+			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
+							VALUES (%s,%s,%s,%s,%s,%s);""", 
+							(form["user_name"].value, form["full_name"].value, 
+							pHash(form["password"].value), form["gender"].value,
+							form["email"].value, form["phone"].value))
 
-	# elif (form.getvalue("regbtn")):
-	# 	try:
-	# 		cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
-	# 						VALUES (%s,%s,%s,%s,%s,%s);""", 
-	# 						(form["user_name"].value, form["full_name"].value, 
-	# 						pHash(form["password"].value), form["gender"].value,
-	# 						form["email"].value, form["phone"].value))
+			cursor.close()
+			conn.commit()
+			conn.close()
 
-	# 		cursor.close()
-	# 		conn.commit()
-	# 		conn.close()
-
-	# 		print("""<body onLoad="location.href='index.py'"></body>""")
+			print("""<body onLoad="location.href='index.py'"></body>""")
 			
-	# 	except Exception as e:
-	# 		conn.rollback()
-	# 		cursor.close()
-	# 		conn.close()
-	# 		print("<h1>Duplicate username found in database</h1>")
-	# 		print(e)
-	# 		#print("""<body onLoad="location.href='loginPage.py'"></body>""")
+		except Exception as e:
+			conn.rollback()
+			cursor.close()
+			conn.close()
+			print("<h1>Duplicate username found in database</h1>")
+			print(e)
+			#print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
-	# else:
-	# 	cursor.close()
-	# 	conn.close()
-	# 	print("<h1>How did you get here?</h1>")
-	# 	#print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
 print("Content-Type:text/html")
 print()
