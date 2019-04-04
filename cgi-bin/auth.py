@@ -93,26 +93,43 @@ def main():
 
 	create_database(conn)
 	cursor = conn.cursor()
-	
-	try:
-		cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
-						  VALUES (%s,%s,%s,%s,%s,%s);""", 
-						  (form["user_name"].value, form["full_name"].value, 
-						   pHash(form["password"].value), form["gender"].value,
-						   form["email"].value, form["phone"].value))
 
-		cursor.close()
-		conn.commit()
-		conn.close()
+	if("logbtn" in form):
+		if(form.getvalue("uname") and form.getvalue("psw")):
+			pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (form["uname"].value))
+			print(pwd)
+		else:
+			cursor.close()
+			conn.close()
+			print("<h1>Username and password or password is invalid</h1>")
+			print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
-		print("""<body onLoad="location.href='index.py'"><h1>Hurray you got in</h1>""")
-		
-	except Exception as e:
-		conn.rollback()
+	else if ("regbtn" in form):
+		try:
+			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
+							VALUES (%s,%s,%s,%s,%s,%s);""", 
+							(form["user_name"].value, form["full_name"].value, 
+							pHash(form["password"].value), form["gender"].value,
+							form["email"].value, form["phone"].value))
+
+			cursor.close()
+			conn.commit()
+			conn.close()
+
+			print("""<body onLoad="location.href='index.py'"></body>""")
+			
+		except:# Exception as e:
+			conn.rollback()
+			cursor.close()
+			conn.close()
+			print("<h1>Duplicate username found in database</h1>")
+			#print(e)
+			print("""<body onLoad="location.href='loginPage.py'"></body>""")
+
+	else:
 		cursor.close()
 		conn.close()
-		print("<h1>An error has occured in adding to the database</h1>")
-		print(e)
+		print("<h1>How did you get here?</h1>")
 		print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
 print("Content-Type:text/html")

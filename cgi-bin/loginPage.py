@@ -396,7 +396,7 @@ def registerDiv():
                         </div>
                     </div>
                     <div class="p-t-15">
-                        <button class="btn btn--radius-2 btn--blue" type="submit">Register</button>
+                        <button class="btn btn--radius-2 btn--blue" type="submit" name="regbtn">Register</button>
                     </div>
                 </form>
             </div>
@@ -425,7 +425,7 @@ def loginDiv():
                 
                         <label for="psw" class="label">Password</label>
                         <input type="password" class = "input--style-4" placeholder="Enter Password" name="psw" required>
-                        <button class="btn btn--radius-2 btn--blue" type="submit">Login</button>
+                        <button class="btn btn--radius-2 btn--blue" type="submit" name="logbtn">Login</button>
                     </div>
             
                 </form>
