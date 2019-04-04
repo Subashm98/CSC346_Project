@@ -109,7 +109,7 @@ def main():
 		except:
 			cursor.close()
 			conn.close()
-			print("""<body onLoad="location.href='loginPage.py'"><h1>Username and password or password is invalid</h1></body>""")
+			print("""<body onLoad="location.href='loginPage.py'"><h1>Bad Login</h1></body>""")
 	else:
 		try:
 			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
