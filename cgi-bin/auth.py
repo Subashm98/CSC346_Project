@@ -94,7 +94,7 @@ def main():
 	create_database(conn)
 	cursor = conn.cursor()
 
-	print(form.getvalue("logbtn"))
+	print(form.getvalue("regbtn"))
 	return
 
 	# if(form.getvalue("logbtn")):
