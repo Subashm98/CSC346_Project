@@ -51,15 +51,14 @@ def main():
 		print(e)
 		return
 
+		#   First name: <input type="text" name="user_name">
+		#   Last name: <input type="text" name="full_name">
+		#   Password: <input type="password" name="password">
+		#   Email: <input type="text" name="email">
+		#   Gender: <input type="text" name="gender">
+		#   Phone number: <input type="text" name="phone">
 	print("""
 		<form action = "login.py" method="POST">
-		  First name: <input type="text" name="user_name">
-		  Last name: <input type="text" name="full_name">
-		  Password: <input type="password" name="password">
-		  Email: <input type="text" name="email">
-		  Gender: <input type="text" name="gender">
-		  Phone number: <input type="text" name="phone">
-		  
 		  <input type="submit" value="Submit">
 		</form>
 		""")
