@@ -8,19 +8,19 @@ cgitb.enable()
 import MySQLdb
 from secret import secret
 
-def print_users(cursor):
+# def print_users(cursor):
 	# cursor.execute("SELECT password FROM user;")
 	# print(cursor.fetchall())
 	# for account in cursor.fetchall():
 	# 	print(account)
 	# 	print("<hr>")
-	x = 'Subash'
-	pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (x,))
-	print(pwd)
-	pwd = pwd.fetchall()
-	print(pwd)
-	pwdResult = [ptuple[0] for ptuple in pwd]
-	print(pwdResult)
+	# x = 'Subash'
+	# pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (x,))
+	# print(pwd)
+	# pwd = pwd.fetchall()
+	# print(pwd)
+	# pwdResult = [ptuple[0] for ptuple in pwd]
+	# print(pwdResult)
 
 def pHash(pword):
 	# To be Implemented
@@ -44,7 +44,14 @@ def main():
 		# 					pHash(form["password"].value), form["gender"].value,
 		# 					form["email"].value, form["phone"].value))
 
-		print_users(cursor)	
+		# print_users(cursor)
+		x = 'Subash'
+		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (x,))
+		print(pwd)
+		pwd = pwd.fetchall()
+		print(pwd)
+		pwdResult = [ptuple[0] for ptuple in pwd]
+		print(pwdResult)
 
 		cursor.close()
 		conn.commit()
