@@ -166,16 +166,6 @@ def style():
             font-weight: 400;
             font-size: 14px;
         }
-        
-        .bg-gra-01 {
-            background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%); 
-        }
-        
-        .bg-gra-02 {
-            background: linear-gradient(to right, #F45C43, #EB3349); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-        
-            
-        } 
             
         /* ==========================================================================
             #WRAPPER
@@ -201,11 +191,11 @@ def style():
             ========================================================================== */
         .btn {
             display: inline-block;
-            line-height: 50px;
-            padding: 0 50px;
+            line-height: 25px;
+            padding: 0 20px;
             transition: all 0.4s ease;
             cursor: pointer;
-            font-size: 18px;
+            font-size: 14px;
             color: #fff;
             font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
         }
@@ -231,41 +221,7 @@ def style():
         /* 
             #FORM
         */
-        input {
-            outline: none;
-            margin: 0;
-            border: none;
-            box-shadow: none;
-            width: 100%;
-            font-size: 14px;
-            font-family: inherit;
-        }
         
-        .input--style-4 {
-            line-height: 50px;
-            background: #d2d4cb;
-        
-            box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
-        
-            border-radius: 5px;
-            padding: 0 20px;
-            font-size: 16px;
-            color: #666;
-            transition: all 0.4s ease;
-        }
-        .input--style-5 {
-            line-height: 50px;
-            background: #d2d4cb;
-            height: 100px;
-            width: 500px;
-            box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
-        
-            border-radius: 5px;
-            padding: 0 20px;
-            font-size: 16px;
-            color: #666;
-            transition: all 0.4s ease;
-        }
         
         .label {
             font-size: 16px;
@@ -276,25 +232,16 @@ def style():
             margin-top: 5px;
         }
         
-        .input-group {
-            position: relative;
-            margin-bottom: 22px;
-        }
-        
-        .input-group-icon {
-            position: relative;
-        }
-        
 
         
         /* ==========================================================================
             #TITLE
             ========================================================================== */
         .title {
-            font-size: 24px;
+            font-size: 22px;
             color: #525252;
             font-weight: 400;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
         }
         
         /* 
@@ -312,9 +259,12 @@ def style():
         }
         
         .card-4 .card-body {
-            padding: 57px 65px;
-            padding-bottom: 65px;
-        } 
+            padding: 40px 45px;
+            padding-bottom: 20px;
+        }
+	p{
+	    margin-left: 10px;
+	} 
 	</style>
         
         """)
@@ -341,29 +291,43 @@ def hNavBar():
         </div>
         """)
 
-def showPost():
+def showPost(title,cont,likes):
     print("""
     <br>
     <br>
-    <div class="wrapper wrapper--w680">
+    <div class="wrapper wrapper--w960">
         <div class="card card-4">
-            <div class="card-body">
-                <h4 class="title">Add a Post hello this is a test to, this is a test, this is a test<h4>
-            </div>
+	    <div class="card-body">
+	        <h4 class="title">%s<h4>
+		<hr>
+		<form method="POST">
+          	    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">%s</label>
+                            </div>
+			   <p>%s likes</p>
+                        </div>
+                    </div>
+                    <div class="p-t-15">
+                    	<button class="btn btn--radius-2 btn--blue" type="submit">Like</button>
+               	    </div>
+        	</form>
+	    </div>
         </div>
     </div>
     <br>
-    """)
-
+    """%(title,cont,likes))
+  
 
 def printPost():
     print("""
     <br>
     <br>
-    <div class="page-wrapper bg-gra-02 font-poppins"> 
+    <div class="page-wrapper font-poppins"> 
     """)
     for i in range(10):
-    	showPost()
+    	showPost("title %s " % i, " content %s " % i, i)
 
     print("""</div>""")
 
