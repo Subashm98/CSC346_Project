@@ -14,9 +14,9 @@ def print_users(cursor):
 		print(account)
 		print("<br>")
 
-def pHash(password):
+def pHash(pword):
 	# To be Implemented
-	return password
+	return pword
 
 
 def main():
