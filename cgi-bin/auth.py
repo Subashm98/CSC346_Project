@@ -94,7 +94,7 @@ def main():
 	create_database(conn)
 	cursor = conn.cursor()
 
-	if("logbtn" in form):
+	if(form.getvalue("logbtn")):
 		if(form.getvalue("uname") and form.getvalue("psw")):
 			pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (form["uname"].value))
 			print(pwd)
@@ -104,7 +104,7 @@ def main():
 			print("<h1>Username and password or password is invalid</h1>")
 			print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
-	elif ("regbtn" in form):
+	elif (form.getvalue("regbtn")):
 		try:
 			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
 							VALUES (%s,%s,%s,%s,%s,%s);""", 
