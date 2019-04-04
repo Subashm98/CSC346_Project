@@ -94,43 +94,46 @@ def main():
 	create_database(conn)
 	cursor = conn.cursor()
 
-	if(form.getvalue("logbtn")):
-		if(form.getvalue("uname") and form.getvalue("psw")):
-			pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (form["uname"].value))
-			print(pwd)
-		else:
-			cursor.close()
-			conn.close()
-			print("<h1>Username and password or password is invalid</h1>")
-			print("""<body onLoad="location.href='loginPage.py'"></body>""")
+	print(form.getvalue("logbtn"))
+	return
 
-	elif (form.getvalue("regbtn")):
-		try:
-			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
-							VALUES (%s,%s,%s,%s,%s,%s);""", 
-							(form["user_name"].value, form["full_name"].value, 
-							pHash(form["password"].value), form["gender"].value,
-							form["email"].value, form["phone"].value))
+	# if(form.getvalue("logbtn")):
+	# 	if(form.getvalue("uname") and form.getvalue("psw")):
+	# 		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (form["uname"].value))
+	# 		print(pwd)
+	# 	else:
+	# 		cursor.close()
+	# 		conn.close()
+	# 		print("<h1>Username and password or password is invalid</h1>")
+	# 		print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
-			cursor.close()
-			conn.commit()
-			conn.close()
+	# elif (form.getvalue("regbtn")):
+	# 	try:
+	# 		cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
+	# 						VALUES (%s,%s,%s,%s,%s,%s);""", 
+	# 						(form["user_name"].value, form["full_name"].value, 
+	# 						pHash(form["password"].value), form["gender"].value,
+	# 						form["email"].value, form["phone"].value))
 
-			print("""<body onLoad="location.href='index.py'"></body>""")
+	# 		cursor.close()
+	# 		conn.commit()
+	# 		conn.close()
+
+	# 		print("""<body onLoad="location.href='index.py'"></body>""")
 			
-		except Exception as e:
-			conn.rollback()
-			cursor.close()
-			conn.close()
-			print("<h1>Duplicate username found in database</h1>")
-			print(e)
-			#print("""<body onLoad="location.href='loginPage.py'"></body>""")
+	# 	except Exception as e:
+	# 		conn.rollback()
+	# 		cursor.close()
+	# 		conn.close()
+	# 		print("<h1>Duplicate username found in database</h1>")
+	# 		print(e)
+	# 		#print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
-	else:
-		cursor.close()
-		conn.close()
-		print("<h1>How did you get here?</h1>")
-		#print("""<body onLoad="location.href='loginPage.py'"></body>""")
+	# else:
+	# 	cursor.close()
+	# 	conn.close()
+	# 	print("<h1>How did you get here?</h1>")
+	# 	#print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
 print("Content-Type:text/html")
 print()
