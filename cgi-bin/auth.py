@@ -125,7 +125,7 @@ def main():
 				cursor.close()
 				conn.close()
 				
-				#gotoPage("index.py")
+				gotoPage("index.py")
 
 		except:
 			cursor.close()
