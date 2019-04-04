@@ -14,7 +14,8 @@ def print_users(cursor):
 	# for account in cursor.fetchall():
 	# 	print(account)
 	# 	print("<hr>")
-	pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (form["uname"].value,))
+	x = "123"
+	pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""" % x)
 	pwd = pwd.fetchall()
 	pwdResult = [ptuple[0] for ptuple in pwd]
 	print(pwdResult)
