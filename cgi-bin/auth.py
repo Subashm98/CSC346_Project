@@ -95,12 +95,12 @@ def update_user(cursor, user):
 		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
 						VALUES (%s,%s);""",
 						(str(ip), user))
-	except Exception as e:
+	except:
 		cursor.execute("""DELETE FROM sesh WHERE server_ip = \"%s\";""" % ip)
 		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
 					VALUES (%s,%s);""",
 					(str(ip), user))
-		#print(e)
+		
 
 
 def main():

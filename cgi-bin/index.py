@@ -3,6 +3,8 @@ import cgi
 import cgitb
 cgitb.enable()
 
+import os
+
 import MySQLdb
 from secret import secret
 
@@ -341,29 +343,34 @@ def printPost():
 def main():
     form = cgi.FieldStorage()
 
-    cgi.print_environ()
+    print("<html>")
+    print("<head>")
+    print("<title>Discourse</title>")
+    style()
+    print("</head>")
+    print("<body>")
 
-    # print("<html>")
-    # print("<head>")
-    # print("<title>Discourse</title>")
-    # style()
-    # print("</head>")
-    # print("<body>")
+    ip = str(os.environ["SERVER_ADDR"])
 
-    # conn = MySQLdb.connect(host = secret.SQL_HOST,
-    #     	               user = secret.SQL_USER,
-    #             	       passwd = secret.SQL_PASSWD,
-    #                    	   db = secret.SQL_DB
-	# )
+    conn = MySQLdb.connect(host = secret.SQL_HOST,
+        	               user = secret.SQL_USER,
+                	       passwd = secret.SQL_PASSWD,
+                       	   db = secret.SQL_DB
+	)
 
+    cursor = conn.cursor()
+    cursor.execute("""SELECT user_name FROM sesh WHERE server_ip = \"%s\";""" % ip)
+    results = cursor.fetchall()
     
-    # user = "Subash" #form["uname"].value
-    # hNavBar(user)
-    # printPost()
-    # #loginDiv()
-    # #registerDiv()
-    # print("</body>")
-    # print("</html>")
+    usrResult = [utuple[0] for utuple in results]
+    
+    user = usrResult[0]
+    hNavBar(user)
+    printPost()
+    #loginDiv()
+    #registerDiv()
+    print("</body>")
+    print("</html>")
 print("Content-Type: text/html;charset=utf-8")
 print()
 main()
