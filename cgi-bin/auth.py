@@ -112,7 +112,8 @@ def main():
 		cursor.close()
 		conn.close()
 		print("<h1>An error has occured in adding to the database</h1>")
-		print("""<body onLoad="location.href='loginPage.py'"></body>""")
+		print(e)
+		#print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
 print("Content-Type:text/html")
 print()
