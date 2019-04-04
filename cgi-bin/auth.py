@@ -117,7 +117,7 @@ def main():
 			conn.close()
 			
 			print("<h1>Bad Login, redirecting back to login page...</h1>")
-			delayPage(3, "loginPage.py")
+			delayPage(2, "loginPage.py")
 
 	else:
 		try:
