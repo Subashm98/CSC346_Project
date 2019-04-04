@@ -9,14 +9,15 @@ import MySQLdb
 from secret import secret
 
 def print_users(cursor):
-	cursor.execute("SELECT password FROM user;")
-	print(cursor.fetchall())
+	# cursor.execute("SELECT password FROM user;")
+	# print(cursor.fetchall())
 	# for account in cursor.fetchall():
 	# 	print(account)
 	# 	print("<hr>")
-	# pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (form["uname"].value,))
-	# pwd = pwd.fetchall()
-	# pwd = [ptuple[0] for ptuple in pwd]
+	pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (form["uname"].value,))
+	pwd = pwd.fetchall()
+	pwdResult = [ptuple[0] for ptuple in pwd]
+	print(pwdResult)
 
 def pHash(pword):
 	# To be Implemented
