@@ -3,8 +3,8 @@ import cgi
 import cgitb
 cgitb.enable()
 
-
-form = cgi.FieldStorage()
+import MySQLdb
+from secret import secret
 
 
 # style the html
@@ -334,17 +334,28 @@ def printPost():
     for i in range(10):
     	showPost("title %s " % i,"user", " content %s " % i, i)
 
+
     print("""</div>""")
 
 
 def main():
+    form = cgi.FieldStorage()
+
     print("<html>")
     print("<head>")
     print("<title>Discourse</title>")
     style()
     print("</head>")
     print("<body>")
-    user = "Subash"
+
+    conn = MySQLdb.connect(host = secret.SQL_HOST,
+        	               user = secret.SQL_USER,
+                	       passwd = secret.SQL_PASSWD,
+                       	   db = secret.SQL_DB
+	)
+
+
+    user = form["user_name"].value
     hNavBar(user)
     printPost()
     #loginDiv()
