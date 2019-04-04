@@ -354,8 +354,10 @@ def main():
                        	   db = secret.SQL_DB
 	)
 
-
-    user = form["uname"].value
+    for x in form:
+        print(x)
+    #print(form)
+    user = "Subash" #form["uname"].value
     hNavBar(user)
     printPost()
     #loginDiv()
