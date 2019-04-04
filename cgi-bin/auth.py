@@ -139,7 +139,7 @@ def main():
 			conn.close()
 			
 			print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
-			delayPage(4, "loginPage.py")
+			delayPage(2, "loginPage.py")
 
 
 print("Content-Type:text/html")
