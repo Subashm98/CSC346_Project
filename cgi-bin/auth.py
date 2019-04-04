@@ -25,11 +25,12 @@ def create_database(conn):
 	all_tables = [tabletuple[0] for tabletuple in results]
 	
 
-#	if (user_tbl not in results or post_tbl not in results or comment_tbl not in results):
+
 #		cursor.execute("DROP TABLE user;")
 #		cursor.execute("DROP TABLE post;")
 #		cursor.execute("DROP TABLE comment;")
-	if (user_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
+	if (user_tbl not in results or post_tbl not in results or comment_tbl not in results):
+	# if (user_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
 		cursor.execute("""CREATE TABLE user (
 						  user_name	VARCHAR (30) NOT NULL,
 						  full_name	VARCHAR (30) NOT NULL,
@@ -42,7 +43,7 @@ def create_database(conn):
 						  """)
 						  #CONSTRAINT PK_USER PRIMARY KEY (user_name)
 
-	if (post_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
+	# if (post_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
 		cursor.execute("""CREATE TABLE post (
 						  post_id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
 						  user_name		VARCHAR (30) NOT NULL,
@@ -53,20 +54,18 @@ def create_database(conn):
 						  );
 						  """)
 
-	if (comment_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
-		try:
-			cursor.execute("""CREATE TABLE comment (
-							comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT,
-							post_id		INT UNSIGNED NOT NULL,
-							user_name	VARCHAR (30) NOT NULL,
-							msg_as_html	VARCHAR (256) NOT NULL,
-							CONSTRAINT PK_COMMENT PRIMARY KEY (comment_id),
-							CONSTRAINT FK_COMMENT_POST FOREIGN KEY (post_id) REFERENCES post (post_id),
-							CONSTRAINT FK_COMMENT_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
-							);
-							""")
-		except Exception as e:
-			print(e)
+	# if (comment_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
+
+		cursor.execute("""CREATE TABLE comment (
+						comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT,
+						post_id		INT UNSIGNED NOT NULL,
+						user_name	VARCHAR (30) NOT NULL,
+						msg_as_html	VARCHAR (256) NOT NULL,
+						CONSTRAINT PK_COMMENT PRIMARY KEY (comment_id),
+						CONSTRAINT FK_COMMENT_POST FOREIGN KEY (post_id) REFERENCES post (post_id),
+						CONSTRAINT FK_COMMENT_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
+						);
+						""")
 
 	cursor.close()
 
