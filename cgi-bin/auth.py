@@ -56,7 +56,7 @@ def create_database(conn):
 		cursor.execute("""CREATE TABLE comment (
 				  		  comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT,
 						  post_id		INT NOT NULL,
-						  user_name		INT NOT NULL,
+						  user_name		VARCHAR (30) NOT NULL,
 						  msg_as_html	VARCHAR (256) NOT NULL,
 					  	  CONSTRAINT PK_COMMENT PRIMARY KEY (comment_id),
 						  CONSTRAINT FK_COMMENT_POST FOREIGN KEY (post_id) REFERENCES post (post_id),
