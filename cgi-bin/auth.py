@@ -31,36 +31,38 @@ def create_database(conn):
 #		cursor.execute("DROP TABLE comment;")
 	if (user_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
 		cursor.execute("""CREATE TABLE user (
-				  user_name	VARCHAR (30) NOT NULL,
-				  full_name	VARCHAR (30) NOT NULL,
-				  password	VARCHAR (30) NOT NULL,
-				  gender	VARCHAR (7)  NOT NULL,
-				  email		VARCHAR (30) NOT NULL UNIQUE,
-				  phone	VARCHAR (12) NOT NULL,
-				  CONSTRAINT PK_USER PRIMARY KEY (user_name)
-				  );
-				  """)
+						  user_name	VARCHAR (30) NOT NULL,
+						  full_name	VARCHAR (30) NOT NULL,
+						  password	VARCHAR (30) NOT NULL,
+						  gender	VARCHAR (7)  NOT NULL,
+						  email		VARCHAR (30) NOT NULL UNIQUE,
+						  phone	VARCHAR (12) NOT NULL,
+						  CONSTRAINT PK_USER PRIMARY KEY (user_name)
+						  );
+						  """)
 
 	if (post_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
 		cursor.execute("""CREATE TABLE post (
-				  post_id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
-				  user_name		VARCHAR (30) NOT NULL,
-				  msg_as_html	VARCHAR (256) NOT NULL,
-				  CONSTRAINT PK_POST PRIMARY KEY (post_id),
-				  CONSTRAINT FK_USER_POST FOREIGN KEY (user_name) REFERENCES user (user_name)
-				  );
-				  """)
+						  post_id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
+						  user_name		VARCHAR (30) NOT NULL,
+						  msg_as_html	VARCHAR (256) NOT NULL,
+						  likes			INT	UNSIGNED NOT NULL,
+						  CONSTRAINT PK_POST PRIMARY KEY (post_id),
+						  CONSTRAINT FK_USER_POST FOREIGN KEY (user_name) REFERENCES user (user_name)
+						  );
+						  """)
 
-#		cursor.execute(CREATE TABLE comment (
-#				  comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT
-#				  post_id		INT NOT NULL,
-#				  user_name		INT NOT NULL,
-#				  msg_as_html	VARCHAR (256) NOT NULL
-#				  CONSTRAINT PK_COMMENT PRIMARY KEY (comment_id),
-#				  CONSTRAINT FK_COMMENT_POST FOREIGN KEY (post_id) REFERENCES post (post_id),
-#				  CONSTRAINT FK_COMMENT_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
-#				  );
-#				  """)
+	if (comment_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
+		cursor.execute("""CREATE TABLE comment (
+				  		  comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT,
+						  post_id		INT NOT NULL,
+						  user_name		INT NOT NULL,
+						  msg_as_html	VARCHAR (256) NOT NULL,
+					  	  CONSTRAINT PK_COMMENT PRIMARY KEY (comment_id),
+						  CONSTRAINT FK_COMMENT_POST FOREIGN KEY (post_id) REFERENCES post (post_id),
+						  CONSTRAINT FK_COMMENT_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
+						  );
+						  """)
 
 	cursor.close()
 
