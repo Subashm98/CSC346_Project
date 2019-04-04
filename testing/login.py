@@ -14,10 +14,10 @@ def print_users(cursor):
 	# for account in cursor.fetchall():
 	# 	print(account)
 	# 	print("<hr>")
-	x = "\"Subash\""
+	x = "Subash"
 
 	try:
-		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""" % x)
+		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = \"%s\";""" % x)
 		print("First pwd print" + pwd)
 		pwd = pwd.fetchall()
 		print(pwd)
