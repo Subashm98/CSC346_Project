@@ -66,7 +66,7 @@ def create_database(conn):
 							""")
 		except Exception as e:
 			print(e)
-			
+
 	cursor.close()
 
 def pHash(password):
@@ -102,7 +102,7 @@ def main():
 				cursor.close()
 				conn.close()
 
-				gotoPage("index.py")
+				# gotoPage("index.py")
 				#print("""<body onLoad="location.href='index.py'"></body>""")
 
 		except:
