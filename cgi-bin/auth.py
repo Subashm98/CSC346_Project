@@ -28,16 +28,10 @@ def main():
 	else:
 		print("<h1>OH NO something went wrong</h1>")
 
-def create_database():
-	conn = MySQLdb.connect(host = secret.SQL_HOST,
-        	               user = secret.SQL_USER,
-                	       passwd = secret.SQL_PASSWD,
-        	               db = secret.SQL_DB
-	)
-
-	user = 'user'
-	post = 'post'
-	comment = 'comment'
+def create_database(conn):
+	user_tbl = 'user'
+	post_tbl = 'post'
+	comment_tbl = 'comment'
 
 	cursor = conn.cursor()
 	cursor.execute("""SHOW TABLES""")
@@ -45,19 +39,20 @@ def create_database():
 
 	results = [tabletuple[0] for tabletuple in results]
 	
-#
-#	if (user not in results or post not in results or comment not in results):
-#		cursor.execute("""CREATE TABLE user (
-#				  user_id		VARCHAR (15) NOT NULL,
-#				  first_name	VARCHAR (15) NOT NULL,
-#				  last_name		VARCHAR (15) NOT NULL,
-#				  pass_hash		VARCHAR (15) NOT NULL,
-#				  gender		VARCHAR (7)  NOT NULL,
-#				  email			VARCHAR (30) NOT NULL UNIQUE,
-#				  phone_number	VARCHAR (11) NOT NULL,
-#				  CONSTRAINT PK_USERS PRIMARY KEY (user_id)
-#				  );
-#				  """)
+
+#	if (user_tbl not in results or post_tbl not in results or comment_tbl not in results):
+	if (user_tbl not in results):
+		cursor.execute("""CREATE TABLE user (
+				  user_id	INT UNSIGNED AUTO_INCREMENT,
+				  first_name	VARCHAR (15) NOT NULL,
+				  last_name	VARCHAR (15) NOT NULL,
+				  pass_hash	VARCHAR (15) NOT NULL,
+				  gender	VARCHAR (7)  NOT NULL,
+				  email		VARCHAR (30) NOT NULL UNIQUE,
+				  phone_number	VARCHAR (11) NOT NULL,
+				  CONSTRAINT PK_USER PRIMARY KEY (user_id)
+				  );
+				  """)
 
 #		cursor.execute("""CREATE TABLE post (
 #				  post_id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -80,24 +75,44 @@ def create_database():
 #				  """)
 	
 	
-	if (user not in results):
-		cursor.execute("""CREATE TABLE user (
-				  user_id	INT UNSIGNED AUTO_INCREMENT,
-				  first_name	VARCHAR (15) NOT NULL,
-				  last_name	VARCHAR (15) NOT NULL,
-				  pass_hash	VARCHAR (15) NOT NULL,
-				  gender	VARCHAR (7)  NOT NULL,
-				  email		VARCHAR (30) NOT NULL UNIQUE,
-				  phone_number	VARCHAR (11) NOT NULL,
-				  CONSTRAINT PK_USER PRIMARY KEY (user_id)
-				  );
-				  """)
+
 
 	cursor.close()
-	conn.close()
+
+def pHash(passwrord):
+	#To be Implemented
+	return password
 
 def main2():
-	print("<p>Hello</p>")
+	form = cgi.FieldStorage()
+
+	conn = MySQLdb.connect(host = secret.SQL_HOST,
+        	               user = secret.SQL_USER,
+                	       passwd = secret.SQL_PASSWD,
+                       	db = secret.SQL_DB
+	)
+
+	create_database(conn)
+
+	try:
+		cursor = conn.cursor()
+		cursor.execute("""INSERT INTO user (first_name,last_name,pass_hash,gender,email,phone_number) 
+				  VALUES (%s,%s,%s,%s,%s,%s);""", 
+				(form["first_name"].value, form["last_name"].value, 
+				 pHash(form["password"].value), form["gender"].value,
+				 form["email"].value, form["phone_number"].value))
+
+		cursor.close()
+		conn.commit()
+		
+	except Exception as e:
+		conn.rollback()
+		print("<h1>An error has occured in adding to the database</h1>")
+		print(e)	
+
+	print("""<a href="./script.py">Back</a>""")
+
+	conn.close()
 
 print("Content-Type:text/html")
 print()

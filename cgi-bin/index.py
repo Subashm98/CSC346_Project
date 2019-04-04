@@ -107,7 +107,7 @@ def hNavBar():
                     <ul id = "nav-ul">
                             <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
                             <li id = "navLeft"><a href="index.html">Home</a></li>
-                            <li id = "navLeft"><a href="news.asp">Add Post</a></li>
+                            <li id = "navLeft"><a href="addPost.py">Add Post</a></li>
                             <li id = "navRight"><img id = "userImg" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/default_logImg.png"></li>
                                        
                              <li id = "navRight">
