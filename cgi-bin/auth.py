@@ -29,7 +29,7 @@ def create_database(conn):
 #		cursor.execute("DROP TABLE user;")
 #		cursor.execute("DROP TABLE post;")
 #		cursor.execute("DROP TABLE comment;")
-	if (user_tbl not in results or post_tbl not in results or comment_tbl not in results):
+if (user_tbl not in results or post_tbl not in results or comment_tbl not in results):
 	# if (user_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
 		cursor.execute("""CREATE TABLE user (
 						  user_name	VARCHAR (30) NOT NULL,
