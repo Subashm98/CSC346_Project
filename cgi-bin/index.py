@@ -357,9 +357,9 @@ def main():
     for x in form:
         print("""<h1>%s</h1>""" % x)
     #print(form)
-    user = "Subash" #form["uname"].value
-    hNavBar(user)
-    printPost()
+    # user = "Subash" #form["uname"].value
+    # hNavBar(user)
+    # printPost()
     #loginDiv()
     #registerDiv()
     print("</body>")
