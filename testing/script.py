@@ -18,11 +18,9 @@ def create_database():
 	)
 
 	user = 'user'
-	post = 'post'
-	comment = 'comment'
 
 	cursor = conn.cursor()
-	cursor.execute("""SHOW TABLES""")
+	cursor.execute("""SHOW TABLES;""")
 	results = cursor.fetchall()
 
 	results = [tabletuple[0] for tabletuple in results]
