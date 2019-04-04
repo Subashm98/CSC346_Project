@@ -336,13 +336,13 @@ def printPost(cursor):
     # for i in range(10):
     # 	showPost("title %s " % i,"user", " content %s " % i, i)
 
-    cursor.execute("""SELECT title,user_name,msg_as_html,likes FROM post;""")
+    cursor.execute("""SELECT * FROM post;""")
     results = cursor.fetchall()
 
     postResult = [ptuple[0] for ptuple in results]
 
     for post in postResult:
-        showPost(post[0], post[1], post[2], post[3])
+        showPost(post[1], post[2], post[3], post[4])
 
     print("""</div>""")
 
