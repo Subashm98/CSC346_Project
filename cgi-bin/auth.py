@@ -101,7 +101,7 @@ def main():
 		pwdResult = [ptuple[0] for ptuple in results]
 
 		if(form["psw"].value == pwdResult[0]):
-			print("""<body onLoad="location.href='index.py'"><h1>Hurray you got in</h1>""")	
+			print("""<body onLoad="location.href='index.py'"><h1>Hurray you got in</h1></body>""")	
 		else:
 			cursor.close()
 			conn.close()
