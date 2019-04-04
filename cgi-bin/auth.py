@@ -118,13 +118,13 @@ def main():
 
 			print("""<body onLoad="location.href='index.py'"></body>""")
 			
-		except:# Exception as e:
+		except Exception as e:
 			conn.rollback()
 			cursor.close()
 			conn.close()
 			print("<h1>Duplicate username found in database</h1>")
-			#print(e)
-			print("""<body onLoad="location.href='loginPage.py'"></body>""")
+			print(e)
+			#print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
 	else:
 		cursor.close()
