@@ -12,7 +12,7 @@ def print_users(cursor):
 	cursor.execute("SELECT * FROM user;")
 	for account in cursor.fetchall():
 		print(account)
-		print("<br>")
+		print("<hr>")
 
 def pHash(pword):
 	# To be Implemented
