@@ -341,6 +341,8 @@ def printPost():
 def main():
     form = cgi.FieldStorage()
 
+    print("hello")
+
     for x in form:
         print("""<h1>form value: %s</h1>""" % x)
 
