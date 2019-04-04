@@ -95,7 +95,7 @@ def main():
 	cursor = conn.cursor()
 
 	if(form.getvalue("uname") and form.getvalue("psw")):
-		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""", (form["uname"].value,))
+		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""" % form["uname"].value)
 		pwd = pwd.fetchall()
 		pwd = [ptuple[0] for ptuple in pwd]
 
