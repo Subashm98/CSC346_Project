@@ -341,29 +341,30 @@ def printPost():
 def main():
     form = cgi.FieldStorage()
 
-    print("<html>")
-    print("<head>")
-    print("<title>Discourse</title>")
-    style()
-    print("</head>")
-    print("<body>")
-
-    conn = MySQLdb.connect(host = secret.SQL_HOST,
-        	               user = secret.SQL_USER,
-                	       passwd = secret.SQL_PASSWD,
-                       	   db = secret.SQL_DB
-	)
-
     for x in form:
-        print("""<h1>%s</h1>""" % x)
-    #print(form)
+        print("""form value: %s""" % x)
+
+    # print("<html>")
+    # print("<head>")
+    # print("<title>Discourse</title>")
+    # style()
+    # print("</head>")
+    # print("<body>")
+
+    # conn = MySQLdb.connect(host = secret.SQL_HOST,
+    #     	               user = secret.SQL_USER,
+    #             	       passwd = secret.SQL_PASSWD,
+    #                    	   db = secret.SQL_DB
+	# )
+
+    
     # user = "Subash" #form["uname"].value
     # hNavBar(user)
     # printPost()
-    #loginDiv()
-    #registerDiv()
-    print("</body>")
-    print("</html>")
+    # #loginDiv()
+    # #registerDiv()
+    # print("</body>")
+    # print("</html>")
 print("Content-Type: text/html;charset=utf-8")
 print()
 main()
