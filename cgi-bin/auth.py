@@ -96,15 +96,15 @@ def main():
 				cursor.close()
 				conn.close()
 
-				#print("""<body onLoad="location.href='index.py'"></body>""")
 				gotoPage("index.py")
-		
+				#print("""<body onLoad="location.href='index.py'"></body>""")
+
 		except:
 			cursor.close()
 			conn.close()
 			#print("""<body onLoad="location.href='loginPage.py'"><h1>Bad Login</h1></body>""")
-			print("<h1>Bad Login</h1>")
-			delayPage(5, "loginPage.py")
+			print("<h1>Bad Login, redirecting back to login page...</h1>")
+			delayPage(3, "loginPage.py")
 
 	else:
 		try:
@@ -118,13 +118,17 @@ def main():
 			conn.commit()
 			conn.close()
 
-			print("""<body onLoad="location.href='index.py'"></body>""")
+			gotoPage("index.py")
+			#print("""<body onLoad="location.href='index.py'"></body>""")
 			
 		except:
 			conn.rollback()
 			cursor.close()
 			conn.close()
-			print("""<body onLoad="location.href='loginPage.py'">Username or Email Taken</body>""")
+			
+			print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
+			delayPage(3, "loginPage.py")
+			#print("""<body onLoad="location.href='loginPage.py'">Username or Email Taken</body>""")
 
 
 print("Content-Type:text/html")
