@@ -9,6 +9,8 @@ cgitb.enable()
 
 import threading
 
+import os
+
 import MySQLdb
 from secret import secret
 
@@ -17,6 +19,7 @@ def create_database(conn):
 	user_tbl = 'user'
 	post_tbl = 'post'
 	comment_tbl = 'comment'
+	sesh_tbl = 'sesh'
 
 	cursor = conn.cursor()
 	cursor.execute("""SHOW TABLES;""")
@@ -59,6 +62,15 @@ def create_database(conn):
 						);
 						""")
 
+	if (sesh_tbl not in all_tables):
+		cursor.execute("""CREATE TABLE sesh (
+						server_ip	VARCHAR (30) NOT NULL,
+						user_name	VARCHAR (30) NOT NULL,
+						CONSTRAINT PK_SESH PRIMARY KEY (server_ip),
+						CONSTRAINT FK_SESH_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
+						);
+						""")
+
 	cursor.close()
 
 
@@ -76,6 +88,15 @@ def gotoPage(pageName):
 def delayPage(sec, pageName):
 	threading.Timer(sec, gotoPage, [pageName]).start()
 
+
+def update_user(cursor, user):
+	ip = os.environ["SERVER_ADDR"]
+	try:
+		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
+						VALUES (%s,%s)""",
+						(str(ip), user))
+	except Exception as e:
+		print(e)
 
 
 def main():
@@ -98,9 +119,11 @@ def main():
 
 		try:
 			if(form["psw"].value == pwdResult[0]):
+				update_user(cursor, form["uname"].value)
+
 				cursor.close()
 				conn.close()
-
+				
 				gotoPage("index.py")
 
 		except:
@@ -118,6 +141,8 @@ def main():
 							pHash(form["password"].value), form["gender"].value,
 							form["email"].value, form["phone"].value))
 
+			update_user(cursor, form["user_name"].value)
+			
 			cursor.close()
 			conn.commit()
 			conn.close()
