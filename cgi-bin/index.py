@@ -299,7 +299,7 @@ def hNavBar(user):
         </div>
         """ % user)
 
-def showPost(title,op,cont,likes):
+def showPost(idd, title,op,cont,likes):
     print("""
     <br>
     <br>
@@ -308,7 +308,8 @@ def showPost(title,op,cont,likes):
 	    <div class="card-body">
 	        <h4 class="title">%s , by:%s<h4>
 		<hr>
-		<form method="POST">
+		<form method="POST" action=like.py>
+                <input type = "hidden" name = "pname" value = \"%s\"></input>
           	    <div class="row row-space">
                         <div class="col-2">
                             <div class="input-group">
@@ -325,7 +326,7 @@ def showPost(title,op,cont,likes):
         </div>
     </div>
     <br>
-    """%(title,op,cont,likes))
+    """%(title,op,idd,cont,likes))
 
 def printPost(cursor):
     print("""
@@ -340,7 +341,7 @@ def printPost(cursor):
     results = cursor.fetchall()
 
     for post in results:
-         showPost(post[1], post[2], post[3], post[4])
+         showPost(post[0],post[1], post[2], post[3], post[4])
 
     print("""</div>""")
 
