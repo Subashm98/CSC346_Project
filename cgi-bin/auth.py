@@ -7,6 +7,8 @@ cgitb.enable()
 
 #from passlib.hash import pbkdf2_sha256
 
+import threading
+
 import MySQLdb
 from secret import secret
 
@@ -65,6 +67,12 @@ def pHash(password):
 	#To be Implemented
 	return password
 
+def gotoPage(pageName):
+	print("""<body onLoad="location.href='%s'"></body>""" % pageName)
+
+def delayPage(sec, pageName):
+	threading.Timer(sec, gotoPage, [pageName]).start()
+
 def main():
 	form = cgi.FieldStorage()
 
@@ -87,12 +95,17 @@ def main():
 			if(form["psw"].value == pwdResult[0]):
 				cursor.close()
 				conn.close()
-				print("""<body onLoad="location.href='index.py'"><h1>Hurray you got in</h1></body>""")
+
+				#print("""<body onLoad="location.href='index.py'"></body>""")
+				gotoPage("index.py")
 		
 		except:
 			cursor.close()
 			conn.close()
-			print("""<body onLoad="location.href='loginPage.py'"><h1>Bad Login</h1></body>""")
+			#print("""<body onLoad="location.href='loginPage.py'"><h1>Bad Login</h1></body>""")
+			print("<h1>Bad Login</h1>")
+			delayPage(5, "loginPage.py")
+
 	else:
 		try:
 			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
