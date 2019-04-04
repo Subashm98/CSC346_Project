@@ -130,7 +130,7 @@ def main():
 		cursor.close()
 		conn.close()
 		print("<h1>How did you get here?</h1>")
-		print("""<body onLoad="location.href='loginPage.py'"></body>""")
+		#print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
 print("Content-Type:text/html")
 print()
