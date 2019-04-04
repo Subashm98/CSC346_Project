@@ -29,7 +29,7 @@ def create_database(conn):
 #		cursor.execute("DROP TABLE user;")
 #		cursor.execute("DROP TABLE post;")
 #		cursor.execute("DROP TABLE comment;")
-	if (user_tbl not in all_tables):
+	if (user_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
 		cursor.execute("""CREATE TABLE user (
 				  user_name	VARCHAR (30) NOT NULL,
 				  full_name	VARCHAR (30) NOT NULL,
@@ -41,14 +41,15 @@ def create_database(conn):
 				  );
 				  """)
 
-#		cursor.execute("""CREATE TABLE post (
-#				  post_id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
-#				  user_name		INT NOT NULL,
-#				  msg_as_html	VARCHAR (256) NOT NULL,
-#				  CONSTRAINT PK_POST PRIMARY KEY (post_id),
-#				  CONSTRAINT FK_USER_POST FOREIGN KEY (user_name) REFERENCES user (user_name)
-#				  );
-#				  """)
+	if (post_tbl not in all_tables):				#DELETE THIS IF STATEMENT AFTER
+		cursor.execute("""CREATE TABLE post (
+				  post_id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
+				  user_name		INT NOT NULL,
+				  msg_as_html	VARCHAR (256) NOT NULL,
+				  CONSTRAINT PK_POST PRIMARY KEY (post_id),
+				  CONSTRAINT FK_USER_POST FOREIGN KEY (user_name) REFERENCES user (user_name)
+				  );
+				  """)
 
 #		cursor.execute(CREATE TABLE comment (
 #				  comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT
@@ -127,7 +128,7 @@ def main():
 			conn.close()
 			
 			print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
-			delayPage(3, "loginPage.py")
+			delayPage(4, "loginPage.py")
 			#print("""<body onLoad="location.href='loginPage.py'">Username or Email Taken</body>""")
 
 
