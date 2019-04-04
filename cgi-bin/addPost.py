@@ -2,6 +2,11 @@
 import cgi
 import cgitb
 
+import MySQLdb
+from secret import secret
+
+import os
+
 cgitb.enable()
 
 def style():
@@ -297,6 +302,26 @@ def main():
         print(e)
     print("</body>")
     print("</html>")
+
+    ip = str(os.environ["SERVER_ADDR"])
+
+    conn = MySQLdb.connect(host = secret.SQL_HOST,
+        	               user = secret.SQL_USER,
+                	       passwd = secret.SQL_PASSWD,
+                       	   db = secret.SQL_DB
+	)
+
+    cursor = conn.cursor()
+    cursor.execute("""SELECT user_name FROM sesh WHERE server_ip = \"%s\";""" % ip)
+    results = cursor.fetchall()
+
+    usrResult = [utuple[0] for utuple in results]
+    user = usrResult[0]
+
+    form = cgi.FieldStorage()
+
+    print(form["newpost_title"].value)
+    print(form["newpost_content"].value)
 
 print("Content-Type: text/html;charset=utf-8")
 print()
