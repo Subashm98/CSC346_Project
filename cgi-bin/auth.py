@@ -46,12 +46,12 @@ def create_database(conn):
 #		cursor.execute("DROP TABLE comment;")
 	if (user_tbl not in results):
 		cursor.execute("""CREATE TABLE user (
-				  user_name	VARCHAR (15) NOT NULL,
-				  full_name	VARCHAR (15) NOT NULL,
-				  password	VARCHAR (15) NOT NULL,
+				  user_name	VARCHAR (30) NOT NULL,
+				  full_name	VARCHAR (30) NOT NULL,
+				  password	VARCHAR (30) NOT NULL,
 				  gender	VARCHAR (7)  NOT NULL,
 				  email		VARCHAR (30) NOT NULL UNIQUE,
-				  phone	VARCHAR (11) NOT NULL,
+				  phone	VARCHAR (12) NOT NULL,
 				  CONSTRAINT PK_USER PRIMARY KEY (user_name)
 				  );
 				  """)
@@ -113,7 +113,7 @@ def main():
 		conn.close()
 		print("<h1>An error has occured in adding to the database</h1>")
 		print(e)
-		#print("""<body onLoad="location.href='loginPage.py'"></body>""")
+		print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
 print("Content-Type:text/html")
 print()
