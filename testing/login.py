@@ -17,7 +17,7 @@ def print_users(cursor):
 	x = "Subash"
 
 	try:
-		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = \"%s\";""" % x)
+		cursor.execute("""SELECT password FROM user WHERE user_name = \"%s\";""" % x)
 		pwd = cursor.fetchall()
 		
 		pwdResult = [ptuple[0] for ptuple in pwd]

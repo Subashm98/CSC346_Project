@@ -34,17 +34,17 @@ def create_database(conn):
 	comment_tbl = 'comment'
 
 	cursor = conn.cursor()
-	cursor.execute("""SHOW TABLES""")
+	cursor.execute("""SHOW TABLES;""")
 	results = cursor.fetchall()
 
-	results = [tabletuple[0] for tabletuple in results]
+	all_tables = [tabletuple[0] for tabletuple in results]
 	
 
 #	if (user_tbl not in results or post_tbl not in results or comment_tbl not in results):
 #		cursor.execute("DROP TABLE user;")
 #		cursor.execute("DROP TABLE post;")
 #		cursor.execute("DROP TABLE comment;")
-	if (user_tbl not in results):
+	if (user_tbl not in all_tables):
 		cursor.execute("""CREATE TABLE user (
 				  user_name	VARCHAR (30) NOT NULL,
 				  full_name	VARCHAR (30) NOT NULL,
@@ -95,8 +95,9 @@ def main():
 	cursor = conn.cursor()
 
 	if(form.getvalue("uname") and form.getvalue("psw")):
-		pwd = cursor.execute("""SELECT password FROM user WHERE user_name = %s;""" % form["uname"].value)
-		pwd = pwd.fetchall()
+		cursor.execute("""SELECT password FROM user WHERE user_name = %s;""" % form["uname"].value)
+		results = cursor.fetchall()
+		
 		pwdResult = [ptuple[0] for ptuple in pwd]
 
 		if(form["psw"].value == pwdResult[0]):
