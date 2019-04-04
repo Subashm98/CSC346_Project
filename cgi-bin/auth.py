@@ -101,7 +101,10 @@ def main():
 				cursor.close()
 				conn.close()
 
-				gotoPage("index.py")
+				for x in form:
+					print("""Form value: %s""" % x)
+
+				#gotoPage("index.py")
 
 		except:
 			cursor.close()
