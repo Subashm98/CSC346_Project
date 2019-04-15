@@ -153,7 +153,7 @@ def main():
 			conn.commit()
 			conn.close()
 
-			#gotoPage("index.py")
+			gotoPage("index.py")
 			
 		except:
 			conn.rollback()
