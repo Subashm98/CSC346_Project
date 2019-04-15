@@ -131,6 +131,9 @@ def main():
 				conn.close()
 				
 				gotoPage("index.py")
+			else:
+				print("<h1>Bad Login, redirecting back to login page...</h1>")
+				delayPage(2, "loginPage.py")
 
 		except:
 			cursor.close()
