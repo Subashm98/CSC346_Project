@@ -231,7 +231,7 @@ def hNavBar(user, imgSrc):
 #     <br>
 #     """%(title,op,idd,cont,likes))
 
-def showPost(idd, title,op,cont,likes,imgSrc):
+def showPost(idd, title,op,cont,likes):
     print("""
     <br>
     <br>
@@ -239,28 +239,37 @@ def showPost(idd, title,op,cont,likes,imgSrc):
         <div class="container"> 
             <div class="box"> 
                 <div class="box-cell box3"> 
-                        %s by: %s
+                                    Also, any geeks can help other geeks by writing articles 
                 </div>
                 <div class="box-row"> 
                     <form method="POST" action=like.py>
-                        <input type = "hidden" name = "pname" value = \"%s\"></input>
+                        <input type = "hidden" name = "pname" value = "hello"></input>
+                        
                         <div class="box-cell box1"> 
-                                <label class="label">Likes:%s</label>
+                                <label class="label">Likes:45451</label>
                                 <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
                                 <br>
                                 <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>    
                         </div> 
                         <div class="box-cell box2"> 
-                            %s
+                            Also, any geeks can help other geeks by writing articles 
+                            on the GeeksforGeeks, publishing articles follow few  
+                            steps that are Articles that need little modification/ 
+                            improvement from reviewers are published first. To  
+                            quickly get your articles reviewed, please refer 
+                            existing articles, their formatting style, coding  
+                            style, and try to make you are close to them.
                             <br>
-                            <img src="%s" width="80%" >   
+                            <img src="https://i.redd.it/ewl62b252vp21.png" width="80%" >   
                         </div>
                     </form>
-                </div> 
+                </div>                 
             </div> 
         </div>
     </div>
-    <br> """ % (title, op, idd, likes, cont, likes))
+    <br>   
+    """)
+    #  % (title, op, idd, likes, cont, likes))
 
 def printPost(cursor):
     print("""
@@ -275,7 +284,7 @@ def printPost(cursor):
     results = cursor.fetchall()
 
     for post in results:
-         showPost(post[0],post[1], post[2], post[3], post[4], "https://i.redd.it/ewl62b252vp21.png")
+         showPost(post[0],post[1], post[2], post[3], post[4])
 
     print("""</div>""")
 
