@@ -253,15 +253,14 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                         <div class="box-cell box2"> 
                             %s
                             <br>
-                            <img src=%s width="80%" >   
+                            <img src="%s" width="80%" >   
                         </div>
                     </form>
                 </div> 
             </div> 
         </div>
     </div>
-    <br>
-    """%(title,op,idd,likes, cont, imgSrc))
+    <br> """ % (title, op, idd, likes, cont, likes))
 
 def printPost(cursor):
     print("""
