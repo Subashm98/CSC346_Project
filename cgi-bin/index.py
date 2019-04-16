@@ -235,38 +235,33 @@ def showPost(idd, title,op,cont,likes,imgSrc):
     print("""
     <br>
     <br>
-        <div class="wrapper wrapper--w680">
-            <div class="container"> 
-                    <div class="box"> 
-                        <div class="box-cell box3"> 
-                            %s by: %s
-                        </div>
-                        <div class="box-row"> 
-                        <form method="POST" action=like.py>
-                            <input type = "hidden" name = "pname" value = \"%s\"></input>
-                            
-                            <div class="box-cell box1"> 
-                                    <label class="label">Likes:%s</label>
-                                    <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
-                                    <br>
-                                    <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>    
-                            </div> 
- 
-                            <div class="box-cell box2"> 
-                                %s
+    <div class="wrapper wrapper--w680">
+        <div class="container"> 
+            <div class="box"> 
+                <div class="box-cell box3"> 
+                        %s by: %s
+                </div>
+                <div class="box-row"> 
+                    <form method="POST" action=like.py>
+                        <input type = "hidden" name = "pname" value = \"%s\"></input>
+                        <div class="box-cell box1"> 
+                                <label class="label">Likes:%s</label>
+                                <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
                                 <br>
-                                <img src="%s" width="80%" >   
-                            </div>
-
+                                <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>    
                         </div> 
+                        <div class="box-cell box2"> 
+                            %s
+                            <br>
+                            <img src=%s width="80%" >   
+                        </div>
                     </form>
-                    </div> 
-            </div>
-        </div>  
-    
+                </div> 
+            </div> 
+        </div>
     </div>
     <br>
-    """%(title,op,idd,likes, cont,imgSrc))
+    """%(title,op,idd,likes, cont, imgSrc))
 
 def printPost(cursor):
     print("""
