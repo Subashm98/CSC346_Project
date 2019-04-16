@@ -49,6 +49,10 @@ def style():
         
         }
 
+        #userImg{
+            border-radius: 5px;
+        }
+
 
 
         #logo{
@@ -202,74 +206,15 @@ def hNavBar(user, imgSrc):
         </div>
         """%(imgSrc,user))
 
-# def showPost(idd, title,op,cont,likes):
-#     print("""
-#     <br>
-#     <br>
-#     <div class="wrapper wrapper--w960">
-#         <div class="card card-4">
-# 	    <div class="card-body">
-# 	        <h4 class="title">%s , by:%s<h4>
-# 		<hr>
-# 		<form method="POST" action=like.py>
-#                 <input type = "hidden" name = "pname" value = \"%s\"></input>
-#           	    <div class="row row-space">
-#                         <div class="col-2">
-#                             <div class="input-group">
-#                                 <label class="label">%s</label>
-#                             </div>
-# 			   <p>%s likes</p>
-#                         </div>
-#                     </div>
-#                     <div class="p-t-15">
-#                     	<button class="btn btn--radius-2 btn--blue" type="submit">Like</button>
-#                	    </div>
-#         	</form>
-# 	    </div>
-#         </div>
-#     </div>
-#     <br>
-#     """%(title,op,idd,cont,likes))
-
 def showPost(idd, title,op,cont,likes):
     print("""
     <br>
     <br>
     <div class="wrapper wrapper--w680">
-        <div class="container"> 
-            <div class="box"> 
-                <div class="box-cell box3"> 
-                                    Also, any geeks can help other geeks by writing articles 
-                </div>
-                <div class="box-row"> 
-                    <form method="POST" action=like.py>
-                        <input type = "hidden" name = "pname" value = "hello"></input>
-                        
-                        <div class="box-cell box1"> 
-                                <label class="label">Likes:45451</label>
-                                <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
-                                <br>
-                                <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>    
-                        </div> 
-                        <div class="box-cell box2"> 
-                            Also, any geeks can help other geeks by writing articles 
-                            on the GeeksforGeeks, publishing articles follow few  
-                            steps that are Articles that need little modification/ 
-                            improvement from reviewers are published first. To  
-                            quickly get your articles reviewed, please refer 
-                            existing articles, their formatting style, coding  
-                            style, and try to make you are close to them.
-                            '%s' '%s' '%s' '%s' '%s'
-                            <br>
-                            <img src="https://i.redd.it/ewl62b252vp21.png" width="80%" >   
-                        </div>
-                    </form>
-                </div>                 
-            </div> 
-        </div>
+        %s %s %s %s %s 
     </div>
     <br>   
-    """%(title, op, idd, likes, cont))
+    """%("HELLO", "HOA", "idd", "likes", "cont"))
 
 def printPost(cursor):
     print("""
