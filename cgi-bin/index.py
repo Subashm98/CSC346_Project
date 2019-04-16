@@ -50,7 +50,7 @@ def style():
         }
 
         #userImg{
-            border-radius: 5px;
+            border-radius: 50%;
         }
 
 
