@@ -206,15 +206,41 @@ def hNavBar(user, imgSrc):
         </div>
         """%(imgSrc,user))
 
-def showPost(idd, title,op,cont,likes):
+def showPost(idd, title,op,cont,likes,imgSrc):
+    imgSize = "80%"
     print("""
     <br>
     <br>
     <div class="wrapper wrapper--w680">
-        %s %s %s %s %s 
+        <div class="container"> 
+            <div class="box"> 
+                <div class="box-cell box3"> 
+                    %s , by: %s
+                </div>
+                <div class="box-row"> 
+                    <form method="POST" action=like.py>
+                        <input type = "hidden" name = "pname" value = \"%s\"></input>
+                        
+                        <div class="box-cell box1"> 
+                                <label class="label">Likes:%s</label>
+                                <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
+                                <br>
+                                <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>    
+                        </div> 
+                        <div class="box-cell box2"> 
+                            %s
+                            <br>
+                            <img src="%s" width="%s" >   
+                        </div>
+                    </form>
+                </div>                 
+            </div> 
+        </div>
+    </div>   
+        
     </div>
     <br>   
-    """%(idd, "HOA", "idd", "likes", "cont"))
+    """%(title,op, idd, likes, cont, imgSrc, imgSize))
 
 def printPost(cursor):
     print("""
@@ -229,7 +255,7 @@ def printPost(cursor):
     results = cursor.fetchall()
 
     for post in results:
-         showPost(post[0],post[1], post[2], post[3], post[4])
+         showPost(post[0],post[1], post[2], post[3], post[4],"https://i.redd.it/ewl62b252vp21.png")
 
     print("""</div>""")
 
