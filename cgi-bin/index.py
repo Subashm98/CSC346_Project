@@ -259,7 +259,7 @@ def showPost(idd, title,op,cont,likes):
                             quickly get your articles reviewed, please refer 
                             existing articles, their formatting style, coding  
                             style, and try to make you are close to them.
-                            %s %s %d %d %s
+                            '%s' '%s' '%s' '%s' '%s'
                             <br>
                             <img src="https://i.redd.it/ewl62b252vp21.png" width="80%" >   
                         </div>
