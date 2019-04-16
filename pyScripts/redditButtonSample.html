@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+
+<style>
+
+    .font-poppins {
+        font-family: "Georgia", "Arial", "Helvetica Neue", sans-serif;
+    }
+    .wrapper {
+        
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 8px 20px 0px rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            background: #fff;
+            width : 60%;
+            padding: 20px;
+
+        }
+
+        .btn{
+            border-radius: 5px;
+            line-height: 20px;
+            width: 60px;
+            padding:2px;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            font-size: 14px;
+            color: #fff;
+            font-family: "Poppins", "Arial", "Helvetica Neue", sans-serif;
+        }
+
+            
+        .btn{
+            background: #4272d7;
+        }
+        .btn:hover {
+            background: #2859c5;
+        }
+        
+    .container .box {
+        border-radius: 10px; 
+                    width:100%; 
+                    /* margin:50px;  */
+                    display:table; 
+    }  
+    .container .box .box-row { 
+                display:table-row; 
+            }
+    .container .box .box-cell {
+        border-radius: 3px;
+        display:table-cell; 
+        /* width:50%;  */
+        padding:15px; 
+    }
+    .container .box .box-cell.box1 { 
+                background:rgb(228, 231, 187); 
+                color:white; 
+                text-align:justify;
+                margin: 5px;
+                width: 10%; 
+    }
+    .container .box .box-cell.box2 { 
+        /* margin: 10px; */
+        background:rgb(82, 213, 236); 
+        text-align:justify; 
+    }
+    .container .box .box-cell.box3 { 
+        /* margin: 10px; */
+      
+        background:rgb(84, 219, 190); 
+        text-align:justify; 
+        
+    }
+    .label {
+            font-size: 16px;
+            color: #555;
+            text-transform: capitalize;
+            display: block;
+            margin: 5px;
+    }
+
+
+</style>
+
+</head>
+<body>
+    <div class="page-wrapper font-poppins"> 
+        <div class="wrapper wrapper--w680">
+            <div class="container"> 
+                    <div class="box"> 
+                            <div class="box-cell box3"> 
+                                    Also, any geeks can help other geeks by writing articles 
+                            </div>
+                        <div class="box-row"> 
+                        <form method="POST" action=like.py>
+                            <input type = "hidden" name = "pname" value = \"%s\"></input>
+                            
+                            <div class="box-cell box1"> 
+                                    <label class="label">Likes:45451</label>
+                                    <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
+                                    <br>
+                                    <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>    
+                            </div> 
+                            <div class="box-cell box2"> 
+                                Also, any geeks can help other geeks by writing articles 
+                                on the GeeksforGeeks, publishing articles follow few  
+                                steps that are Articles that need little modification/ 
+                                improvement from reviewers are published first. To  
+                                quickly get your articles reviewed, please refer 
+                                existing articles, their formatting style, coding  
+                                style, and try to make you are close to them.
+                                <br>
+                                <img src="https://i.redd.it/ewl62b252vp21.png" width="80%" >   
+                            </div>
+
+
+                        </div> 
+                    </form>
+                    </div> 
+            </div>
+        </div>   
+    </div> 
+
+
+</body>
+</html>

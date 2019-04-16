@@ -97,12 +97,11 @@ def style():
         #nav-ul li a:hover {
                 background-color: red;
         }
-
-            .font-poppins {
-            font-family: "Georgia", "Arial", "Helvetica Neue", sans-serif;
-        }
-        .wrapper {
-            
+          .font-poppins {
+        font-family: "Georgia", "Arial", "Helvetica Neue", sans-serif;
+    }
+    .wrapper {
+        
             margin: 0 auto;
             background: #fff;
             border-radius: 10px;
@@ -134,53 +133,55 @@ def style():
             background: #2859c5;
         }
         
-        .container .box {
-            border-radius: 10px; 
-            width:100%; 
-            /* margin:50px;  */
-            display:table; 
-        }  
-        .container .box .box-row { 
+    .container .box {
+        border-radius: 10px; 
+                    width:100%; 
+                    /* margin:50px;  */
+                    display:table; 
+    }  
+    .container .box .box-row { 
                 display:table-row; 
-        }
-        .container .box .box-cell {
-            border-radius: 3px;
-            display:table-cell; 
-            /* width:50%;  */
-            padding:15px; 
-        }
-        .container .box .box-cell.box1 { 
-            background:rgb(228, 231, 187); 
-            color:white; 
-            text-align:justify;
-            margin: 5px;
-            width: 10%; 
-        }
-        .container .box .box-cell.box2 { 
-            /* margin: 10px; */
-            background:rgb(82, 213, 236); 
-            text-align:justify; 
-        }
-        .container .box .box-cell.box3 { 
-            /* margin: 10px; */
-        
-            background:rgb(84, 219, 190); 
-            text-align:justify; 
-            
-        }
-        .label {
-                font-size: 16px;
-                color: #555;
-                text-transform: capitalize;
-                display: block;
+            }
+    .container .box .box-cell {
+        border-radius: 3px;
+        display:table-cell; 
+        /* width:50%;  */
+        padding:15px; 
+    }
+    .container .box .box-cell.box1 { 
+                background:rgb(228, 231, 187); 
+                color:white; 
+                text-align:justify;
                 margin: 5px;
-        }
+                width: 10%; 
+    }
+    .container .box .box-cell.box2 { 
+        /* margin: 10px; */
+        background:rgb(82, 213, 236); 
+        text-align:justify; 
+    }
+    .container .box .box-cell.box3 { 
+        /* margin: 10px; */
+      
+        background:rgb(84, 219, 190); 
+        text-align:justify; 
+        
+    }
+    .label {
+            font-size: 16px;
+            color: #555;
+            text-transform: capitalize;
+            display: block;
+            margin: 5px;
+    }
+
+
         </style>
         
         """)
 
 
-def hNavBar(user, imgSrc):
+def hNavBar(user):
         print("""
         <div class="navigation-bar">
                 <nav>
@@ -188,7 +189,7 @@ def hNavBar(user, imgSrc):
                             <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
                             <li id = "navLeft"><a href="loginPage.py">Logout</a></li>
                             <li id = "navLeft"><a href="addPost.py">Add Post</a></li>
-                            <li id = "navRight"><img id = "userImg" src="%s"></li>
+                            <li id = "navRight"><img id = "userImg" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/default_logImg.png"></li>
                                        
                              <li id = "navRight">
                                 <label for="uname" class="label">%s</label>
@@ -200,73 +201,36 @@ def hNavBar(user, imgSrc):
                 </nav>
                 
         </div>
-        """%(imgSrc,user))
+        """ % user)
 
-# def showPost(idd, title,op,cont,likes):
-#     print("""
-#     <br>
-#     <br>
-#     <div class="wrapper wrapper--w960">
-#         <div class="card card-4">
-# 	    <div class="card-body">
-# 	        <h4 class="title">%s , by:%s<h4>
-# 		<hr>
-# 		<form method="POST" action=like.py>
-#                 <input type = "hidden" name = "pname" value = \"%s\"></input>
-#           	    <div class="row row-space">
-#                         <div class="col-2">
-#                             <div class="input-group">
-#                                 <label class="label">%s</label>
-#                             </div>
-# 			   <p>%s likes</p>
-#                         </div>
-#                     </div>
-#                     <div class="p-t-15">
-#                     	<button class="btn btn--radius-2 btn--blue" type="submit">Like</button>
-#                	    </div>
-#         	</form>
-# 	    </div>
-#         </div>
-#     </div>
-#     <br>
-#     """%(title,op,idd,cont,likes))
-
-def showPost(idd, title,op,cont,likes,imgSrc):
+def showPost(idd, title,op,cont,likes):
     print("""
     <br>
     <br>
-        <div class="wrapper wrapper--w680">
-            <div class="container"> 
-                    <div class="box"> 
-                        <div class="box-cell box3"> 
-                            %s by: %s
-                        </div>
-                        <div class="box-row"> 
-                        <form method="POST" action=like.py>
-                            <input type = "hidden" name = "pname" value = \"%s\"></input>
-                            
-                            <div class="box-cell box1"> 
-                                    <label class="label">Likes:%s</label>
-                                    <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
-                                    <br>
-                                    <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>    
-                            </div> 
- 
-                            <div class="box-cell box2"> 
-                                %s
-                                <br>
-                                <img src="%s" width="80%" >   
+    <div class="wrapper wrapper--w960">
+        <div class="card card-4">
+	    <div class="card-body">
+	        <h4 class="title">%s , by:%s<h4>
+		<hr>
+		<form method="POST" action=like.py>
+                <input type = "hidden" name = "pname" value = \"%s\"></input>
+          	    <div class="row row-space">
+                        <div class="col-2">
+                            <div class="input-group">
+                                <label class="label">%s</label>
                             </div>
-
-                        </div> 
-                    </form>
-                    </div> 
-            </div>
-        </div>  
-    
+			   <p>%s likes</p>
+                        </div>
+                    </div>
+                    <div class="p-t-15">
+                    	<button class="btn btn--radius-2 btn--blue" type="submit">Like</button>
+               	    </div>
+        	</form>
+	    </div>
+        </div>
     </div>
     <br>
-    """%(title,op,idd,likes, cont,imgSrc))
+    """%(title,op,idd,cont,likes))
 
 def printPost(cursor):
     print("""
@@ -281,7 +245,7 @@ def printPost(cursor):
     results = cursor.fetchall()
 
     for post in results:
-         showPost(post[0],post[1], post[2], post[3], post[4], "https://i.redd.it/ewl62b252vp21.png")
+         showPost(post[0],post[1], post[2], post[3], post[4])
 
     print("""</div>""")
 
@@ -311,7 +275,7 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     
     user = usrResult[0]
-    hNavBar(user, "https://i.redd.it/ewl62b252vp21.png")
+    hNavBar(user)
     printPost(cursor)
     #loginDiv()
     #registerDiv()
