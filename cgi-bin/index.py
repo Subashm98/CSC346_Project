@@ -214,7 +214,7 @@ def showPost(idd, title,op,cont,likes):
         %s %s %s %s %s 
     </div>
     <br>   
-    """%("HELLO", "HOA", "idd", "likes", "cont"))
+    """%(idd, "HOA", "idd", "likes", "cont"))
 
 def printPost(cursor):
     print("""
