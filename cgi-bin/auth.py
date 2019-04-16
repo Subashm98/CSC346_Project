@@ -10,16 +10,20 @@ cgitb.enable()
 import threading
 
 import os
+from http import cookies
+import random
 
 import MySQLdb
 from secret import secret
 
+# Remove code marked with tag: IP_ADDRESS_CODE
 
 def create_database(conn):
 	user_tbl = 'user'
 	post_tbl = 'post'
 	comment_tbl = 'comment'
-	sesh_tbl = 'sesh'
+	sesh_tbl = 'sesh'		# IP_ADDRESS_CODE
+	cookie_tbl = 'cookie'
 
 	cursor = conn.cursor()
 	cursor.execute("""SHOW TABLES;""")
@@ -63,12 +67,23 @@ def create_database(conn):
 						);
 						""")
 
+	# IP_ADDRESS_CODE
+
 	if (sesh_tbl not in all_tables):
 		cursor.execute("""CREATE TABLE sesh (
 						server_ip	VARCHAR (30) NOT NULL,
 						user_name	VARCHAR (30) NOT NULL,
 						CONSTRAINT PK_SESH PRIMARY KEY (server_ip),
 						CONSTRAINT FK_SESH_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
+						);
+						""")
+
+	if (cookie_tbl not in all_tables):
+		cursor.execute("""CREATE TABLE cookie (
+						cookieID	VARCHAR (30) NOT NULL,
+						user_name	VARCHAR (30) NOT NULL,
+						CONSTRAINT PK_COOKIE PRIMARY KEY (cookieID),
+						CONSTRAINT FK_COOKIE_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
 						);
 						""")
 
@@ -90,18 +105,43 @@ def delayPage(sec, pageName):
 	threading.Timer(sec, gotoPage, [pageName]).start()
 
 
+# Simple session id generator
+def sessionGenerator(digits):
+	x = ""
+	for i in range(digits):
+		x += "" + random.randint(0,9)
+
+	return x
+
+# Creates a new cookie for the given user
 def update_user(cursor, user):
-	ip = os.environ["SERVER_ADDR"]
+	# IP_ADDRESS_CODE
+	# ip = os.environ["SERVER_ADDR"]
+	# try:
+	# 	cursor.execute("""INSERT INTO sesh (server_ip,user_name)
+	# 					VALUES (%s,%s);""",
+	# 					(str(ip), user))
+	# except:
+	# 	cursor.execute("""DELETE FROM sesh WHERE server_ip = \"%s\";""" % ip)
+	# 	cursor.execute("""INSERT INTO sesh (server_ip,user_name)
+	# 				VALUES (%s,%s);""",
+	# 				(str(ip), user))
+	cookie = cookies.SimpleCookie()
+	sessionID = sessionGenerator(20)
+	cookie["session"] = sessionID
+	print(cookie)
+
 	try:
-		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
+		cursor.execute("""INSERT INTO cookie (cookieID,user_name)
 						VALUES (%s,%s);""",
-						(str(ip), user))
+						(sessionID, user))
 	except:
-		cursor.execute("""DELETE FROM sesh WHERE server_ip = \"%s\";""" % ip)
-		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
+		cursor.execute("""DELETE FROM cookie WHERE cookieID = \"%s\";""" % sessionID)
+		cursor.execute("""INSERT INTO sesh (cookieID,user_name)
 					VALUES (%s,%s);""",
-					(str(ip), user))
-		
+					(sessionID, user))
+
+	
 
 
 def main():
@@ -116,6 +156,7 @@ def main():
 	create_database(conn)
 	cursor = conn.cursor()
 
+	# Login form
 	if(form.getvalue("uname") and form.getvalue("psw")):
 		cursor.execute("""SELECT password FROM user WHERE user_name = \"%s\";""" % form["uname"].value)
 		results = cursor.fetchall()
@@ -130,7 +171,11 @@ def main():
 				cursor.close()
 				conn.close()
 				
-				gotoPage("index.py")
+				# test
+				#gotoPage("index.py")
+				cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
+				print("Cookie[\"session\"] =" + cookie["session"].value)
+				delayPage(3, "index.py")
 			else:
 				print("<h1>Bad Login, redirecting back to login page...</h1>")
 				delayPage(2, "loginPage.py")
@@ -142,6 +187,7 @@ def main():
 			print("<h1>Bad Login, redirecting back to login page...</h1>")
 			delayPage(2, "loginPage.py")
 
+	# New user form
 	else:
 		try:
 			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
