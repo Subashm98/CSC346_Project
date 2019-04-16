@@ -177,7 +177,7 @@ def style():
                 color: #555;
                 text-transform: capitalize;
                 display: block;
-                margin: 5px;
+                /*margin: 5px;*/
         }
         </style>
         
