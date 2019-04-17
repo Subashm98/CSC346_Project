@@ -11,6 +11,9 @@ import threading
 
 import os
 
+from http import cookies
+import random
+
 import MySQLdb
 from secret import secret
 
@@ -20,6 +23,7 @@ def create_database(conn):
 	post_tbl = 'post'
 	comment_tbl = 'comment'
 	sesh_tbl = 'sesh'
+	session_tbl = 'session'
 
 	cursor = conn.cursor()
 	cursor.execute("""SHOW TABLES;""")
@@ -72,6 +76,15 @@ def create_database(conn):
 						);
 						""")
 
+	if (session_tbl not in all_tables):
+		cursor.execute("""CREATE TABLE session (
+						sessionID	VARCHAR (30) NOT NULL,
+						user_name	VARCHAR (30) NOT NULL,
+						CONSTRAINT PK_SESSION PRIMARY KEY (sessionID),
+						CONSTRAINT FK_SESSION_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
+						);
+						""")
+
 	cursor.close()
 
 
@@ -90,7 +103,7 @@ def delayPage(sec, pageName):
 	threading.Timer(sec, gotoPage, [pageName]).start()
 
 
-def update_user(cursor, user):
+def addSession(cursor, user):
 	ip = os.environ["SERVER_ADDR"]
 	try:
 		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
@@ -101,8 +114,19 @@ def update_user(cursor, user):
 		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
 					VALUES (%s,%s);""",
 					(str(ip), user))
-		
 
+        ### coockie code
+        sessionID = ""
+	for i in range(20):
+            sessionID += random.randint(0,9)
+        
+	cookie = cookies.SimpleCookie()
+        cookie["session"] = sessionID
+        print(cookie)
+
+        cursor.execute("""INSERT INTO session (sessionID, user_name)
+                                                VALUES (%s,%s);""",
+                                                (sessionID, user))
 
 def main():
 	form = cgi.FieldStorage()
@@ -124,7 +148,7 @@ def main():
 
 		try:
 			if(form["psw"].value == pwdResult[0]):
-				update_user(cursor, form["uname"].value)
+				addSession(cursor, form["uname"].value)
 				conn.commit()
 
 				cursor.close()
@@ -150,7 +174,7 @@ def main():
 							pHash(form["password"].value), form["gender"].value,
 							form["email"].value, form["phone"].value))
 
-			update_user(cursor, form["user_name"].value)
+			addSession(cursor, form["user_name"].value)
 			
 			cursor.close()
 			conn.commit()

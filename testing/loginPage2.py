@@ -341,7 +341,7 @@ def registerDiv():
         <div class="card card-4">
             <div class="card-body">
                 <h2 class="title">Become A Member</h2>
-                <form method="POST" action=auth.py>
+                <form method="POST" action=auth2.py>
                     <div class="row row-space">
                         <div class="col-2">
                             <div class="input-group">
@@ -413,7 +413,7 @@ def loginDiv():
         <div class="card card-4">
             <div class="card-body">
                 <h2 class="title">Login</h2>
-                <form method="POST" action=auth.py>          <!-- <form action="/action_page.php"> -->
+                <form method="POST" action=auth2.py>          <!-- <form action="/action_page.php"> -->
                     <div class="imgcontainer">
                         <img src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/selfcare_login_pic.png" alt="Avatar" class="avatar">
                     </div>
