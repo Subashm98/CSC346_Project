@@ -10,6 +10,7 @@ import os
 from http import cookies
 
 print("Content-type: text/plain")
+print()
 
 try:
     cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
