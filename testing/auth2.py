@@ -155,20 +155,21 @@ def main():
 				cursor.close()
 				conn.close()
 				
-				gotoPage("index.py")
+				#gotoPage("index.py")
+                                gotoPage("testPage.py")
                                 #cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
                                 #print("<h1>Good Login, sessionID = %s</h>" % cookie["session"].value
 				#delayPage(5, "index.py")
 			else:
 				print("<h1>Bad Login, redirecting back to login page...</h1>")
-				delayPage(2, "loginPage.py")
+				delayPage(2, "loginPage2.py")
 
 		except:
 			cursor.close()
 			conn.close()
 			
 			print("<h1>Bad Login, redirecting back to login page...</h1>")
-			delayPage(2, "loginPage.py")
+			delayPage(2, "loginPage2.py")
 
 	else:
 		try:
@@ -192,7 +193,7 @@ def main():
 			conn.close()
 			
 			print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
-			delayPage(2, "loginPage.py")
+			delayPage(2, "loginPage2.py")
 
 
 print("Content-Type:text/html")
