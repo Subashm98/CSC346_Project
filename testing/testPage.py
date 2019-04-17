@@ -11,7 +11,7 @@ from http import cookies
 
 def main():
         try:
-                cookie = cookies.SimpleCookie(os.environ["HTTP_COOOKIE"])
+                cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
                 print("sessionID = " + cookie["session"].value)
         except Exception as e:
                 print(e)
