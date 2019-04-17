@@ -155,8 +155,8 @@ def main():
 				cursor.close()
 				conn.close()
 				
-				gotoPage("index.py")
-                                #gotoPage("testPage.py")
+				#gotoPage("index.py")
+                                gotoPage("testPage.py")
                                 #cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
                                 #print("<h1>Good Login, sessionID = %s</h>" % cookie["session"].value
 				#delayPage(5, "index.py")
