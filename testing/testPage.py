@@ -9,11 +9,13 @@ import os
 
 from http import cookies
 
-print("Content-type: text/plain")
+def main():
+        try:
+                cookie = cookies.SimpleCookie(os.environ["HTTP_COOOKIE"])
+                print("sessionID = " + cookie["session"].value)
+        except Exception as e:
+                print(e)
+                
+print("Content-Type:text/plain")
 print()
-
-try:
-    cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
-    print("session = " + cookie["session"].value)
-except (cookies.CookieError, KeyError):
-    print("session cookie not set!")
+main()
