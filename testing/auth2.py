@@ -117,17 +117,17 @@ def addSession(cursor, user):
 					(str(ip), user))
 
         ### coockie code
-        sessionID = ""
-	for i in range(20):
-            sessionID += str(random.randint(0,9))
-        
-	cookie = cookies.SimpleCookie()
-        cookie["session"] = sessionID
-        print(cookie)
+	#sessionID = ""
+	#for i in range(20):
+        #    sessionID += str(random.randint(0,9))
+        #
+	#cookie = cookies.SimpleCookie()
+        #cookie["session"] = sessionID
+        #print(cookie)
 
-        cursor.execute("""INSERT INTO session (sessionID, user_name)
-                                                VALUES (%s,%s);""",
-                                                (sessionID, user))
+        #cursor.execute("""INSERT INTO session (sessionID, user_name)
+        #                                        VALUES (%s,%s);""",
+        #                                        (sessionID, user))
 
 def main():
 	form = cgi.FieldStorage()
