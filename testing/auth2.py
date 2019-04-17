@@ -13,6 +13,7 @@ import os
 
 from http import cookies
 import random
+#import datetime              Use later for deleting cookies?
 
 import MySQLdb
 from secret import secret
@@ -118,7 +119,7 @@ def addSession(cursor, user):
         ### coockie code
         sessionID = ""
 	for i in range(20):
-            sessionID += random.randint(0,9)
+            sessionID += str(random.randint(0,9))
         
 	cookie = cookies.SimpleCookie()
         cookie["session"] = sessionID
@@ -154,7 +155,10 @@ def main():
 				cursor.close()
 				conn.close()
 				
-				gotoPage("index.py")
+				#gotoPage("index.py")
+                                cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
+                                print("<h1>Good Login, sessionID = %s</h>" % cookie["session"].value
+				delayPage(5, "index.py")
 			else:
 				print("<h1>Bad Login, redirecting back to login page...</h1>")
 				delayPage(2, "loginPage.py")
