@@ -225,7 +225,10 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                                 <label class="label">Likes:%s</label>
                                 <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
                                 <br>
-                                <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>    
+                                <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>
+                                <br>
+                                <br>
+                                <button class="btn" type="submit" name="cmbtn" value="comment">Comments</button>    
                         </div> 
                         <div class="box-cell box2"> 
                             %s
