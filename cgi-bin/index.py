@@ -255,7 +255,7 @@ def printPost(cursor):
     results = cursor.fetchall()
 
     for post in results:
-         showPost(post[0],post[1], post[2], post[3], post[4],"https://i.redd.it/ewl62b252vp21.png")
+         showPost(post[0],post[1], post[2], post[3], post[4],"http://image.noelshack.com/fichiers/2014/38/1410967177-dragonballzgif-0.gif")
 
     print("""</div>""")
 
@@ -285,7 +285,7 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     
     user = usrResult[0]
-    hNavBar(user, "https://i.redd.it/ewl62b252vp21.png")
+    hNavBar(user, "http://vvvvw.neocities.org/lwh_marrs_naruto.gif")
     printPost(cursor)
     #loginDiv()
     #registerDiv()
