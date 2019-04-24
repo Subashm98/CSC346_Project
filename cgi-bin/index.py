@@ -15,8 +15,11 @@ def style():
         <style>
         body {
                /* background-image: url("https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/abstract-art-artistic-1020315_C2.jpg");*/
-                background: linear-gradient(to right, #F45C43, #EB3349);
+                /*background: linear-gradient(to right, #F45C43, #EB3349);*/
                 /*background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%); */
+                background-color: #abe9cd;
+                background-image: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+
                 margin: 0;
                 padding: 0;     
         }
@@ -100,8 +103,8 @@ def style():
         /* Change the link color to #111 (black) on hover */
         #nav-ul li a:hover {
                 /*background-color: red;*/
-                background-color #20bf55;
-                background-image linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+                background-color #0bede9;
+               /* background-image linear-gradient(315deg, #20bf55 0%, #01baef 74%);*/
 
         }
 
