@@ -164,7 +164,7 @@ def style():
         }
         
         .input--style-4 {
-            line-height: 50px;
+            line-height: 30px;
             background: #d2d4cb;
         
             box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
@@ -176,7 +176,7 @@ def style():
             transition: all 0.4s ease;
         }
         .input--style-5 {
-            line-height: 20px;
+            line-height: 35px;
             background: #d2d4cb;
             height: 100px;
             width: 500px;

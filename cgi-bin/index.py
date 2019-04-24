@@ -14,11 +14,9 @@ def style():
         print("""
         <style>
         body {
-                /* background-color: lightgray; */
-                /* background-image: url("milkeyWay.jpeg"); */
-                /* background-image: url("backgrounds-blank-blue-953214.jpg");
-                background-image: url("backgrounds-blank-blue-953214.jpg"); */
-                background-image: url("https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/abstract-art-artistic-1020315_C2.jpg");
+               /* background-image: url("https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/abstract-art-artistic-1020315_C2.jpg");*/
+                background: linear-gradient(to right, #F45C43, #EB3349);
+                /*background: linear-gradient(to top, #fbc2eb 0%, #a18cd1 100%); */
                 margin: 0;
                 padding: 0;     
         }
