@@ -67,7 +67,9 @@ def style():
                 margin: 0;
                 padding: 0;
                 overflow: hidden;
-                background-color:#56ABE4;
+                /*background-color:#56ABE4;*/
+                background-color: #bbf0f3;
+                background-image: linear-gradient(315deg, #bbf0f3 0%, #f6d285 74%);
 
         }
         
