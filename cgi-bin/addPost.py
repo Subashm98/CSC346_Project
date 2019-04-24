@@ -268,7 +268,7 @@ def newpostDiv():
                              <div class="input-group">
                                 <label class="label">Image URL</label>
                                 <div class="input-group-icon">
-                                    <input class="input--style-4" type="text" name="newPost_image" placeholder="input a url for an imgage">
+                                    <input class="input--style-4" type="text" name="newpost_image" placeholder="input a url for an imgage">
                                 </div>
                             </div>
                         </div>
@@ -329,6 +329,7 @@ def main():
 
     titl = form["newpost_title"].value
     content = form["newpost_content"].value
+    imgURL = form["newpost_image"].value
 
     cursor.execute("""INSERT INTO post (title,user_name,msg_as_html,likes)
 						VALUES (%s,%s,%s,%s);""",
@@ -338,7 +339,8 @@ def main():
     conn.commit()
     conn.close()
 
-    print("""<body onLoad="location.href='index.py'"></body>""")
+    print("""<h1>ImgUrl = %s<h1>"""%imgURL)
+    #print("""<body onLoad="location.href='index.py'"></body>""")
 
 print("Content-Type: text/html;charset=utf-8")
 print()
