@@ -262,7 +262,7 @@ def newpostDiv():
                             <div class="input-group">
                                 <label class="label">Content</label>
                                 <div class="input-group-icon">
-                                    <textarea class="input--style-5" type="text" name="newpost_content"  required>
+                                    <textarea class="input--style-5" type="text" name="newpost_content"  required></textarea>
                                 </div>
                             </div>
                              <div class="input-group">
