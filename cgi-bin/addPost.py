@@ -154,7 +154,6 @@ def style():
             #FORM
         */
         input {
-            break: break-word;
             outline: none;
             margin: 0;
             border: none;
@@ -263,7 +262,7 @@ def newpostDiv():
                             <div class="input-group">
                                 <label class="label">Content</label>
                                 <div class="input-group-icon">
-                                    <input class="input--style-5" type="text" name="newpost_content"  required>
+                                    <textarea class="input--style-5" type="text" name="newpost_content"  required>
                                 </div>
                             </div>
                              <div class="input-group">
