@@ -155,7 +155,7 @@ def main():
 				userImg = defaultImgURL
 
 
-			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
+			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone,userImg) 
 							VALUES (%s,%s,%s,%s,%s,%s, %s);""", 
 							(form["user_name"].value, form["full_name"].value, 
 							pHash(form["password"].value), form["gender"].value,
