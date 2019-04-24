@@ -103,12 +103,12 @@ def style():
         /* Change the link color to #111 (black) on hover */
         #nav-ul li a:hover {
                 /*background-color: red;*/
-                background-color: #0bede9;
+                background-color: lightblue;
                /* background-image linear-gradient(315deg, #20bf55 0%, #01baef 74%);*/
 
         }
 
-            .font-poppins {
+        .font-poppins {
             font-family: "Georgia", "Arial", "Helvetica Neue", sans-serif;
         }
         .wrapper {
