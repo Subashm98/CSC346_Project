@@ -34,7 +34,8 @@ def create_database(conn):
 						  password	VARCHAR (30) NOT NULL,
 						  gender	VARCHAR (7)  NOT NULL,
 						  email		VARCHAR (30) NOT NULL UNIQUE,
-						  phone	VARCHAR (12) NOT NULL,
+						  phone	    VARCHAR (12) NOT NULL,
+						  userImg   VARCHAR (256),
 						  CONSTRAINT PK_USER PRIMARY KEY (user_name)
 						  );
 						  """)
@@ -45,6 +46,7 @@ def create_database(conn):
 						  title			VARCHAR (30) NOT NULL,
 						  user_name		VARCHAR (30) NOT NULL,
 						  msg_as_html	VARCHAR (256) NOT NULL,
+						  postImage     VARCHAR (256) NOT NULL,
 						  likes			INT	UNSIGNED NOT NULL,
 						  CONSTRAINT PK_POST PRIMARY KEY (post_id),
 						  CONSTRAINT FK_USER_POST FOREIGN KEY (user_name) REFERENCES user (user_name)
@@ -115,7 +117,7 @@ def main():
 
 	create_database(conn)
 	cursor = conn.cursor()
-
+	# loggin in
 	if(form.getvalue("uname") and form.getvalue("psw")):
 		cursor.execute("""SELECT password FROM user WHERE user_name = \"%s\";""" % form["uname"].value)
 		results = cursor.fetchall()
@@ -142,13 +144,22 @@ def main():
 			print("<h1>Bad Login, redirecting back to login page...</h1>")
 			delayPage(2, "loginPage.py")
 
-	else:
+	# registering a new user
+	else: 
 		try:
+			userImg  = ""
+			defaultImgURL = "https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/default_logImg.png"
+			if "userImg" in form:
+				userImg = form["userImg"].value
+			else:
+				userImg = defaultImgURL
+
+
 			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
-							VALUES (%s,%s,%s,%s,%s,%s);""", 
+							VALUES (%s,%s,%s,%s,%s,%s, %s);""", 
 							(form["user_name"].value, form["full_name"].value, 
 							pHash(form["password"].value), form["gender"].value,
-							form["email"].value, form["phone"].value))
+							form["email"].value, form["phone"].value), userImg)
 
 			update_user(cursor, form["user_name"].value)
 			
