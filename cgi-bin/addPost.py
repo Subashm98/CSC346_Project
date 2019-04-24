@@ -266,6 +266,12 @@ def newpostDiv():
                                     <input class="input--style-5" type="text" name="newPost_image" placeholder="input a url for an imgage">
                                 </div>
                             </div>
+                             <div class="input-group">
+                                <label class="label">Image URL</label>
+                                <div class="input-group-icon">
+                                    <input class="input--style-5" type="text" name="newPost_image" placeholder="input a url for an imgage">
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="p-t-15">
