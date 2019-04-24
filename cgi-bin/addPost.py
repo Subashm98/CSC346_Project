@@ -154,6 +154,7 @@ def style():
             #FORM
         */
         input {
+            break: break-word;
             outline: none;
             margin: 0;
             border: none;
@@ -176,7 +177,6 @@ def style():
             transition: all 0.4s ease;
         }
         .input--style-5 {
-            break: break-word;
             line-height: 50px;
             background: #d2d4cb;
             height: 100px;
