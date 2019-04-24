@@ -103,7 +103,7 @@ def style():
         /* Change the link color to #111 (black) on hover */
         #nav-ul li a:hover {
                 /*background-color: red;*/
-                background-color #0bede9;
+                background-color: #0bede9;
                /* background-image linear-gradient(315deg, #20bf55 0%, #01baef 74%);*/
 
         }
