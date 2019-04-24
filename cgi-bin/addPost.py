@@ -176,6 +176,7 @@ def style():
             transition: all 0.4s ease;
         }
         .input--style-5 {
+            break: break-word;
             line-height: 50px;
             background: #d2d4cb;
             height: 100px;
@@ -339,8 +340,8 @@ def main():
     conn.commit()
     conn.close()
 
-    print("""<h1>ImgUrl = %s<h1>"""%imgURL)
-    #print("""<body onLoad="location.href='index.py'"></body>""")
+    #print("""<h1>ImgUrl = %s<h1>"""%imgURL)
+    print("""<body onLoad="location.href='index.py'"></body>""")
 
 print("Content-Type: text/html;charset=utf-8")
 print()
