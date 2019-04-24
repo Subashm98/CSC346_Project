@@ -176,7 +176,7 @@ def style():
             transition: all 0.4s ease;
         }
         .input--style-5 {
-            line-height: 50px;
+            line-height: 20px;
             background: #d2d4cb;
             height: 100px;
             width: 500px;
@@ -200,7 +200,7 @@ def style():
         
         .input-group {
             position: relative;
-            margin-bottom: 5px;
+            margin-bottom: 22px;
         }
         
         .input-group-icon {
