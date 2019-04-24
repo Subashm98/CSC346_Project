@@ -96,8 +96,10 @@ def pHash(password):
 
 
 def gotoPage(pageName):
-	print("""<body onLoad="location.href='%s'"></body>""" % pageName)
-
+	try:
+		print("""<body onLoad="location.href='%s'"></body>""" % pageName)
+	except Exception as e:
+		print(e)
 
 
 def delayPage(sec, pageName):
@@ -155,11 +157,8 @@ def main():
 				cursor.close()
 				conn.close()
 				
-				#gotoPage("index.py")
-                                gotoPage("testPage.py")
-                                #cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
-                                #print("<h1>Good Login, sessionID = %s</h>" % cookie["session"].value
-				#delayPage(5, "index.py")
+				gotoPage("index.py")
+				#gotoPage("testPage.py")
 			else:
 				print("<h1>Bad Login, redirecting back to login page...</h1>")
 				delayPage(2, "loginPage2.py")
