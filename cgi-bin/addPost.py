@@ -200,7 +200,7 @@ def style():
         
         .input-group {
             position: relative;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
         
         .input-group-icon {
