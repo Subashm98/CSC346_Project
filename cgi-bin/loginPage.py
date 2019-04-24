@@ -386,6 +386,7 @@ def registerDiv():
                             <div class="input-group">
                                 <label class="label">Email</label>
                                 <input class="input--style-4" type="email" name="email" required>
+				<label class="label">Image Address(URL)</label>
                                 <input class="input--style-4" type="text" name="userImg">
                             </div>
                         </div>
