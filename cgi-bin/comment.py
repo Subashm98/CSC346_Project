@@ -305,12 +305,13 @@ def main():
     userR    = [utuple[0] for utuple in userInfo]
 
     userImg = userR[0]
-    hNavBar(user, userImg)
+    #hNavBar(user, userImg)
     # printPost(cursor, userR)
     #loginDiv()
     #registerDiv()
     print("</body>")
     print("</html>")
+
 print("Content-Type: text/html;charset=utf-8")
 print()
 main()
