@@ -330,7 +330,7 @@ def main():
     titl = form["newpost_title"].value
     content = form["newpost_content"].value
     
-    postImg = "https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/transparentImg.png"
+    postImg = ""  #"https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/transparentImg.png"
     if "newpost_image" in form:
         postImg = form["newpost_image"].value
 
