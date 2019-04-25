@@ -213,7 +213,11 @@ def hNavBar(user, imgSrc):
         """%(imgSrc,user))
 
 def showPost(idd, title,op,cont,likes,imgSrc):
-    imgSize = "80%"
+    imgWidth = "80%"
+    if imgSrc == "":
+        imgSrc = "https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/transparentImg.png"
+        imgWidth = "10%"
+
     print("""
     <br>
     <br>
@@ -239,7 +243,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                         <div class="box-cell box2"> 
                             %s 
                             <br>
-                            <img src="%s" width="%s" onerror="this.style.display='none'>
+                            <img src="%s" width="%s">
                                
                         </div>
                     </form>
@@ -250,7 +254,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
         
     </div>
     <br>   
-    """%(title,op, idd, likes, cont, imgSrc, imgSize))
+    """%(title,op, idd, likes, cont, imgSrc, imgWidth))
 
 def printPost(cursor):
     print("""
