@@ -13,8 +13,14 @@ from secret import secret
 def main():
     form = cgi.FieldStorage()
 
-    if "disbtn" in form:
-        print("<><><><><><><><><><><><><><><><<><><><><><><><><><><>")
+    # if "disbtn" in form:
+    #     print("<><><><><><><><><><><><><><>DisLike button was clicked<><<><><><><><><><><><><>")
+
+    # if "cmbtn" in form:
+    #     print("<><><><><><><><><><><><><><>Comment button was clicked<><<><><><><><><><><><><>")
+
+    # if "likeBtn" in form:
+    #     print("<><><><><><><><><><><><><><>Like button was clicked<><<><><><><><><><><><><>")
 
     idd = int(form["pname"].value)
 
@@ -31,14 +37,20 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     
     user = usrResult[0]
-    user = user + 1
+    if "disbtn" in form:
+        user = user - 1
+    if "likeBtn" in form:
+        user = user + 1
+
+    if "cmbtn" in form:
+        print("""<body onLoad="location.href='comment.py'"></body>""")
 
     cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
     cursor.close()
     conn.commit()
     conn.close()
 
-    #print("""<body onLoad="location.href='index.py'"></body>""")
+    print("""<body onLoad="location.href='index.py'"></body>""")
 
 
 print("Content-Type:text/html")

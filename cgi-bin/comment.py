@@ -189,15 +189,14 @@ def style():
         
         """)
 
-
 def hNavBar(user, imgSrc):
         print("""
         <div class="navigation-bar">
                 <nav>
                     <ul id = "nav-ul">
                             <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
-                            <li id = "navLeft"><a href="loginPage.py">Logout</a></li>
-                            <li id = "navLeft"><a href="addPost.py">Add Post</a></li>
+                            <li id = "navLeft"><a href="index.py">Home</a></li>
+                            <li id = "navLeft"><a href="addComment.py">Add Comment</a></li>
                             <li id = "navRight"><img id = "userImg" src="%s"></li>
                                        
                              <li id = "navRight">
@@ -228,7 +227,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                     %s , by: %s
                 </div>
                 <div class="box-row"> 
-                    <form method="POST">
+                    <form method="POST" action=like.py>
                         <input type = "hidden" name = "pname" value = \"%s\"></input>
                         
                         <div class="box-cell box1"> 
@@ -236,9 +235,6 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                                 <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
                                 <br>
                                 <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>
-                                <br>
-                                <br>
-                                <button class="btn" type="submit" name="cmbtn" value="comment">Comments</button>    
                         </div> 
                         <div class="box-cell box2"> 
                             %s
@@ -257,7 +253,9 @@ def showPost(idd, title,op,cont,likes,imgSrc):
     <br>   
     """%(title,op, idd, likes, cont, imgSrc, imgWidth))
 
-def printPost(cursor):
+
+
+def printPost(cursor, postId):
     print("""
     <br>
     <br>
@@ -265,14 +263,15 @@ def printPost(cursor):
     """)
     # for i in range(10):
     # 	showPost("title %s " % i,"user", " content %s " % i, i)
-
-    cursor.execute("""SELECT * FROM post;""")
+    #print("""<h1>%s<h1>"""%user) 
+    cursor.execute("""SELECT * FROM post WHERE postId = "%s";"""%postId)
     results = cursor.fetchall()
 
     for post in results:
          showPost(post[0],post[1], post[2], post[3], post[5], post[4])
 
     print("""</div>""")
+
 
 
 def main():
@@ -300,60 +299,21 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     user = usrResult[0]
 
+
+    # postId = form["pname"].value
+    # print("""<h1><><><><><><><>><>>>%s<h1>"""%postId) 
     cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
     userInfo = cursor.fetchall()
     userR    = [utuple[0] for utuple in userInfo]
 
     userImg = userR[0]
     hNavBar(user, userImg)
-    printPost(cursor)
-
-
-    
-
-    # conn = MySQLdb.connect(host = secret.SQL_HOST,
-    #     	               user = secret.SQL_USER,
-    #             	       passwd = secret.SQL_PASSWD,
-    #                    	   db = secret.SQL_DB
-	# )
-
- 
-    
-    
-
-    if "cmbtn" in form:
-        print("""<body onLoad="location.href='comment.py'"></body>""")
-
-
-    if "disbtn" in form or "likeBtn" in form:
-
-        idd =  int(form["pname"].value)
-        cursor = conn.cursor()
-        cursor.execute("""SELECT likes FROM post WHERE post_id = %s;""" % idd)
-        results = cursor.fetchall()
-
-        usrResult = [utuple[0] for utuple in results]
-        user = usrResult[0]
-        if "disbtn" in form:        
-            user = user - 1
-
-        if "likeBtn" in form:
-            user = user + 1
-        
-        cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
-
-        # del form["likeBtn"]
-        # del form["disbtn"]
-    cursor.close()
-    conn.commit()
-    conn.close()
-
+    #printPost(cursor, postId)
     #loginDiv()
     #registerDiv()
     print("</body>")
     print("</html>")
+
 print("Content-Type: text/html;charset=utf-8")
 print()
 main()
-
-
