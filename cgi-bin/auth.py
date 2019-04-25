@@ -169,13 +169,14 @@ def main():
 
 			gotoPage("index.py")
 			
-		except:
+		except Exception as e:
+			print(e)
 			conn.rollback()
 			cursor.close()
 			conn.close()
 			
-			print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
-			delayPage(2, "loginPage.py")
+			# print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
+			# delayPage(2, "loginPage.py")
 
 
 print("Content-Type:text/html")
