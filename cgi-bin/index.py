@@ -215,8 +215,8 @@ def hNavBar(user, imgSrc):
 def showPost(idd, title,op,cont,likes,imgSrc):
     imgWidth = "80%"
     if imgSrc == "":
-        print("<><><><><><><><><><><><><><><><><><><><><HELLO<><><><><><><><><>")
-        imgWidth = "0%"
+        imgSrc = "https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/transparentImg.png"
+        imgWidth = "10%"
 
     print("""
     <br>
