@@ -14,7 +14,13 @@ def main():
     form = cgi.FieldStorage()
 
     if "disbtn" in form:
-        print("<><><><><><><><><><><><><><><><<><><><><><><><><><><>")
+        print("<><><><><><><><><><><><><><>DisLike button was clicked<><<><><><><><><><><><><>")
+
+    if "cmbtn" in form:
+        print("<><><><><><><><><><><><><><>Comment button was clicked<><<><><><><><><><><><><>")
+
+    if "likeBtn" in form:
+        print("<><><><><><><><><><><><><><>Like button was clicked<><<><><><><><><><><><><>")
 
     idd = int(form["pname"].value)
 
