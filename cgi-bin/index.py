@@ -214,6 +214,7 @@ def hNavBar(user, imgSrc):
 
 def showPost(idd, title,op,cont,likes,imgSrc):
     imgSize = "80%"
+    imgSize2 = "70%"
     print("""
     <br>
     <br>
@@ -239,8 +240,8 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                         <div class="box-cell box2"> 
                             %s 
                             <br>
-                            <img src="%s" max-width="300px">
-                            %s   
+                            <img src="%s" max-width="%s" max-height="%s">
+                               
                         </div>
                     </form>
                 </div>                 
@@ -250,7 +251,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
         
     </div>
     <br>   
-    """%(title,op, idd, likes, cont, imgSrc, imgSize))
+    """%(title,op, idd, likes, cont, imgSrc, imgSize,imgSize2))
 
 def printPost(cursor):
     print("""
