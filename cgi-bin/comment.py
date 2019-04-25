@@ -300,9 +300,9 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     user = usrResult[0]
 
-    cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
-    userInfo = cursor.fetchall()
-    userR    = [utuple[0] for utuple in userInfo]
+    # cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
+    # userInfo = cursor.fetchall()
+    # userR    = [utuple[0] for utuple in userInfo]
 
     #userImg = userR[0]
     #hNavBar(user, userImg)
