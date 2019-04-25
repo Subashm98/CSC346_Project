@@ -237,9 +237,10 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                                 <button class="btn" type="submit" name="cmbtn" value="comment">Comments</button>    
                         </div> 
                         <div class="box-cell box2"> 
-                            %s
+                            %s 
                             <br>
-                            <img src="%s" max-width="500px" >   
+                            <img src="%s" max-width="500px">
+                            %s   
                         </div>
                     </form>
                 </div>                 
