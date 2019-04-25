@@ -330,7 +330,7 @@ def main():
     titl = form["newpost_title"].value
     content = form["newpost_content"].value
     
-    postImg = ""
+    postImg = "https://i.stack.imgur.com/TMCfE.png"
     if "newpost_image" in form:
         postImg = form["newpost_image"].value
 
