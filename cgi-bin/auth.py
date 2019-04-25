@@ -154,15 +154,13 @@ def main():
 			else:
 				userImg = defaultImgURL
 
-			print("<h1>HELLO %s<h1>"%userImg)
 			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone,userImg) 
 							VALUES (%s,%s,%s,%s,%s,%s, %s);""", 
 							(form["user_name"].value, form["full_name"].value, 
 							pHash(form["password"].value), form["gender"].value,
 							form["email"].value, form["phone"].value, userImg))
-			print("<h1>HOLA<h1>")
+			
 			update_user(cursor, form["user_name"].value)
-			print("<h1>KONICHIWA<h1>")
 			cursor.close()
 			conn.commit()
 			conn.close()
@@ -175,8 +173,8 @@ def main():
 			cursor.close()
 			conn.close()
 			
-			# print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
-			# delayPage(2, "loginPage.py")
+			print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
+			delayPage(2, "loginPage.py")
 
 
 print("Content-Type:text/html")
