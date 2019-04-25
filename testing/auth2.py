@@ -145,7 +145,7 @@ def createCookie():
 def main():
         token = createCookie()
         print()
-#	form = cgi.FieldStorage()
+	form = cgi.FieldStorage()
 #
 #	conn = MySQLdb.connect(host = secret.SQL_HOST,
 #        	               user = secret.SQL_USER,
