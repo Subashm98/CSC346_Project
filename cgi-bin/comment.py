@@ -255,7 +255,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
 
 
 
-def printPost(cursor,user):
+def printPost(cursor, postId):
     print("""
     <br>
     <br>
@@ -264,7 +264,7 @@ def printPost(cursor,user):
     # for i in range(10):
     # 	showPost("title %s " % i,"user", " content %s " % i, i)
     #print("""<h1>%s<h1>"""%user) 
-    cursor.execute("""SELECT * FROM post WHERE user_name = "%s";"""%user)
+    cursor.execute("""SELECT * FROM post WHERE postId = "%s";"""%postId)
     results = cursor.fetchall()
 
     for post in results:
@@ -299,13 +299,15 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     user = usrResult[0]
 
+    postId = form["pname"].value
+
     cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
     userInfo = cursor.fetchall()
     userR    = [utuple[0] for utuple in userInfo]
 
     userImg = userR[0]
     hNavBar(user, userImg)
-    printPost(cursor, user)
+    printPost(cursor, postId)
     #loginDiv()
     #registerDiv()
     print("</body>")
