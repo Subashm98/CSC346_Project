@@ -292,9 +292,13 @@ def main():
     results = cursor.fetchall()
     
     usrResult = [utuple[0] for utuple in results]
-    
     user = usrResult[0]
-    userImg = usrResult[6]
+
+    cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
+    userInfo = cursor.fetchall()
+    userR    = [utuple[0] for utuple in userInfo]
+
+    userImg = userR[0]
     hNavBar(user, userImg)
     printPost(cursor)
     #loginDiv()
