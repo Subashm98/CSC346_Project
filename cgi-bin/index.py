@@ -343,8 +343,8 @@ def main():
     cursor.close()
     conn.commit()
     conn.close()
-    del form["likeBtn"]
-    del form["disbtn"]
+    # del form["likeBtn"]
+    # del form["disbtn"]
     
 
     #loginDiv()
