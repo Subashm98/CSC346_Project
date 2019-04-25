@@ -45,7 +45,7 @@ def create_database(conn):
 						  post_id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
 						  title			VARCHAR (30) NOT NULL,
 						  user_name		VARCHAR (30) NOT NULL,
-						  msg_as_html	VARCHAR (256) NOT NULL,
+						  msg_as_html	VARCHAR (512) NOT NULL,
 						  postImage     VARCHAR (256) NOT NULL,
 						  likes			INT	UNSIGNED NOT NULL,
 						  CONSTRAINT PK_POST PRIMARY KEY (post_id),
