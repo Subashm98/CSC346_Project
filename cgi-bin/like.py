@@ -12,6 +12,10 @@ from secret import secret
 
 def main():
     form = cgi.FieldStorage()
+
+    if "disbtn" in form:
+        print("<><><><><><><><><><><><><><><><<><><><><><><><><><><>")
+
     idd = int(form["pname"].value)
 
     conn = MySQLdb.connect(host = secret.SQL_HOST,
@@ -34,7 +38,7 @@ def main():
     conn.commit()
     conn.close()
 
-    print("""<body onLoad="location.href='index.py'"></body>""")
+    #print("""<body onLoad="location.href='index.py'"></body>""")
 
 
 print("Content-Type:text/html")
