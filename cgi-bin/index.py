@@ -326,7 +326,7 @@ def main():
     user = usrResult[0]
 
     if "cmbtn" in form:
-        print("""<body onLoad="location.href='comment.py'"></body>""")
+        print("""<body onLoad="location.href='comment.py?pname=%s'"></body>"""%form["pname"])
     if "disbtn" in form:
         user = user - 1
         #form["disbtn"] = ""
