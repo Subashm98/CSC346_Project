@@ -151,8 +151,10 @@ def main():
                                        user = secret.SQL_USER,
                                        passwd = secret.SQL_PASSWD,
                                    db = secret.SQL_DB)
-
-	create_database(conn)
+        try:
+                create_database(conn)
+	except Exception as e:
+                print (e)
 	#cursor = conn.cursor()
 	## loggin in
 	#if(form.getvalue("uname") and form.getvalue("psw")):
