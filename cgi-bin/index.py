@@ -330,12 +330,12 @@ def main():
     if "disbtn" in form:
         user = user - 1
         #form["disbtn"] = ""
-        del form["disbtn"]
+       
 
 
     if "likeBtn" in form:
         user = user + 1
-        del form["likeBtn"]
+       
         #form["likeBtn"] = ""
 
     
@@ -343,7 +343,8 @@ def main():
     cursor.close()
     conn.commit()
     conn.close()
-
+    del form["likeBtn"]
+    del form["disbtn"]
     
 
     #loginDiv()
