@@ -308,8 +308,32 @@ def main():
     hNavBar(user, userImg)
     printPost(cursor)
 
+
+    idd = int(form["pname"].value)
+
+    # conn = MySQLdb.connect(host = secret.SQL_HOST,
+    #     	               user = secret.SQL_USER,
+    #             	       passwd = secret.SQL_PASSWD,
+    #                    	   db = secret.SQL_DB
+	# )
+
+    cursor = conn.cursor()
+    cursor.execute("""SELECT likes FROM post WHERE post_id = %s;""" % idd)
+    results = cursor.fetchall()
+
+    usrResult = [utuple[0] for utuple in results]
+    
+    user = usrResult[0]
+
     if "cmbtn" in form:
         print("""<body onLoad="location.href='comment.py'"></body>""")
+    if "disbtn" in form:
+        user = user - 1
+    
+    cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
+    cursor.close()
+    conn.commit()
+    conn.close()
 
     #loginDiv()
     #registerDiv()
