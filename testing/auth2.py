@@ -145,10 +145,8 @@ def createCookie():
 def main():
         token = createCookie()
         print()
-        try:
-                form = cgi.FieldStorage()
-        except Exception as e:
-                print(e)
+
+        form = cgi.FieldStorage()
 #
 #	conn = MySQLdb.connect(host = secret.SQL_HOST,
 #        	               user = secret.SQL_USER,
