@@ -228,7 +228,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                     %s , by: %s
                 </div>
                 <div class="box-row"> 
-                    <form method="POST" action=like.py>
+                    <form method="POST">
                         <input type = "hidden" name = "pname" value = \"%s\"></input>
                         
                         <div class="box-cell box1"> 
@@ -307,6 +307,10 @@ def main():
     userImg = userR[0]
     hNavBar(user, userImg)
     printPost(cursor)
+
+    if "cmbtn" in form:
+        print("""<body onLoad="location.href='comment.py'"></body>""")
+
     #loginDiv()
     #registerDiv()
     print("</body>")
