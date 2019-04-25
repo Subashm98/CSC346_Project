@@ -319,7 +319,7 @@ def main():
 
  
     
-    user = usrResult[0]
+    
 
     if "cmbtn" in form:
         print("""<body onLoad="location.href='comment.py'"></body>""")
@@ -333,19 +333,12 @@ def main():
         results = cursor.fetchall()
 
         usrResult = [utuple[0] for utuple in results]
-
-        if "disbtn" in form:
-        
+        user = usrResult[0]
+        if "disbtn" in form:        
             user = user - 1
-            #form["disbtn"] = ""
-        
-
 
         if "likeBtn" in form:
             user = user + 1
-        
-            #form["likeBtn"] = ""
-
         
         cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
 
