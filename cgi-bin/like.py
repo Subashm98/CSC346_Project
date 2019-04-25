@@ -47,7 +47,7 @@ def main():
     conn.commit()
     conn.close()
 
-    #print("""<body onLoad="location.href='index.py'"></body>""")
+    print("""<body onLoad="location.href='index.py'"></body>""")
 
 
 print("Content-Type:text/html")
