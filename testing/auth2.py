@@ -213,6 +213,8 @@ def main():
 			print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
 			delayPage(2, "loginPage.py")
 
-
-print("Content-Type:text/html")
-main()
+try:
+        print("Content-Type:text/html")
+        main()
+except Exception as e:
+        print(e)
