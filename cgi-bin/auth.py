@@ -154,7 +154,7 @@ def main():
 			else:
 				userImg = defaultImgURL
 
-			print("<h1>HELLO<h1>")
+			print("<h1>HELLO %s<h1>"%userImg)
 			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone,userImg) 
 							VALUES (%s,%s,%s,%s,%s,%s, %s);""", 
 							(form["user_name"].value, form["full_name"].value, 
