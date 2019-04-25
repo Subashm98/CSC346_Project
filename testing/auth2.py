@@ -153,70 +153,68 @@ def main():
                                    db = secret.SQL_DB)
         create_database(conn)
 	
-	#cursor = conn.cursor()
+	cursor = conn.cursor()
 	## loggin in
-	#if(form.getvalue("uname") and form.getvalue("psw")):
-#		cursor.execute("""SELECT password FROM user WHERE user_name = \"%s\";""" % form["uname"].value)
-#		results = cursor.fetchall()
-#
-#		pwdResult = [ptuple[0] for ptuple in results]
-#
-#		try:
-#			if(form["psw"].value == pwdResult[0]):
-#				addSession(cursor, conn, form["uname"].value, token)
-#				conn.commit()
-#
-#				cursor.close()
-#				conn.close()
-#				
-#				#gotoPage("index.py")
-#				gotoPage("./testPage2.py")
-#			else:
-#				print("<h1>Bad Login, redirecting back to login page...</h1>")
-#				delayPage(2, "loginPage.py")
-#
-#		except:
-#			cursor.close()
-#			conn.close()
-#			
-#			print("<h1>Bad Login, redirecting back to login page...</h1>")
-#			delayPage(2, "loginPage.py")
-#
-#	# registering a new user
-#	else: 
-#		try:
-#			userImg  = ""
-#			defaultImgURL = "https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/default_logImg.png"
-#			if "userImg" in form:
-#				userImg = form["userImg"].value
-#			else:
-#				userImg = defaultImgURL
-#
-#
-#			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
-#							VALUES (%s,%s,%s,%s,%s,%s, %s);""", 
-#							(form["user_name"].value, form["full_name"].value, 
-#							pHash(form["password"].value), form["gender"].value,
-#							form["email"].value, form["phone"].value, userImg))
-#
-#			addSession(cursor, conn, form["user_name"].value, token)
-#			
-#			cursor.close()
-#			conn.commit()
-#			conn.close()
-#
-#			gotoPage("index.py")
-#			
-#		except:
-#			conn.rollback()
-#			cursor.close()
-#			conn.close()
-#			
-#			print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
-#			delayPage(2, "loginPage.py")
-#
-#try:
+	if(form.getvalue("uname") and form.getvalue("psw")):
+		cursor.execute("""SELECT password FROM user WHERE user_name = \"%s\";""" % form["uname"].value)
+		results = cursor.fetchall()
+
+		pwdResult = [ptuple[0] for ptuple in results]
+
+		try:
+			if(form["psw"].value == pwdResult[0]):
+				addSession(cursor, conn, form["uname"].value, token)
+				conn.commit()
+
+				cursor.close()
+				conn.close()
+				
+				#gotoPage("index.py")
+				gotoPage("./testPage2.py")
+			else:
+				print("<h1>Bad Login, redirecting back to login page...</h1>")
+				delayPage(2, "loginPage.py")
+
+		except:
+			cursor.close()
+			conn.close()
+			
+			print("<h1>Bad Login, redirecting back to login page...</h1>")
+			delayPage(2, "loginPage.py")
+
+	# registering a new user
+	else: 
+		try:
+			userImg  = ""
+			defaultImgURL = "https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/default_logImg.png"
+			if "userImg" in form:
+				userImg = form["userImg"].value
+			else:
+				userImg = defaultImgURL
+
+
+			cursor.execute("""INSERT INTO user (user_name,full_name,password,gender,email,phone) 
+							VALUES (%s,%s,%s,%s,%s,%s, %s);""", 
+							(form["user_name"].value, form["full_name"].value, 
+							pHash(form["password"].value), form["gender"].value,
+							form["email"].value, form["phone"].value, userImg))
+
+			addSession(cursor, conn, form["user_name"].value, token)
+			
+			cursor.close()
+			conn.commit()
+			conn.close()
+
+			gotoPage("index.py")
+			
+		except:
+			conn.rollback()
+			cursor.close()
+			conn.close()
+			
+			print("<h1>Username or Email Taken, redirecting back to login page...</h1>")
+			delayPage(2, "loginPage.py")
+
+
 print("Content-Type:text/html")
 main()
-#except Exception as e:
-#print(e)
