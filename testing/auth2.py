@@ -148,11 +148,14 @@ def main():
 
         form = cgi.FieldStorage()
 
-	conn = MySQLdb.connect(host = secret.SQL_HOST,
-        	               user = secret.SQL_USER,
-                	       passwd = secret.SQL_PASSWD,
-                       	   db = secret.SQL_DB
-	)
+        try:
+
+                conn = MySQLdb.connect(host = secret.SQL_HOST,
+                                       user = secret.SQL_USER,
+                                       passwd = secret.SQL_PASSWD,
+                                   db = secret.SQL_DB)
+        except Exception as e:
+                print (e)
 
 	#create_database(conn)
 	#cursor = conn.cursor()
