@@ -329,11 +329,11 @@ def main():
         print("""<body onLoad="location.href='comment.py'"></body>""")
     if "disbtn" in form:
         user = user - 1
-        form["disbtn"] = ""
+        #form["disbtn"] = ""
 
     if "likeBtn" in form:
         user = user + 1
-        form["likeBtn"] = ""
+        #form["likeBtn"] = ""
 
     
     cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
