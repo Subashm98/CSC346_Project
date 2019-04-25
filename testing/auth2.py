@@ -145,14 +145,14 @@ def createCookie():
 def main():
         token = createCookie()
         print()
-	form = cgi.FieldStorage()
-
-	conn = MySQLdb.connect(host = secret.SQL_HOST,
-        	               user = secret.SQL_USER,
-                	       passwd = secret.SQL_PASSWD,
-                       	   db = secret.SQL_DB
-	)
-
+#	form = cgi.FieldStorage()
+#
+#	conn = MySQLdb.connect(host = secret.SQL_HOST,
+#        	               user = secret.SQL_USER,
+#                	       passwd = secret.SQL_PASSWD,
+#                       	   db = secret.SQL_DB
+#	)
+#
 	#create_database(conn)
 	#cursor = conn.cursor()
 	## loggin in
