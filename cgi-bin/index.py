@@ -309,7 +309,7 @@ def main():
     printPost(cursor)
 
 
-    idd = int(form["pname"].value)
+    
 
     # conn = MySQLdb.connect(host = secret.SQL_HOST,
     #     	               user = secret.SQL_USER,
@@ -317,35 +317,43 @@ def main():
     #                    	   db = secret.SQL_DB
 	# )
 
-    cursor = conn.cursor()
-    cursor.execute("""SELECT likes FROM post WHERE post_id = %s;""" % idd)
-    results = cursor.fetchall()
-
-    usrResult = [utuple[0] for utuple in results]
+ 
     
     user = usrResult[0]
 
     if "cmbtn" in form:
         print("""<body onLoad="location.href='comment.py'"></body>""")
-    if "disbtn" in form:
-        user = user - 1
-        #form["disbtn"] = ""
-       
 
 
-    if "likeBtn" in form:
-        user = user + 1
-       
-        #form["likeBtn"] = ""
+    if "disbtn" in form or "likeBtn" in form:
 
-    
-    cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
+        idd =  int(form["pname"].value)
+        cursor = conn.cursor()
+        cursor.execute("""SELECT likes FROM post WHERE post_id = %s;""" % idd)
+        results = cursor.fetchall()
+
+        usrResult = [utuple[0] for utuple in results]
+
+        if "disbtn" in form:
+        
+            user = user - 1
+            #form["disbtn"] = ""
+        
+
+
+        if "likeBtn" in form:
+            user = user + 1
+        
+            #form["likeBtn"] = ""
+
+        
+        cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
+
+    # del form["likeBtn"]
+    # del form["disbtn"]
     cursor.close()
     conn.commit()
     conn.close()
-    # del form["likeBtn"]
-    # del form["disbtn"]
-    
 
     #loginDiv()
     #registerDiv()
