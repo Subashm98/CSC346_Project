@@ -306,7 +306,7 @@ def main():
 
     userImg = userR[0]
     hNavBar(user, userImg)
-    printPost(cursor, userR)
+    # printPost(cursor, userR)
     #loginDiv()
     #registerDiv()
     print("</body>")
