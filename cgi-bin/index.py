@@ -228,7 +228,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                     %s , by: %s
                 </div>
                 <div class="box-row"> 
-                    <form method="GET">
+                    <form method="POST">
                         <input type = "hidden" name = "pname" value = \"%s\"></input>
                         
                         <div class="box-cell box1"> 
@@ -329,14 +329,19 @@ def main():
         print("""<body onLoad="location.href='comment.py'"></body>""")
     if "disbtn" in form:
         user = user - 1
+        form["disbtn"] = ""
 
     if "likeBtn" in form:
         user = user + 1
+        form["likeBtn"] = ""
+
     
     cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
     cursor.close()
     conn.commit()
     conn.close()
+
+    
 
     #loginDiv()
     #registerDiv()
