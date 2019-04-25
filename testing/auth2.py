@@ -154,7 +154,10 @@ def main():
         try:
                 create_database(conn)
 	except Exception as e:
+                print("hey")
                 print (e)
+
+        print("hello")
 	#cursor = conn.cursor()
 	## loggin in
 	#if(form.getvalue("uname") and form.getvalue("psw")):
