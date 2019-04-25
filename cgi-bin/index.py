@@ -214,7 +214,6 @@ def hNavBar(user, imgSrc):
 
 def showPost(idd, title,op,cont,likes,imgSrc):
     imgSize = "80%"
-    imgSize2 = "70%"
     print("""
     <br>
     <br>
@@ -240,7 +239,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                         <div class="box-cell box2"> 
                             %s 
                             <br>
-                            <img src="%s" width="%s">
+                            <img src="%s" width="%s" onerror="this.style.display='none'>
                                
                         </div>
                     </form>
