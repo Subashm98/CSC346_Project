@@ -264,7 +264,7 @@ def printPost(cursor):
     results = cursor.fetchall()
 
     for post in results:
-         showPost(post[0],post[1], post[2], post[3], post[4],"http://image.noelshack.com/fichiers/2014/38/1410967177-dragonballzgif-0.gif")
+         showPost(post[0],post[1], post[2], post[3], post[5], post[4])
 
     print("""</div>""")
 
@@ -292,9 +292,14 @@ def main():
     results = cursor.fetchall()
     
     usrResult = [utuple[0] for utuple in results]
-    
     user = usrResult[0]
-    hNavBar(user, "http://vvvvw.neocities.org/lwh_marrs_naruto.gif")
+
+    cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
+    userInfo = cursor.fetchall()
+    userR    = [utuple[0] for utuple in userInfo]
+
+    userImg = userR[0]
+    hNavBar(user, userImg)
     printPost(cursor)
     #loginDiv()
     #registerDiv()

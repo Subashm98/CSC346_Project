@@ -329,11 +329,14 @@ def main():
 
     titl = form["newpost_title"].value
     content = form["newpost_content"].value
-    imgURL = form["newpost_image"].value
+    
+    postImg = ""
+    if "newpost_image" in form:
+        postImg = form["newpost_image"].value
 
-    cursor.execute("""INSERT INTO post (title,user_name,msg_as_html,likes)
-						VALUES (%s,%s,%s,%s);""",
-						(titl, user, content, 0))
+    cursor.execute("""INSERT INTO post (title,user_name,msg_as_html,postImage,likes)
+						VALUES (%s,%s,%s,%s, %s);""",
+						(titl, user, content, postImg, 0))
 
     cursor.close()
     conn.commit()
