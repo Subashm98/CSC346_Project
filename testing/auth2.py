@@ -18,78 +18,77 @@ from secret import secret
 
 
 
-#def create_database(conn):
-#	user_tbl = 'user'
-#	post_tbl = 'post'
-#	comment_tbl = 'comment'
-#	#sesh_tbl = 'sesh'
-#	session_tbl = 'session'
-#
-#	cursor = conn.cursor()
-#	cursor.execute("""SHOW TABLES;""")
-#	results = cursor.fetchall()
-#
-#	all_tables = [tabletuple[0] for tabletuple in results]
-#	
-#	if (user_tbl not in all_tables):
-#		cursor.execute("""CREATE TABLE user (
-#						  user_name	VARCHAR (30) NOT NULL,
-#						  full_name	VARCHAR (30) NOT NULL,
-#						  password	VARCHAR (30) NOT NULL,
-#						  gender	VARCHAR (7)  NOT NULL,
-#						  email		VARCHAR (30) NOT NULL UNIQUE,
-#						  phone	    VARCHAR (12) NOT NULL,
-#						  userImg   VARCHAR (256),
-#						  CONSTRAINT PK_USER PRIMARY KEY (user_name)
-#						  );
-#						  """)
-#
-#	if (post_tbl not in all_tables):
-#		cursor.execute("""CREATE TABLE post (
-#						  post_id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
-#						  title			VARCHAR (30) NOT NULL,
-#						  user_name		VARCHAR (30) NOT NULL,
-#						  msg_as_html	VARCHAR (256) NOT NULL,
-#						  postImage     VARCHAR (256) NOT NULL,
-#						  likes			INT	UNSIGNED NOT NULL,
-#						  CONSTRAINT PK_POST PRIMARY KEY (post_id),
-#						  CONSTRAINT FK_USER_POST FOREIGN KEY (user_name) REFERENCES user (user_name)
-#						  );
-#						  """)
-#
-#	if (comment_tbl not in all_tables):
-#		cursor.execute("""CREATE TABLE comment (
-#						comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT,
-#						post_id		INT UNSIGNED NOT NULL,
-#						user_name	VARCHAR (30) NOT NULL,
-#						msg_as_html	VARCHAR (256) NOT NULL,
-#						CONSTRAINT PK_COMMENT PRIMARY KEY (comment_id),
-#						CONSTRAINT FK_COMMENT_POST FOREIGN KEY (post_id) REFERENCES post (post_id),
-#						CONSTRAINT FK_COMMENT_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
-#						);
-#						""")
-#
-#	#if (sesh_tbl not in all_tables):
-#	#	cursor.execute("""CREATE TABLE sesh (
-#	#					server_ip	VARCHAR (30) NOT NULL,
-#	#					user_name	VARCHAR (30) NOT NULL,
-#	#					CONSTRAINT PK_SESH PRIMARY KEY (server_ip),
-	#					CONSTRAINT FK_SESH_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
-#	#					);
-#	#					""")
-#
-#	if (session_tbl not in all_tables):
-#		cursor.execute("""CREATE TABLE session (
-#						sessionID	VARCHAR (30) NOT NULL,
-#						user_name	VARCHAR (30) NOT NULL,
-#						CONSTRAINT PK_SESSION PRIMARY KEY (sessionID),
-#						CONSTRAINT FK_SESSION_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
-#						);
-#						""")
+def create_database(conn):
+	user_tbl = 'user'
+	post_tbl = 'post'
+	comment_tbl = 'comment'
+	#sesh_tbl = 'sesh'
+	session_tbl = 'session'
 
-#	cursor.close()
-#
-#
+	cursor = conn.cursor()
+	cursor.execute("""SHOW TABLES;""")
+	results = cursor.fetchall()
+
+	all_tables = [tabletuple[0] for tabletuple in results]
+	
+	if (user_tbl not in all_tables):
+		cursor.execute("""CREATE TABLE user (
+						  user_name	VARCHAR (30) NOT NULL,
+						  full_name	VARCHAR (30) NOT NULL,
+						  password	VARCHAR (30) NOT NULL,
+						  gender	VARCHAR (7)  NOT NULL,
+						  email		VARCHAR (30) NOT NULL UNIQUE,
+						  phone	    VARCHAR (12) NOT NULL,
+						  userImg   VARCHAR (256),
+						  CONSTRAINT PK_USER PRIMARY KEY (user_name)
+						  );
+						  """)
+
+	if (post_tbl not in all_tables):
+		cursor.execute("""CREATE TABLE post (
+						  post_id		INT UNSIGNED NOT NULL AUTO_INCREMENT,
+						  title			VARCHAR (30) NOT NULL,
+						  user_name		VARCHAR (30) NOT NULL,
+						  msg_as_html	VARCHAR (256) NOT NULL,
+						  postImage     VARCHAR (256) NOT NULL,
+						  likes			INT	UNSIGNED NOT NULL,
+						  CONSTRAINT PK_POST PRIMARY KEY (post_id),
+						  CONSTRAINT FK_USER_POST FOREIGN KEY (user_name) REFERENCES user (user_name)
+						  );
+						  """)
+
+	if (comment_tbl not in all_tables):
+		cursor.execute("""CREATE TABLE comment (
+						comment_id	INT UNSIGNED NOT NULL AUTO_INCREMENT,
+						post_id		INT UNSIGNED NOT NULL,
+						user_name	VARCHAR (30) NOT NULL,
+						msg_as_html	VARCHAR (256) NOT NULL,
+						CONSTRAINT PK_COMMENT PRIMARY KEY (comment_id),
+						CONSTRAINT FK_COMMENT_POST FOREIGN KEY (post_id) REFERENCES post (post_id),
+						CONSTRAINT FK_COMMENT_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
+						);
+						""")
+
+	#if (sesh_tbl not in all_tables):
+	#	cursor.execute("""CREATE TABLE sesh (
+	#					server_ip	VARCHAR (30) NOT NULL,
+	#					user_name	VARCHAR (30) NOT NULL,
+	#					CONSTRAINT PK_SESH PRIMARY KEY (server_ip),
+	#				CONSTRAINT FK_SESH_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
+	#					);
+	#					""")
+
+	if (session_tbl not in all_tables):
+		cursor.execute("""CREATE TABLE session (
+						sessionID	VARCHAR (30) NOT NULL,
+						user_name	VARCHAR (30) NOT NULL,
+						CONSTRAINT PK_SESSION PRIMARY KEY (sessionID),
+						CONSTRAINT FK_SESSION_USER FOREIGN KEY (user_name) REFERENCES user (user_name)
+						);
+						""")
+	cursor.close()
+
+
 #def pHash(password):
 #	#To be Implemented
 #	return password
@@ -153,7 +152,7 @@ def main():
                                        passwd = secret.SQL_PASSWD,
                                    db = secret.SQL_DB)
 
-	#create_database(conn)
+	create_database(conn)
 	#cursor = conn.cursor()
 	## loggin in
 	#if(form.getvalue("uname") and form.getvalue("psw")):
