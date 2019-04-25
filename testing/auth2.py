@@ -89,35 +89,35 @@ def create_database(conn):
 	cursor.close()
 
 
-#def pHash(password):
-#	#To be Implemented
-#	return password
-#
-#
-#
-#def gotoPage(pageName):
-#	print("""<body onLoad="location.href='%s'"></body>""" % pageName)
-#
-#
-#
-#def delayPage(sec, pageName):
-#	threading.Timer(sec, gotoPage, [pageName]).start()
-#
-#
-## Changed update_user to addSession
-#def addSession(cursor, conn, user, token):
-#        try:
-#                cursor.execute("""INSERT INTO session (sessionID, user_name)
-#                                        VALUES (%s,%s);""",
-#                                        (token, user))
-#        except:
-#                #On the offchance that a token is repeated, delete the original and go back go login page
-#                conn.rollback()
-#                cursor.execute("""DELETE FROM session WHERE sessionID = '%s';""" % token)
-#                cursor.close()
-#                conn.commit()
-#                conn.close()
-#                print("""<body onLoad="location.href='./loginPage.py'"></body>""")
+def pHash(password):
+	#To be Implemented
+	return password
+
+
+
+def gotoPage(pageName):
+	print("""<body onLoad="location.href='%s'"></body>""" % pageName)
+
+
+
+def delayPage(sec, pageName):
+	threading.Timer(sec, gotoPage, [pageName]).start()
+
+
+#Changed update_user to addSession
+def addSession(cursor, conn, user, token):
+        try:
+                cursor.execute("""INSERT INTO session (sessionID, user_name)
+                                        VALUES (%s,%s);""",
+                                        (token, user))
+        except:
+                #On the offchance that a token is repeated, delete the original and go back go login page
+                conn.rollback()
+                cursor.execute("""DELETE FROM session WHERE sessionID = '%s';""" % token)
+                cursor.close()
+                conn.commit()
+                conn.close()
+                print("""<body onLoad="location.href='./loginPage.py'"></body>""")
 #            
 
 #def update_user(cursor, user):
@@ -155,7 +155,7 @@ def main():
 	
 	cursor = conn.cursor()
 	## loggin in
-	if(form.getvalue("uname") and form.getvalue("psw")):
+        if(form.getvalue("uname") and form.getvalue("psw")):
 		cursor.execute("""SELECT password FROM user WHERE user_name = \"%s\";""" % form["uname"].value)
 		results = cursor.fetchall()
 
