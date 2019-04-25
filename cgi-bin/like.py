@@ -42,6 +42,9 @@ def main():
     if "likeBtn" in form:
         user = user + 1
 
+    if "cmbtn" in form:
+        print("""<body onLoad="location.href='index.py'"></body>""")
+
     cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
     cursor.close()
     conn.commit()
