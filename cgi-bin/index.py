@@ -342,8 +342,8 @@ def main():
         
         cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
 
-    # del form["likeBtn"]
-    # del form["disbtn"]
+        del form["likeBtn"]
+        del form["disbtn"]
     cursor.close()
     conn.commit()
     conn.close()
