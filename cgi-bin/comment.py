@@ -281,7 +281,7 @@ def main():
     print("<html>")
     print("<head>")
     print("<title>Discourse</title>")
-    style()
+    #style()
     print("</head>")
     print("<body>")
 
@@ -304,7 +304,7 @@ def main():
     userInfo = cursor.fetchall()
     userR    = [utuple[0] for utuple in userInfo]
 
-    userImg = userR[0]
+    #userImg = userR[0]
     #hNavBar(user, userImg)
     # printPost(cursor, userR)
     #loginDiv()
