@@ -127,7 +127,7 @@ def style():
         .btn{
             border-radius: 5px;
             line-height: 20px;
-            width: 60px;
+            width: 70px;
             padding:2px;
             transition: all 0.4s ease;
             cursor: pointer;
