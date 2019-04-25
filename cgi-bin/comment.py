@@ -263,8 +263,8 @@ def printPost(cursor,user):
     """)
     # for i in range(10):
     # 	showPost("title %s " % i,"user", " content %s " % i, i)
-
-    cursor.execute("""SELECT * FROM post WHERE user_name = "%s";"""%user)
+    print("""<h1>%s<h1>"""%user) 
+    cursor.execute("""SELECT * FROM post WHERE user_name = \"%s\";"""%user)
     results = cursor.fetchall()
 
     for post in results:
