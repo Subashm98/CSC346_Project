@@ -264,7 +264,7 @@ def printPost(cursor):
     results = cursor.fetchall()
 
     for post in results:
-         showPost(post[0],post[1], post[2], post[3], post[5],post[4])
+         showPost(post[0],post[1], post[2], post[3], post[5], post[4])
 
     print("""</div>""")
 
