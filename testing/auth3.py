@@ -8,8 +8,10 @@ cgitb.enable()
 #from passlib.hash import pbkdf2_sha256
 
 import threading
+import time
 
 import os
+import sys
 
 from http import cookies
 import secrets
@@ -22,7 +24,7 @@ def create_database(conn):
 	user_tbl = 'user'
 	post_tbl = 'post'
 	comment_tbl = 'comment'
-	#sesh_tbl = 'sesh'
+	sesh_tbl = 'sesh'
 	session_tbl = 'session'
 
 	cursor = conn.cursor()
@@ -98,14 +100,15 @@ def pHash(password):
 
 def gotoPage(pageName):
 	print("""<body onLoad="location.href='%s'"></body>""" % pageName)
-
+	sys.exit(0)
 
 
 def delayPage(sec, pageName):
 	threading.Timer(sec, gotoPage, [pageName]).start()
 
 
-def update_user(cursor, user):
+def update_user(cursor, user, token):
+	# Code for IP
 	ip = os.environ["SERVER_ADDR"]
 	try:
 		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
@@ -116,10 +119,25 @@ def update_user(cursor, user):
 		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
 					VALUES (%s,%s);""",
 					(str(ip), user))
+
+	# Code for cookies
+	cursor.execute("""INSERT INTO session (sessionID, user_name)
+					VALUES (%s,%s);""",
+					(token, user))
 		
+
+def createCookie():
+	cookie =  cookies.SimpleCookie()
+	token = secrets.token_hex(15)
+	cookie["session"] = token
+	print(cookie)
+	return token
 
 
 def main():
+	token = createCookie()
+	print()
+	
 	form = cgi.FieldStorage()
 
 	conn = MySQLdb.connect(host = secret.SQL_HOST,
@@ -130,32 +148,68 @@ def main():
 
 	create_database(conn)
 	cursor = conn.cursor()
-	# loggin in
+
+
+	# Check if a session already exists with the current token, delete the session and reload login page if so
+	cursor.execute("""SELECT sessionID FROM session;""")
+	results = cursor.fetchall()
+	
+	tokenResults = [tok[0] for tok in results]
+	
+	if (token in tokenResults):
+		cursor.execute("""DELETE FROM session WHERE sessionID = '%s'""" % token)
+		conn.commit()
+		cursor.close()
+		conn.close()
+		print("<h1>DUPLICATE TOKEN DETECTED, REDIRECTING BACK TO LOGIN PAGE</h1>")
+		delayPage(5, "loginPage2.py")
+		return
+
+
+	# User Login
 	if(form.getvalue("uname") and form.getvalue("psw")):
 		cursor.execute("""SELECT password FROM user WHERE user_name = \"%s\";""" % form["uname"].value)
 		results = cursor.fetchall()
 
 		pwdResult = [ptuple[0] for ptuple in results]
 
-		try:
-			if(form["psw"].value == pwdResult[0]):
-				update_user(cursor, form["uname"].value)
-				conn.commit()
-
-				cursor.close()
-				conn.close()
-				
-				gotoPage("index.py")
-			else:
-				print("<h1>Bad Login, redirecting back to login page...</h1>")
-				delayPage(2, "loginPage2.py")
-
-		except:
+		# Username does not exist
+		if (len(pwdResult) == 0):
 			cursor.close()
 			conn.close()
 			
 			print("<h1>Bad Login, redirecting back to login page...</h1>")
 			delayPage(2, "loginPage2.py")
+			return
+			
+
+		#try:
+		# Password is correct
+		if(form["psw"].value == pwdResult[0]):
+			update_user(cursor, form["uname"].value, token)
+			conn.commit()
+
+			cursor.close()
+			conn.close()
+				
+			#gotoPage("index.py")
+			gotoPage("testPage2.py")
+			return
+
+		# Password doesn't match with username
+		else:
+			cursor.close()
+			conn.close()
+			
+			print("<h1>Bad Login, redirecting back to login page...</h1>")
+			delayPage(2, "loginPage2.py")
+
+		#except:
+		#	cursor.close()
+		#	conn.close()
+		#	
+		#	print("<h1>Bad Login, redirecting back to login page...</h1>")
+		#	delayPage(2, "loginPage2.py")
 
 	# registering a new user
 	else: 
@@ -173,12 +227,14 @@ def main():
 							pHash(form["password"].value), form["gender"].value,
 							form["email"].value, form["phone"].value, userImg))
 			
-			update_user(cursor, form["user_name"].value)
+			update_user(cursor, form["user_name"].value, token)
 			cursor.close()
 			conn.commit()
 			conn.close()
 
-			gotoPage("index.py")
+			#gotoPage("index.py")
+			gotoPage("testPage2.py")
+			return
 			
 		except Exception as e:
 			print(e)
@@ -191,5 +247,4 @@ def main():
 
 
 print("Content-Type:text/html")
-print()
 main()
