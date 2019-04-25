@@ -294,7 +294,8 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     
     user = usrResult[0]
-    hNavBar(user, "http://vvvvw.neocities.org/lwh_marrs_naruto.gif")
+    userImg = usrResult[6]
+    hNavBar(user, userImg)
     printPost(cursor)
     #loginDiv()
     #registerDiv()
