@@ -239,7 +239,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                         <div class="box-cell box2"> 
                             %s 
                             <br>
-                            <img src="%s" width="500px">
+                            <img src="%s" max-width="300px">
                             %s   
                         </div>
                     </form>
