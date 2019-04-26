@@ -185,6 +185,20 @@ def style():
                 display: block;
                 /*margin: 5px;*/
         }
+
+        .input--style-5{
+            float:right;
+            line-height: 35px;
+            background: #d2d4cb;
+            height: 45px;
+            width: 530px;
+            box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+            border-radius: 5px;
+            padding: 0 20px;
+            font-size: 16px;
+            color: #666;
+            transition: all 0.4s ease;
+        }
         </style>
         
         """)
@@ -244,11 +258,13 @@ def showPost(idd, title,op,cont,likes,imgSrc, postId):
                         </div>
 
                     </form>
-                         <form method="POST" action="addComment.py">
+                         <form method="POST" action="comment.py">
                             <input type = "hidden" name = "post_id" value = \"%s\"></input> 
                             <div class="box-cell box1"> 
                                 <button class="btn" type="submit" name="addC" i value="addC">Add Comment</button>
+                                 <textarea class="input--style-5" type="text" name="comment"  required></textarea>
                             </div>
+                        </div>
                         </form>
 
 
@@ -307,7 +323,7 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     user = usrResult[0]
     postId = form["post_id"].value
-    #print("""<h1><><><><><><><>><>>>%s</h1>"""%postId) 
+    
     cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
     userInfo = cursor.fetchall()
     userR    = [utuple[0] for utuple in userInfo]
@@ -315,8 +331,20 @@ def main():
     userImg = userR[0]
     hNavBar(user, userImg)
     printPost(cursor, postId)
-    #loginDiv()
-    #registerDiv()
+
+
+    if "comment" in form:
+        comment = form["comment"].value
+        cursor.execute("""INSERT INTO comment (post_id,user_name,msg_as_html)
+                            VALUES (%s,%s,%s);""",
+                            (postId,user, comment))
+   
+    cursor.close()
+    conn.commit()
+    conn.close()
+    
+
+
     print("</body>")
     print("</html>")
 

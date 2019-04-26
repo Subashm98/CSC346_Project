@@ -229,7 +229,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                 </div>
                 <div class="box-row"> 
                     <form method="POST" action="like.py">
-                        <input type = "hidden" name = "pname" value = \"%s\"></input>
+                        <input type = "hidden" name = "post_id" value = \"%s\"></input>
                         
                         <div class="box-cell box1"> 
                                 <label class="label">Likes:%s</label>
