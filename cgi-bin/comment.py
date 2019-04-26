@@ -242,11 +242,12 @@ def showPost(idd, title,op,cont,likes,imgSrc, postId):
                             <img src="%s" width="%s">
                                
                         </div>
+                        <form method="POST" action="addComment.py">
+                            <input type = "hidden" name = "post_id" value = \"%s\"></input> 
+                            <button class="btn" type="submit" name="addC" i value="addC">Add Comment</button>
+                        </form>
                     </form>
-                    <form method="POST" action="addComment.py">
-                        <input type = "hidden" name = "post_id" value = \"%s\"></input> 
-                        <button class="btn" type="submit" name="addC" i value="addC">Add Comment</button>
-                    </form>
+
 
                 </div>                 
             </div> 
