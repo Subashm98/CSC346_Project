@@ -308,10 +308,7 @@ def showComment(userName, cm):
                 </div>
                 <div class="box-row">                        
                         <div class="box-cell box1"> 
-                                <label class="label">Likes:%s</label>
-                                <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
-                                <br>
-                                <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>
+                                <label class="label">%s</label>
                         </div> 
                 </div>                 
             </div> 
@@ -378,7 +375,7 @@ def main():
     userImg = userR[0]
     hNavBar(user, userImg)
     printPost(cursor, postId)
-    printComment(cursor,postId)
+    
 
     if "comment" in form:
         comment = form["comment"].value
@@ -387,6 +384,7 @@ def main():
                             (postId,user, comment))
    
     
+    printComment(cursor,postId)
 
     cursor.close()
     conn.commit()
