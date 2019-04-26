@@ -338,7 +338,8 @@ def main():
         cursor.execute("""INSERT INTO comment (post_id,user_name,msg_as_html)
                             VALUES (%s,%s,%s);""",
                             (postId,user, comment))
-        print("""<body onLoad="location.href='comment.py'"></body>""")
+        stamt = ("""<body onLoad="location.href='comment.py?post_id=%s></body>"""%postId)
+        print(stamt)
 
 
     cursor.close()
