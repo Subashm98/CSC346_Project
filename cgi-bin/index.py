@@ -235,10 +235,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                                 <label class="label">Likes:%s</label>
                                 <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
                                 <br>
-                                <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>
-                                <br>
-                                <br>
-                                <button class="btn" type="submit" name="cmbtn" value="comment">Comments</button>    
+                                <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>   
                         </div> 
                         <div class="box-cell box2"> 
                             %s
@@ -252,8 +249,6 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                         <input type = "hidden" name = "pname" value = \"%s\"></input>
                         
                         <div class="box-cell box1"> 
-                                <br>
-                                <br>
                                 <button class="btn" type="submit" name="cmbtn" value="comment">Comments</button>    
                         </div> 
                     </form>
