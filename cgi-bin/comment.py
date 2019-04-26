@@ -341,7 +341,7 @@ def main():
         stamt = ("""<body onLoad="location.href='comment.py?post_id=%s></body>"""%postId)
         print(stamt)
 
-
+    del form["comment"]
     cursor.close()
     conn.commit()
     conn.close()
