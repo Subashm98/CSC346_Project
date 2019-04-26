@@ -198,7 +198,7 @@ def hNavBar(post_id,user, imgSrc):
                             <li id = "navLeft"><a href="index.py">Home</a></li>
                             <li id = "navLeft"> <form method="POST" action="addComment.py">
                                                      <input type = "hidden" name = "post_id" value = \"%s\"></input> 
-                                                     <button type="submit" name="addC" value="addC">Add Comment</button>
+                                                     <button type="submit" name="addC" id = "navLeft" value="addC">Add Comment</button>
                                                 </form>
                             </li>
                             <li id = "navRight"><img id = "userImg" src="%s"></li>
