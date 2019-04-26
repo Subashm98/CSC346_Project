@@ -229,7 +229,7 @@ def style():
     </style>
     """)
 
-def newpostDiv():
+def newCommentDiv():
     print("""
     <br>
     <br>
@@ -258,14 +258,14 @@ def newpostDiv():
     <br>
     """)
 
-def addNewpost():
+def addNewComment():
     print("""
     <br>
     <br>
     <div class="page-wrapper bg-gra-02 font-poppins"> 
     """)
 
-    newpostDiv()
+    newCommentDiv()
 
     print("""</div>""")
 
@@ -278,7 +278,7 @@ def main():
     print("</head>")
     print("<body>")
     try:
-        addNewpost()
+        addNewComment()
     except Exception as e:
         print(e)
     print("</body>")
@@ -287,6 +287,7 @@ def main():
     form = cgi.FieldStorage()
 
     ip = str(os.environ["SERVER_ADDR"])
+   
 
     conn = MySQLdb.connect(host = secret.SQL_HOST,
         	               user = secret.SQL_USER,
@@ -301,13 +302,10 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     user = usrResult[0]
     
-
-    comment = form["comment"].value
     postId  = form["post_id"].value
-    # content = form["newpost_content"].value
+    print("""<h1>%s</h1>"""%postId)
+    comment = form["comment"].value
     
-   
-
     cursor.execute("""INSERT INTO comment (post_id,user_name,msg_as_html)
 						VALUES (%s,%s,%s,%s);""",
 						(postId,user, comment))
@@ -315,8 +313,7 @@ def main():
     cursor.close()
     conn.commit()
     conn.close()
-
-    #print("""<h1>ImgUrl = %s<h1>"""%imgURL)
+    
     print("""<body onLoad="location.href='comment.py'"></body>""")
 
 print("Content-Type: text/html;charset=utf-8")
