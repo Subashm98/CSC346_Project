@@ -151,7 +151,7 @@ def main():
 
 
 	# Check if a session already exists with the current token, delete the session and reload login page if so
-	cursor.execute("""SELECT sessionID FROM session;""")
+	cursor.execute("""SELECT sessionID FROM session WHERE sessionID = '%s';""" % token)
 	results = cursor.fetchall()
 	
 	tokenResults = [tok[0] for tok in results]

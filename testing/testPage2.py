@@ -20,6 +20,11 @@ def main():
 		print(e)
 		print("cookie not set")
 
+	if ("HTTP_COOKIE" not in os.environ):
+		print("cookie not set 2")
+	else:
+		print("cookie set!!!")
+
 	print("""<a href="./testPage3.py">TP3</a>""")
 
 print("Content-Type: text/html")
