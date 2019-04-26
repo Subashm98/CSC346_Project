@@ -277,10 +277,6 @@ def main():
     style()
     print("</head>")
     print("<body>")
-
-    form = cgi.FieldStorage()
-    postId  = form["post_id"].value
-
     try:
         addNewComment()
     except Exception as e:
@@ -288,7 +284,7 @@ def main():
     print("</body>")
     print("</html>")
 
-    
+    form = cgi.FieldStorage()
 
     ip = str(os.environ["SERVER_ADDR"])
    
@@ -306,7 +302,7 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     user = usrResult[0]
     
-    
+    postId  = form["post_id"].value
     #print("""<h1>%s</h1>"""%postId)
     comment = form["comment"].value
     
