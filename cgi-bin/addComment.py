@@ -303,10 +303,12 @@ def main():
     user = usrResult[0]
     
     postId  = form["post_id"].value
-    print("""<h1>%s</h1>"""%postId)
-    comment = form["comment"].value
+    #print("""<h1>%s</h1>"""%postId)
+    comment = ""
+    if "comment" in form:
+        commet = form["comment"].value
     
-    cursor.execute("""INSERT INTO comment (post_id,user_name,msg_as_html)
+        cursor.execute("""INSERT INTO comment (post_id,user_name,msg_as_html)
 						VALUES (%s,%s,%s,%s);""",
 						(postId,user, comment))
 
