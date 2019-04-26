@@ -200,6 +200,7 @@ def hNavBar(post_id,user, imgSrc):
                                                      <input type = "hidden" name = "post_id" value = \"%s\"></input> 
                                                      <button type="submit" name="addC" value="addC">Add Comment</button>
                                                 </form>
+                            </li>
                             <li id = "navRight"><img id = "userImg" src="%s"></li>
                                        
                              <li id = "navRight">
