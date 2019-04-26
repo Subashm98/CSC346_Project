@@ -247,7 +247,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                     </form>
                     <form method="POST" action="comment.py">
                         <input type = "hidden" name = "post_id" value = \"%s\"></input>
-                        <input type = "hidden" name = "pname" value = \"%s\"></input>
+                        <input type = "hidden" name = "user_name" value = \"%s\"></input>
                         <div class="box-cell box1"> 
                                 <button class="btn" type="submit" name="cmbtn" value="comment">Comments</button>    
                         </div> 
@@ -260,7 +260,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
         
     </div>
     <br>   
-    """%(title,op, idd, likes, cont, imgSrc, imgWidth,idd))
+    """%(title,op, idd, likes, cont, imgSrc, imgWidth,idd,op))
 
 def printPost(cursor):
     print("""
