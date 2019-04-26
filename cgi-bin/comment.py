@@ -300,7 +300,7 @@ def main():
     user = usrResult[0]
 
 
-    postId = form["pname"].value
+    postId = form["post_id"].value
     print("""<h1><><><><><><><>><>>>%s</h1>"""%postId) 
     cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
     userInfo = cursor.fetchall()
