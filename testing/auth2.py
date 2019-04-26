@@ -118,8 +118,7 @@ def addSession(cursor, conn, user, token):
                 conn.commit()
                 conn.close()
                 print("""<body onLoad="location.href='./loginPage.py'"></body>""")
-#            
-
+                
 #def update_user(cursor, user):
 #	ip = os.environ["SERVER_ADDR"]
 #	try:
