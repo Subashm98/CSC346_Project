@@ -302,7 +302,8 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     user = usrResult[0]
     
-    postId  = form["post_id"].value
+    #postId  = form["post_id"].value
+    postId   = 1
     #print("""<h1>%s</h1>"""%postId)
     comment = form["comment"].value
     
