@@ -196,7 +196,7 @@ def style():
             padding: 0 20px;
             font-size: 16px;
             margin-left: 30px;
-            margin-top: 25px;
+            margin-top: 10px;
             color: #666;
             transition: all 0.4s ease;
         }
