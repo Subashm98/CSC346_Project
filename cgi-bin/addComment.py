@@ -164,18 +164,6 @@ def style():
             font-family: inherit;
         }
         
-        .input--style-4 {
-            line-height: 30px;
-            background: #d2d4cb;
-        
-            box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
-        
-            border-radius: 5px;
-            padding: 0 20px;
-            font-size: 16px;
-            color: #666;
-            transition: all 0.4s ease;
-        }
         .input--style-5 {
             line-height: 35px;
             background: #d2d4cb;
@@ -250,6 +238,7 @@ def newpostDiv():
             <div class="card-body">
                 <h2 class="title">Add a Comment<h2>
                 <form method="POST">
+                <div class="col-2">
                     <div class="row row-space">
                         <div class="input-group">
                                 <label class="label">Comment</label>
@@ -258,6 +247,7 @@ def newpostDiv():
                                 </div>
                         </div>
                     </div>
+                <div>
                     <div class="p-t-15">
                         <button class="btn btn--radius-2 btn--blue" type="submit">Add Comment</button>
                     </div>
