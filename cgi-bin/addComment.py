@@ -308,7 +308,7 @@ def main():
     comment = form["comment"].value
     
     cursor.execute("""INSERT INTO comment (post_id,user_name,msg_as_html)
-						VALUES (%s,%s,%s,%s);""",
+						VALUES (%s,%s,%s);""",
 						(postId,user, comment))
 
     cursor.close()
