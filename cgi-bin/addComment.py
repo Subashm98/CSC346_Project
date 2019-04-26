@@ -229,7 +229,7 @@ def style():
     </style>
     """)
 
-def newCommentDiv():
+def newCommentDiv(postId):
     print("""
     <br>
     <br>
@@ -238,6 +238,7 @@ def newCommentDiv():
             <div class="card-body">
                 <h2 class="title">Add a Comment<h2>
                 <form method="POST">
+                <input type = "hidden" name = "post_id" value = \"%s\"></input>
                 <div class="col-2">
                     <div class="row row-space">
                         <div class="input-group">
@@ -256,21 +257,23 @@ def newCommentDiv():
         </div>
     </div>
     <br>
-    """)
+    """%postId)
 
-def addNewComment():
+def addNewComment(postId):
     print("""
     <br>
     <br>
     <div class="page-wrapper bg-gra-02 font-poppins"> 
     """)
 
-    newCommentDiv()
+    newCommentDiv(postId)
 
     print("""</div>""")
 
 
 def main():
+    form = cgi.FieldStorage()
+    postId  = form["post_id"].value
     print("<html>")
     print("<head>")
     print("<title>Discourse</title>")
@@ -278,13 +281,13 @@ def main():
     print("</head>")
     print("<body>")
     try:
-        addNewComment()
+        addNewComment(postId)
     except Exception as e:
         print(e)
     print("</body>")
     print("</html>")
 
-    form = cgi.FieldStorage()
+    
 
     ip = str(os.environ["SERVER_ADDR"])
    
@@ -302,7 +305,7 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     user = usrResult[0]
     
-    postId  = form["post_id"].value
+    
     
     #print("""<h1>%s</h1>"""%postId)
     if "comment" in form:

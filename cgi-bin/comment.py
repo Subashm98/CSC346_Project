@@ -306,9 +306,7 @@ def main():
     
     usrResult = [utuple[0] for utuple in results]
     user = usrResult[0]
-    postId =0
-    if "post_id" in form:
-        postId = form["post_id"].value
+    postId = form["post_id"].value
     #print("""<h1><><><><><><><>><>>>%s</h1>"""%postId) 
     cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
     userInfo = cursor.fetchall()
