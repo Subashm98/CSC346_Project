@@ -244,11 +244,18 @@ def showPost(idd, title,op,cont,likes,imgSrc, postId):
                         </div>
 
                     </form>
-                         <form method="POST" action="addComment.py">
+                         <form method="POST">
                             <input type = "hidden" name = "post_id" value = \"%s\"></input> 
                             <div class="box-cell box1"> 
                                 <button class="btn" type="submit" name="addC" i value="addC">Add Comment</button>
                             </div>
+
+                            <div class="input-group">
+                                <label class="label">Comment</label>
+                                <div class="input-group-icon">
+                                    <textarea class="input--style-5" type="text" name="comment"  required></textarea>
+                            </div>
+                        </div>
                         </form>
 
 
@@ -315,8 +322,8 @@ def main():
     userImg = userR[0]
     hNavBar(user, userImg)
     printPost(cursor, postId)
-    #loginDiv()
-    #registerDiv()
+
+
     print("</body>")
     print("</html>")
 
