@@ -302,10 +302,11 @@ def main():
     usrResult = [utuple[0] for utuple in results]
     user = usrResult[0]
     
-    postId  = form["post_id"].value
+    
     #print("""<h1>%s</h1>"""%postId)
     
     if "comment" in form:
+        postId  = form["post_id"].value
         comment = form["comment"].value
         cursor.execute("""INSERT INTO comment (post_id,user_name,msg_as_html)
                             VALUES (%s,%s,%s,%s);""",
