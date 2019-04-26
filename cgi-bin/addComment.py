@@ -314,11 +314,14 @@ def main():
                             VALUES (%s,%s,%s);""",
                             (postId,user, comment))
 
+        cursor.close()
+        conn.commit()
+        conn.close()
+        
+        print("""<body onLoad="location.href='comment.py'"></body>""")
     cursor.close()
     conn.commit()
     conn.close()
-    
-    print("""<body onLoad="location.href='comment.py'"></body>""")
 
 print("Content-Type: text/html;charset=utf-8")
 print()
