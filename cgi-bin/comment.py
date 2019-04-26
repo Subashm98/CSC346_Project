@@ -264,7 +264,7 @@ def printPost(cursor, postId):
     # for i in range(10):
     # 	showPost("title %s " % i,"user", " content %s " % i, i)
     #print("""<h1>%s<h1>"""%user) 
-    cursor.execute("""SELECT * FROM post WHERE postId = %s;"""%postId)
+    cursor.execute("""SELECT * FROM post WHERE post_id = %s;"""%postId)
     results = cursor.fetchall()
 
     for post in results:
