@@ -22,7 +22,7 @@ def main():
     # if "likeBtn" in form:
     #     print("<><><><><><><><><><><><><><>Like button was clicked<><<><><><><><><><><><><>")
 
-    idd = int(form["pname"].value)
+    idd = int(form["post_id"].value)
 
     conn = MySQLdb.connect(host = secret.SQL_HOST,
         	               user = secret.SQL_USER,
