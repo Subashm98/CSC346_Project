@@ -237,8 +237,7 @@ def newCommentDiv(postId):
         <div class="card card-4">
             <div class="card-body">
                 <h2 class="title">Add a Comment<h2>
-                <form method="POST">
-                <input type = "hidden" name = "post_id" value = \"%s\"></input>
+                <form method="POST" action="comment.py?post_id=%s">
                 <div class="col-2">
                     <div class="row row-space">
                         <div class="input-group">
@@ -308,20 +307,20 @@ def main():
     
     
     #print("""<h1>%s</h1>"""%postId)
-    if "comment" in form:
-        comment = form["comment"].value
-        cursor.execute("""INSERT INTO comment (post_id,user_name,msg_as_html)
-                            VALUES (%s,%s,%s);""",
-                            (postId,user, comment))
+    # if "comment" in form:
+    #     comment = form["comment"].value
+    #     cursor.execute("""INSERT INTO comment (post_id,user_name,msg_as_html)
+    #                         VALUES (%s,%s,%s);""",
+    #                         (postId,user, comment))
 
-        cursor.close()
-        conn.commit()
-        conn.close()
+    #     cursor.close()
+    #     conn.commit()
+    #     conn.close()
         
-        print("""<body onLoad="location.href='comment.py'"></body>""")
-    cursor.close()
-    conn.commit()
-    conn.close()
+    #     print("""<body onLoad="location.href='comment.py'"></body>""")
+    # cursor.close()
+    # conn.commit()
+    # conn.close()
 
 print("Content-Type: text/html;charset=utf-8")
 print()
