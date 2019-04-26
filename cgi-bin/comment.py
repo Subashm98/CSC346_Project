@@ -190,8 +190,8 @@ def style():
             float:right;
             line-height: 35px;
             background: #d2d4cb;
-            height: 50px;
-            width: 500px;
+            height: 45px;
+            width: 530px;
             box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
             border-radius: 5px;
             padding: 0 20px;
