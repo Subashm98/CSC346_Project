@@ -5,6 +5,8 @@ cgitb.enable()
 
 import os
 
+from http import cookies
+
 import MySQLdb
 from secret import secret
 
@@ -190,27 +192,41 @@ def style():
         """)
 
 
-def hNavBar(user, imgSrc):
-        print("""
-        <div class="navigation-bar">
-                <nav>
-                    <ul id = "nav-ul">
-                            <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
-                            <li id = "navLeft"><a href="loginPage.py">Logout</a></li>
-                            <li id = "navLeft"><a href="addPost.py">Add Post</a></li>
-                            <li id = "navRight"><img id = "userImg" src="%s"></li>
-                                       
-                             <li id = "navRight">
-                                <label for="uname" class="label">%s</label>
-                            </li>
+def hNavBar(isLoggedIn, user, imgSrc):
+        if (isLoggedIn):
+                print("""
+                <div class="navigation-bar">
+                        <nav>
+                            <ul id = "nav-ul">
+                                    <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
+                                    <li id = "navLeft"><a href="loginPage.py">Logout</a></li>
+                                    <li id = "navLeft"><a href="addPost.py">Add Post</a></li>
+                                    <li id = "navRight"><img id = "userImg" src="%s"></li>
+                                               
+                                     <li id = "navRight">
+                                        <label for="uname" class="label">%s</label>
+                                    </li>
 
 
-                            
-                    </ul>
-                </nav>
-                
-        </div>
-        """%(imgSrc,user))
+                                    
+                            </ul>
+                        </nav>
+                        
+                </div>
+                """%(imgSrc,user))
+        else:
+                print("""
+                <div class="navigation-bar">
+                        <nav>
+                            <ul id = "nav-ul">
+                                    <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
+                                    <li id = "navLeft"><a href="loginPage.py">Logout</a></li>
+                                    <li id = "navLeft"><a href="addPost.py">Add Post</a></li>
+                            </ul>
+                        </nav>
+                        
+                </div>
+                """)
 
 def showPost(idd, title,op,cont,likes,imgSrc):
     imgWidth = "80%"
@@ -294,22 +310,35 @@ def main():
 	)
 
     cursor = conn.cursor()
-    cursor.execute("""SELECT user_name FROM sesh WHERE server_ip = \"%s\";""" % ip)
-    results = cursor.fetchall()
-    
-    usrResult = [utuple[0] for utuple in results]
-    user = usrResult[0]
 
-    cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
-    userInfo = cursor.fetchall()
-    userR    = [utuple[0] for utuple in userInfo]
+    try:
+            token = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
 
-    userImg = userR[0]
-    hNavBar(user, userImg)
+            # Check if a session already exists with the current token, delete the session and reload login page if so
+            cursor.execute("""SELECT user_name FROM session WHERE sessionID = '%s';""" % token)
+	    results = cursor.fetchall()
+	
+	    userResults = [usr[0] for usr in results]
+	
+	    if (len(userResults) != 0):
+                    user = userResults[0]
+
+                    cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
+                    results = cursor.fetchall()
+
+                    userImgResults = [img[0] for img in results]
+
+                    userImg = userImgResults[0]
+
+                    hNavBar(True, user, userImg)
+            else:
+                    hNavBar(False, "", "")
+            
+    except:
+            hNavBar(False, "", "")
+
+            
     printPost(cursor)
-
-
-    
 
     # conn = MySQLdb.connect(host = secret.SQL_HOST,
     #     	               user = secret.SQL_USER,
@@ -321,29 +350,31 @@ def main():
     
     
 
-    if "cmbtn" in form:
-        print("""<body onLoad="location.href='comment.py'"></body>""")
+    # if "cmbtn" in form:
+    #     print("""<body onLoad="location.href='comment.py'"></body>""")
 
 
-    if "disbtn" in form or "likeBtn" in form:
+    # if "disbtn" in form or "likeBtn" in form:
 
-        idd =  int(form["pname"].value)
-        cursor = conn.cursor()
-        cursor.execute("""SELECT likes FROM post WHERE post_id = %s;""" % idd)
-        results = cursor.fetchall()
+    #     idd =  int(form["pname"].value)
+    #     cursor = conn.cursor()
+    #     cursor.execute("""SELECT likes FROM post WHERE post_id = %s;""" % idd)
+    #     results = cursor.fetchall()
 
-        usrResult = [utuple[0] for utuple in results]
-        user = usrResult[0]
-        if "disbtn" in form:        
-            user = user - 1
+    #     usrResult = [utuple[0] for utuple in results]
+    #     user = usrResult[0]
+    #     if "disbtn" in form:        
+    #         user = user - 1
 
-        if "likeBtn" in form:
-            user = user + 1
+    #     if "likeBtn" in form:
+    #         user = user + 1
         
-        cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
+    #     cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
 
         # del form["likeBtn"]
         # del form["disbtn"]
+
+
     cursor.close()
     conn.commit()
     conn.close()
