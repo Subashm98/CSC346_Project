@@ -195,7 +195,8 @@ def style():
             border-radius: 5px;
             padding: 0 20px;
             font-size: 16px;
-            margin-left: 10px;
+            margin-left: 15px;
+            margin-bottom: 15px;
             margin-top: 20px;
             color: #666;
             transition: all 0.4s ease;
