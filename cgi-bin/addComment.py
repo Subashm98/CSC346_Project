@@ -251,11 +251,11 @@ def newpostDiv():
                 <h2 class="title">Add a Comment<h2>
                 <form method="POST">
                     <div class="row row-space">
-                        <div class="col-2">
-                            <div class="input-group">
+                        <div class="input-group">
                                 <label class="label">Comment</label>
-                                <input class="input--style-4" type="text" name="comment" required>
-                            </div>
+                                <div class="input-group-icon">
+                                    <textarea class="input--style-5" type="text" name="comment"  required></textarea>
+                                </div>
                         </div>
                     </div>
                     <div class="p-t-15">
