@@ -258,7 +258,7 @@ def showPost(idd, title,op,cont,likes,imgSrc, postId):
                         </div>
 
                     </form>
-                         <form method="comment.py">
+                         <form method="POST" action="comment.py">
                             <input type = "hidden" name = "post_id" value = \"%s\"></input> 
                             <div class="box-cell box1"> 
                                 <button class="btn" type="submit" name="addC" i value="addC">Add Comment</button>
