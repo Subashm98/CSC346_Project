@@ -189,14 +189,17 @@ def style():
         
         """)
 
-def hNavBar(user, imgSrc):
+def hNavBar(post_id,user, imgSrc):
         print("""
         <div class="navigation-bar">
                 <nav>
                     <ul id = "nav-ul">
                             <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
                             <li id = "navLeft"><a href="index.py">Home</a></li>
-                            <li id = "navLeft"><a href="addComment.py">Add Comment</a></li>
+                            <li id = "navLeft"> <form method="POST" action"addComment.py">
+                                                     <input type = "hidden" name = "post_id" value = \"%s\"></input> 
+                                                     <button class="btn" type="submit" name="addC" value="addC">Add Comment</button>
+                                                </form>
                             <li id = "navRight"><img id = "userImg" src="%s"></li>
                                        
                              <li id = "navRight">
@@ -209,7 +212,7 @@ def hNavBar(user, imgSrc):
                 </nav>
                 
         </div>
-        """%(imgSrc,user))
+        """%(post_id,imgSrc,user))
 
 def showPost(idd, title,op,cont,likes,imgSrc):
     imgWidth = "80%"
@@ -228,7 +231,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                 </div>
                 <div class="box-row"> 
                     <form method="POST" action=like.py>
-                        <input type = "hidden" name = "pname" value = \"%s\"></input>
+                        <input type = "hidden" name = "post_id" value = \"%s\"></input>
                         
                         <div class="box-cell box1"> 
                                 <label class="label">Likes:%s</label>
@@ -301,13 +304,13 @@ def main():
 
 
     postId = form["post_id"].value
-    print("""<h1><><><><><><><>><>>>%s</h1>"""%postId) 
+    #print("""<h1><><><><><><><>><>>>%s</h1>"""%postId) 
     cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
     userInfo = cursor.fetchall()
     userR    = [utuple[0] for utuple in userInfo]
 
     userImg = userR[0]
-    hNavBar(user, userImg)
+    hNavBar(postId,user, userImg)
     printPost(cursor, postId)
     #loginDiv()
     #registerDiv()
