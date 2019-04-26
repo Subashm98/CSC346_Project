@@ -189,7 +189,7 @@ def style():
         
         """)
 
-def hNavBar(post_id,user, imgSrc):
+def hNavBar(user, imgSrc):
         print("""
         <div class="navigation-bar">
                 <nav>
@@ -208,9 +208,9 @@ def hNavBar(post_id,user, imgSrc):
                 </nav>
                 
         </div>
-        """%(post_id,imgSrc,user))
+        """%(imgSrc,user))
 
-def showPost(idd, title,op,cont,likes,imgSrc):
+def showPost(idd, title,op,cont,likes,imgSrc, postId):
     imgWidth = "80%"
     if imgSrc == "":
         imgSrc = "https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/transparentImg.png"
@@ -255,11 +255,11 @@ def showPost(idd, title,op,cont,likes,imgSrc):
         
     </div>
     <br>   
-    """%(title,op, idd, likes, cont, imgSrc, imgWidth))
+    """%(title,op, idd, likes, cont, imgSrc, imgWidth, postId))
 
 
 
-def printPost(cursor, postId):
+def printPost(cursor, postId,):
     print("""
     <br>
     <br>
@@ -272,7 +272,7 @@ def printPost(cursor, postId):
     results = cursor.fetchall()
 
     for post in results:
-         showPost(post[0],post[1], post[2], post[3], post[5], post[4])
+         showPost(post[0],post[1], post[2], post[3], post[5], post[4], postId)
 
     print("""</div>""")
 
@@ -311,7 +311,7 @@ def main():
     userR    = [utuple[0] for utuple in userInfo]
 
     userImg = userR[0]
-    hNavBar(postId,user, userImg)
+    hNavBar(user, userImg)
     printPost(cursor, postId)
     #loginDiv()
     #registerDiv()
