@@ -247,12 +247,9 @@ def showPost(idd, title,op,cont,likes,imgSrc, postId):
                          <form method="POST">
                             <input type = "hidden" name = "post_id" value = \"%s\"></input> 
                             <div class="box-cell box1"> 
+                                <textarea class="input--style-5" type="text" name="comment"  required></textarea>
                                 <button class="btn" type="submit" name="addC" i value="addC">Add Comment</button>
-                                <div class="input-group">
-                                <label class="label">Comment</label>
-                                <div class="input-group-icon">
-                                    <textarea class="input--style-5" type="text" name="comment"  required></textarea>
-                                </div>
+                            
                             </div>
                         </div>
                         </form>
