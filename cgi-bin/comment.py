@@ -234,6 +234,12 @@ def showPost(idd, title,op,cont,likes,imgSrc, postId):
                                 <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
                                 <br>
                                 <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>
+
+                                <form method="POST" action="addComment.py">
+                                    <input type = "hidden" name = "post_id" value = \"%s\"></input> 
+                                    <button class="btn" type="submit" name="addC" i value="addC">Add Comment</button>
+                                </form>
+
                         </div> 
                         <div class="box-cell box2"> 
                             %s
@@ -242,10 +248,7 @@ def showPost(idd, title,op,cont,likes,imgSrc, postId):
                             <img src="%s" width="%s">
                                
                         </div>
-                        <form method="POST" action="addComment.py">
-                            <input type = "hidden" name = "post_id" value = \"%s\"></input> 
-                            <button class="btn" type="submit" name="addC" i value="addC">Add Comment</button>
-                        </form>
+                        
                     </form>
 
 
@@ -256,7 +259,7 @@ def showPost(idd, title,op,cont,likes,imgSrc, postId):
         
     </div>
     <br>   
-    """%(title,op, idd, likes, cont, imgSrc, imgWidth, postId))
+    """%(title,op, idd, likes,postId, cont, imgSrc, imgWidth))
 
 
 
