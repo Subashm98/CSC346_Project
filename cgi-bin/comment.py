@@ -185,6 +185,20 @@ def style():
                 display: block;
                 /*margin: 5px;*/
         }
+
+        .input--style-5{
+            line-height: 35px;
+            background: #d2d4cb;
+            height: 80px;
+            width: 200px;
+            box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+        
+            border-radius: 5px;
+            padding: 0 20px;
+            font-size: 16px;
+            color: #666;
+            transition: all 0.4s ease;
+        }
         </style>
         
         """)
