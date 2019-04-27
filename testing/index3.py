@@ -289,16 +289,24 @@ def showPost(isLoggedIn, idd, title,op,cont,likes,imgSrc):
                         <div class="box-cell box3"> 
                             %s , by: %s
                         </div>
-                        <div class="box-row">
-                            <div class="box-cell box1"> 
-                                <label class="label">Likes:%s</label>
-                            </div>
-                            <div class="box-cell box2"> 
-                                %s
-                                <br> 
-                                <br>
-                                <img src="%s" width="%s">           
-                            </div>
+                        <div class="box-row"> 
+                            <form">
+                                <input type = "hidden" name = "pname" value = \"%s\"></input>
+                                
+                                <div class="box-cell box1"> 
+                                        <label class="label">Likes:%s</label>
+                                        <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
+                                        <br>
+                                        <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>   
+                                </div> 
+                                <div class="box-cell box2"> 
+                                    %s
+                                    <br> 
+                                    <br>
+                                    <img src="%s" width="%s">
+                                       
+                                </div>
+                            </form>
                             <form method="POST" action="comment.py">
                                 <input type = "hidden" name = "post_id" value = \"%s\"></input>
                                 <input type = "hidden" name = "user_name" value = \"%s\"></input>
@@ -314,7 +322,7 @@ def showPost(isLoggedIn, idd, title,op,cont,likes,imgSrc):
                 
             </div>
             <br>   
-            """%(title,op, idd, likes, cont, imgSrc, imgWidth,op))
+            """%(title,op, idd, likes, cont, imgSrc, imgWidth,idd,op))
 
 def printPost(isLoggedIn, cursor):
     print("""
