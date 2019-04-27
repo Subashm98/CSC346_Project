@@ -45,4 +45,8 @@ def main():
 
 print("Content-Type: text/html")
 print()
-main()
+
+try:
+    main()
+except Exception as e:
+    print(e)
