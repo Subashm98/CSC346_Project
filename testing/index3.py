@@ -294,9 +294,9 @@ def showPost(isLoggedIn, idd, title,op,cont,likes,imgSrc):
                                 
                                 <div class="box-cell box1"> 
                                         <label class="label">Likes:%s</label>
-                                        <button class="btn" name="likeBtn" value="like">Like</button>
+                                        <button class="btn">Like</button>
                                         <br>
-                                        <button class="btn" name="disbtn" value="dislike">Dislike</button>   
+                                        <button class="btn">Dislike</button>   
                                 </div> 
                                 <div class="box-cell box2"> 
                                     %s
