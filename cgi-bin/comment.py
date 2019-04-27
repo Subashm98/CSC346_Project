@@ -191,7 +191,7 @@ def style():
             line-height: 35px;
             background: #d2d4cb;
             height: 45px;
-            width: 530px;
+            width: 70%;
             box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
             border-radius: 5px;
             padding: 0 20px;
@@ -203,96 +203,145 @@ def style():
         
         """)
 
-def hNavBar(user, imgSrc):
-        print("""
-        <div class="navigation-bar">
-                <nav>
-                    <ul id = "nav-ul">
-                            <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
-                            <li id = "navLeft"><a href="index.py">Home</a></li>
-                            <li id = "navRight"><img id = "userImg" src="%s"></li>
-                                       
-                             <li id = "navRight">
-                                <label for="uname" class="label">%s</label>
-                            </li>
+def hNavBar(isLoggedIn, user, imgSrc):
+        if (isLoggedIn):
+                print("""
+                <div class="navigation-bar">
+                        <nav>
+                            <ul id = "nav-ul">
+                                    <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
+                                    <li id = "navLeft"><a href="index.py">Home</a></li>
+                                    <li id = "navRight"><img id = "userImg" src="%s"></li>
+                                               
+                                     <li id = "navRight">
+                                        <label for="uname" class="label">%s</label>
+                                    </li>
 
 
-                            
-                    </ul>
-                </nav>
-                
-        </div>
-        """%(imgSrc,user))
+                                    
+                            </ul>
+                        </nav>
+                        
+                </div>
+                """%(imgSrc,user))
+        else:
+                print("""
+                <div class="navigation-bar">
+                        <nav>
+                            <ul id = "nav-ul">
+                                    <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
+                                    <li id = "navLeft"><a href="index.py">Home</a></li>
+                                    <li id = "navLeft"><a href="loginPage.py">Login</a></li>
+                            </ul>
+                        </nav>
+                        
+                </div>
+                """)
 
-def showPost(idd, title,op,cont,likes,imgSrc, postId):
+def showPost(isLoggedIn, idd, title,op,cont,likes,imgSrc, postId):
     imgWidth = "80%"
     if imgSrc == "":
         imgSrc = "https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/transparentImg.png"
         imgWidth = "10%"
 
-    print("""
-    <br>
-    <br>
-    <div class="wrapper wrapper--w680">
-        <div class="container"> 
-            <div class="box"> 
-                <div class="box-cell box3"> 
-                    %s , by: %s
+    if (isLoggedIn):
+        print("""
+            <br>
+            <br>
+            <div class="wrapper wrapper--w680">
+                <div class="container"> 
+                    <div class="box"> 
+                        <div class="box-cell box3"> 
+                            %s , by: %s
+                        </div>
+                        <div class="box-row"> 
+                            <form method="POST" action=like.py>
+                                <input type = "hidden" name = "post_id" value = \"%s\"></input>
+                                
+                                <div class="box-cell box1"> 
+                                        <label class="label">Likes:%s</label>
+                                        <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
+                                        <br>
+                                        <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>
+                                </div> 
+                                <div class="box-cell box2"> 
+                                    %s
+                                    <br> 
+                                    <br>
+                                    <img src="%s" width="%s">
+                                       
+                                </div>
+
+                            </form>
+                                 <form method="POST" action="comment.py">
+                                    <input type = "hidden" name = "post_id" value = \"%s\"></input> 
+                                    <div class="box-cell box1"> 
+                                        <button class="btn" type="submit" name="addC" i value="addC">Add Comment</button>
+                                         <textarea class="input--style-5" type="text" name="comment"  required></textarea>
+                                    </div>
+                                </div>
+                                </form>
+
+
+                        </div>                 
+                    </div> 
                 </div>
-                <div class="box-row"> 
-                    <form method="POST" action=like.py>
-                        <input type = "hidden" name = "post_id" value = \"%s\"></input>
-                        
-                        <div class="box-cell box1"> 
-                                <label class="label">Likes:%s</label>
-                                <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
-                                <br>
-                                <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>
-                        </div> 
-                        <div class="box-cell box2"> 
-                            %s
-                            <br> 
-                            <br>
-                            <img src="%s" width="%s">
-                               
+            </div>   
+                
+            </div>
+            <br>   
+            """%(title,op, idd, likes, cont, imgSrc, imgWidth, postId))
+    else:
+        print("""
+            <br>
+            <br>
+            <div class="wrapper wrapper--w680">
+                <div class="container"> 
+                    <div class="box"> 
+                        <div class="box-cell box3"> 
+                            %s , by: %s
                         </div>
+                        <div class="box-row"> 
+                            <form>
+                                <div class="box-cell box1"> 
+                                        <label class="label">Likes:%s</label>
+                                        <button class="btn">Like</button>
+                                        <br>
+                                        <button class="btn">Dislike</button>
+                                </div> 
+                                <div class="box-cell box2"> 
+                                    %s
+                                    <br> 
+                                    <br>
+                                    <img src="%s" width="%s">
+                                       
+                                </div>
 
-                    </form>
-                         <form method="POST" action="comment.py">
-                            <input type = "hidden" name = "post_id" value = \"%s\"></input> 
-                            <div class="box-cell box1"> 
-                                <button class="btn" type="submit" name="addC" i value="addC">Add Comment</button>
-                                 <textarea class="input--style-5" type="text" name="comment"  required></textarea>
-                            </div>
-                        </div>
-                        </form>
-
-
-                </div>                 
-            </div> 
-        </div>
-    </div>   
-        
-    </div>
-    <br>   
-    """%(title,op, idd, likes, cont, imgSrc, imgWidth, postId))
+                            </form>
+                        </div>                 
+                    </div> 
+                </div>
+            </div>   
+                
+            </div>
+            <br>   
+            """%(title,op, likes, cont, imgSrc, imgWidth))
 
 
 
-def printPost(cursor, postId,):
+def printPost(isLoggedIn, cursor, postId,):
     print("""
     <br>
     <br>
     <div class="page-wrapper font-poppins"> 
     """)
-    # for i in range(10):
-    # 	showPost("title %s " % i,"user", " content %s " % i, i)
-    #print("""<h1>%s<h1>"""%user) 
+
+    
     cursor.execute("""SELECT * FROM post WHERE post_id = %s;"""%postId)
     results = cursor.fetchall()
 
     for post in results:
-         showPost(post[0],post[1], post[2], post[3], post[5], post[4], postId)
+         showPost(isLoggedIn, post[0],post[1], post[2], post[3], post[5], post[4], postId)
 
     print("""</div>""")
 
@@ -360,21 +409,55 @@ def main():
                        	   db = secret.SQL_DB
 	)
 
+##    cursor = conn.cursor()
+##    cursor.execute("""SELECT user_name FROM sesh WHERE server_ip = \"%s\";""" % ip)
+##    results = cursor.fetchall()
+##    
+##    usrResult = [utuple[0] for utuple in results]
+##    user = usrResult[0]
+##    postId = form["post_id"].value
+##    
+##    cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
+##    userInfo = cursor.fetchall()
+##    userR    = [utuple[0] for utuple in userInfo]
+
     cursor = conn.cursor()
-    cursor.execute("""SELECT user_name FROM sesh WHERE server_ip = \"%s\";""" % ip)
-    results = cursor.fetchall()
-    
-    usrResult = [utuple[0] for utuple in results]
-    user = usrResult[0]
     postId = form["post_id"].value
     
-    cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
-    userInfo = cursor.fetchall()
-    userR    = [utuple[0] for utuple in userInfo]
 
-    userImg = userR[0]
-    hNavBar(user, userImg)
-    printPost(cursor, postId)
+    try:
+            cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
+            token = cookie["session"].value
+
+            # Check if a session already exists with the current token
+            cursor.execute("""SELECT user_name FROM session WHERE sessionID = '%s';""" % token)
+            results = cursor.fetchall()
+            userResults = [usr[0] for usr in results]
+
+            if (len(userResults) != 0):
+                    user = userResults[0]
+
+                    cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
+                    results = cursor.fetchall()
+
+                    userImgResults = [img[0] for img in results]
+                    userImg = userImgResults[0]
+
+                    hNavBar(True, user, userImg)
+                    printPost(True, cursor, postId)
+
+            else:
+                hNavBar(False, "", "")
+                printPost(False, cursor, postId)
+            
+    except:
+            hNavBar(False, "", "")
+            printPost(True, cursor, postId)
+
+
+    #userImg = userR[0]
+    #hNavBar(user, userImg)
+    #printPost(isLoggedIn, cursor, form["post_id"].value)
     
 
     if "comment" in form:
@@ -384,7 +467,7 @@ def main():
                             (postId,user, comment))
    
     
-    printComment(cursor,postId)
+    printComment(cursor, postId)
 
     cursor.close()
     conn.commit()

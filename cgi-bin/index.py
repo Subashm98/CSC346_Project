@@ -361,7 +361,7 @@ def main():
             cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
             token = cookie["session"].value
 
-            # Check if a session already exists with the current token, delete the session and reload login page if so
+            # Check if a session already exists with the current token
             cursor.execute("""SELECT user_name FROM session WHERE sessionID = '%s';""" % token)
             results = cursor.fetchall()
             userResults = [usr[0] for usr in results]
