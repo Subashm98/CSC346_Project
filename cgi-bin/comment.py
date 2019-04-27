@@ -5,6 +5,8 @@ cgitb.enable()
 
 import os
 
+from http import cookies
+
 import MySQLdb
 from secret import secret
 
@@ -451,8 +453,7 @@ def main():
                 printPost(False, cursor, postId)
             
     except Exception as e:
-            print(e)
-            #hNavBar(False, "", "")
+            hNavBar(False, "", "")
             printPost(False, cursor, postId)
 
 
