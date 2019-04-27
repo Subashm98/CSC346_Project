@@ -313,6 +313,7 @@ def main():
 
     try:
             token = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
+            print("""<h1>Entered try statement, Token = %s</h1>""" % token)
 
             # Check if a session already exists with the current token, delete the session and reload login page if so
             cursor.execute("""SELECT user_name FROM session WHERE sessionID = '%s';""" % token)
@@ -328,16 +329,20 @@ def main():
                     userImgResults = [img[0] for img in results]
                     userImg = userImgResults[0]
 
-                    hNavBar(True, user, userImg)
+                    #hNavBar(True, user, userImg)
+                    print("""<h2>If statement completed, Username = %s , Img = %s</h2>""" % (user, userImg))
             else:
-                hNavBar(False, "", "")
+                #hNavBar(False, "", "")
+                print("<h2>Else statement hit</h2>")
             
     except:
-            hNavBar(False, "", "")
+            #hNavBar(False, "", "")
+            print("<h1>Except statement reached</h1>")
 
             
-    printPost(cursor)
+    #    printPost(cursor)
 
+    
     # conn = MySQLdb.connect(host = secret.SQL_HOST,
     #     	               user = secret.SQL_USER,
     #             	       passwd = secret.SQL_PASSWD,
