@@ -341,28 +341,28 @@ def main():
 
             
     except Exception as e:
-            print(e)
+            print("""<h1>%s</h1>""" % e)
             #print("""<body onLoad="location.href='index.py'"></body>""")
             return
             
 
-    titl = form["newpost_title"].value
-    content = form["newpost_content"].value
-    
-    postImg = ""  #"https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/transparentImg.png"
-    if "newpost_image" in form:
-        postImg = form["newpost_image"].value
-
-    cursor.execute("""INSERT INTO post (title,user_name,msg_as_html,postImage,likes)
-						VALUES (%s,%s,%s,%s, %s);""",
-						(titl, user, content, postImg, 0))
-
-    cursor.close()
-    conn.commit()
-    conn.close()
-
-    #print("""<h1>ImgUrl = %s<h1>"""%imgURL)
-    print("""<body onLoad="location.href='index.py'"></body>""")
+##    titl = form["newpost_title"].value
+##    content = form["newpost_content"].value
+##    
+##    postImg = ""  #"https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/transparentImg.png"
+##    if "newpost_image" in form:
+##        postImg = form["newpost_image"].value
+##
+##    cursor.execute("""INSERT INTO post (title,user_name,msg_as_html,postImage,likes)
+##						VALUES (%s,%s,%s,%s, %s);""",
+##						(titl, user, content, postImg, 0))
+##
+##    cursor.close()
+##    conn.commit()
+##    conn.close()
+##
+##    #print("""<h1>ImgUrl = %s<h1>"""%imgURL)
+##    print("""<body onLoad="location.href='index.py'"></body>""")
 
 print("Content-Type: text/html;charset=utf-8")
 print()
