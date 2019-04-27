@@ -452,7 +452,7 @@ def main():
             
     except:
             hNavBar(False, "", "")
-            printPost(True, cursor, postId)
+            printPost(False, cursor, postId)
 
 
     #userImg = userR[0]
