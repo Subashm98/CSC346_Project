@@ -220,8 +220,7 @@ def hNavBar(isLoggedIn, user, imgSrc):
                         <nav>
                             <ul id = "nav-ul">
                                     <li id = "navLeft"><img id = "logo" src="https://raw.githubusercontent.com/Subashm98/CSC346_Project/master/pyScripts/logo.png"></li>
-                                    <li id = "navLeft"><a href="loginPage.py">Logout</a></li>
-                                    <li id = "navLeft"><a href="addPost.py">Add Post</a></li>
+                                    <li id = "navLeft"><a href="loginPage.py">Login</a></li>
                             </ul>
                         </nav>
                         
