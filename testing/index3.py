@@ -245,7 +245,7 @@ def showPost(isLoggedIn, idd, title,op,cont,likes,imgSrc):
                         </div>
                         <div class="box-row"> 
                             <form method="POST" action="like.py">
-                                <input type = "hidden" name = "pname" value = \"%s\"></input>
+                                <input type = "hidden" name = "post_id" value = \"%s\"></input>
                                 
                                 <div class="box-cell box1"> 
                                         <label class="label">Likes:%s</label>
@@ -290,13 +290,13 @@ def showPost(isLoggedIn, idd, title,op,cont,likes,imgSrc):
                         </div>
                         <div class="box-row"> 
                             <form>
-                                <input type = "hidden" name = "pname" value = \"%s\"></input>
+                                <input type = "hidden" name = "post_id" value = \"%s\"></input>
                                 
                                 <div class="box-cell box1"> 
                                         <label class="label">Likes:%s</label>
-                                        <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
+                                        <button class="btn" name="likeBtn" value="like">Like</button>
                                         <br>
-                                        <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>   
+                                        <button class="btn" name="disbtn" value="dislike">Dislike</button>   
                                 </div> 
                                 <div class="box-cell box2"> 
                                     %s
