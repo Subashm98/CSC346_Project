@@ -312,7 +312,8 @@ def main():
     cursor = conn.cursor()
 
     try:
-            token = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
+            cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
+            token = cookie["session"].value
             print("""<h1>Entered try statement, Token = %s</h1>""" % token)
 
             # Check if a session already exists with the current token, delete the session and reload login page if so
