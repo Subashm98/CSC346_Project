@@ -5,6 +5,8 @@ import cgitb
 import MySQLdb
 from secret import secret
 
+from http import cookies
+
 import os
 
 cgitb.enable()
