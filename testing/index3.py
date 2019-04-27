@@ -289,7 +289,10 @@ def showPost(isLoggedIn, idd, title,op,cont,likes,imgSrc):
                         <div class="box-cell box3"> 
                             %s , by: %s
                         </div>
-                        <div class="box-row"> 
+                        <div class="box-row">
+                            <div class="box-cell box1"> 
+                                <label class="label">Likes:%s</label>
+                            </div>
                             <div class="box-cell box2"> 
                                 %s
                                 <br> 
