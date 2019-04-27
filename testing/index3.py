@@ -290,8 +290,6 @@ def showPost(isLoggedIn, idd, title,op,cont,likes,imgSrc):
                         </div>
                         <div class="box-row"> 
                             <form>
-                                <input type = "hidden" name = "post_id" value = \"%s\"></input>
-                                
                                 <div class="box-cell box1"> 
                                         <label class="label">Likes:%s</label>
                                         <button class="btn">Like</button>
