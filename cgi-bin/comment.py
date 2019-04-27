@@ -296,6 +296,50 @@ def printPost(cursor, postId,):
 
     print("""</div>""")
 
+def showComment(userName, cm):
+    print("""
+    <br>
+    <br>
+    <div class="wrapper wrapper--w680">
+        <div class="container"> 
+            <div class="box"> 
+                <div class="box-cell box3"> 
+                    by: %s
+                </div>
+                <div class="box-row">                        
+                        <div class="box-cell box1"> 
+                                <label class="label">%s</label>
+                        </div> 
+                </div>                 
+            </div> 
+        </div>
+    </div>   
+        
+    </div>
+    <br>   
+    """%(userName,cm))
+    
+
+
+def printComment(cursor,post_id):
+    print("""
+    <br>
+    <br>
+    <div class="page-wrapper font-poppins"> 
+    """)
+
+    cursor.execute("""SELECT * FROM comment WHERE post_id = %s;"""%post_id)
+    results = cursor.fetchall()
+
+
+    comment = ""
+    for cm in results:
+        if comment != cm[3]:
+            showComment(cm[2],cm[3])
+        comment = cm[2]
+
+    print("""</div>""")
+
 
 
 def main():
@@ -331,7 +375,7 @@ def main():
     userImg = userR[0]
     hNavBar(user, userImg)
     printPost(cursor, postId)
-
+    
 
     if "comment" in form:
         comment = form["comment"].value
@@ -339,6 +383,9 @@ def main():
                             VALUES (%s,%s,%s);""",
                             (postId,user, comment))
    
+    
+    printComment(cursor,postId)
+
     cursor.close()
     conn.commit()
     conn.close()
