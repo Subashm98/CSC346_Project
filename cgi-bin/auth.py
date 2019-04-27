@@ -162,7 +162,7 @@ def main():
 		cursor.close()
 		conn.close()
 		print("<h1>DUPLICATE TOKEN DETECTED, REDIRECTING BACK TO LOGIN PAGE</h1>")
-		delayPage(5, "loginPage.py")
+		delayPage(2, "loginPage.py")
 		return
 
 
