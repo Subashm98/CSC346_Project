@@ -403,8 +403,6 @@ def main():
     print("</head>")
     print("<body>")
 
-    ip = str(os.environ["SERVER_ADDR"])
-
     conn = MySQLdb.connect(host = secret.SQL_HOST,
         	               user = secret.SQL_USER,
                 	       passwd = secret.SQL_PASSWD,

@@ -268,7 +268,7 @@ def newpostDiv():
                              <div class="input-group">
                                 <label class="label">Image URL</label>
                                 <div class="input-group-icon">
-                                    <input class="input--style-4" type="text" name="newpost_image" placeholder="input a url for an imgage">
+                                    <input class="input--style-4" type="text" name="newpost_image" placeholder="input a url for an image">
                                 </div>
                             </div>
                         </div>
@@ -311,21 +311,37 @@ def main():
 
     form = cgi.FieldStorage()
 
-    ip = str(os.environ["SERVER_ADDR"])
-
     conn = MySQLdb.connect(host = secret.SQL_HOST,
         	               user = secret.SQL_USER,
                 	       passwd = secret.SQL_PASSWD,
                        	   db = secret.SQL_DB
 	)
 
-    cursor = conn.cursor()
-    cursor.execute("""SELECT user_name FROM sesh WHERE server_ip = \"%s\";""" % ip)
-    results = cursor.fetchall()
+##    cursor = conn.cursor()
+##    cursor.execute("""SELECT user_name FROM sesh WHERE server_ip = \"%s\";""" % ip)
+##    results = cursor.fetchall()
+##
+##    usrResult = [utuple[0] for utuple in results]
+##    user = usrResult[0]
 
-    usrResult = [utuple[0] for utuple in results]
-    user = usrResult[0]
-    
+    user = ""
+
+    try:
+            cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
+            token = cookie["session"].value
+
+            # Check if a session already exists with the current token
+            cursor.execute("""SELECT user_name FROM session WHERE sessionID = '%s';""" % token)
+            results = cursor.fetchall()
+            userResults = [usr[0] for usr in results]
+
+            user = userResults[0]
+
+            
+    except:
+            print("""<body onLoad="location.href='index.py'"></body>""")
+            return
+            
 
     titl = form["newpost_title"].value
     content = form["newpost_content"].value
