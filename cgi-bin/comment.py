@@ -452,7 +452,7 @@ def main():
             
     except Exception as e:
             print(e)
-            hNavBar(False, "", "")
+            #hNavBar(False, "", "")
             printPost(False, cursor, postId)
 
 
