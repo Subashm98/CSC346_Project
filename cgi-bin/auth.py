@@ -109,16 +109,16 @@ def delayPage(sec, pageName):
 
 def update_user(cursor, user, token):
 	# Code for IP
-	ip = os.environ["SERVER_ADDR"]
-	try:
-		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
-						VALUES (%s,%s);""",
-						(str(ip), user))
-	except:
-		cursor.execute("""DELETE FROM sesh WHERE server_ip = \"%s\";""" % ip)
-		cursor.execute("""INSERT INTO sesh (server_ip,user_name)
-					VALUES (%s,%s);""",
-					(str(ip), user))
+	#ip = os.environ["SERVER_ADDR"]
+	#try:
+	#	cursor.execute("""INSERT INTO sesh (server_ip,user_name)
+	#					VALUES (%s,%s);""",
+	#					(str(ip), user))
+	#except:
+	#	cursor.execute("""DELETE FROM sesh WHERE server_ip = \"%s\";""" % ip)
+	#	cursor.execute("""INSERT INTO sesh (server_ip,user_name)
+	#				VALUES (%s,%s);""",
+	#				(str(ip), user))
 
 	# Code for cookies
 	cursor.execute("""INSERT INTO session (sessionID, user_name)
