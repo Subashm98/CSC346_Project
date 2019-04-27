@@ -228,17 +228,14 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                     %s , by: %s
                 </div>
                 <div class="box-row"> 
-                    <form method="POST">
-                        <input type = "hidden" name = "pname" value = \"%s\"></input>
+                    <form method="POST" action="like.py">
+                        <input type = "hidden" name = "post_id" value = \"%s\"></input>
                         
                         <div class="box-cell box1"> 
                                 <label class="label">Likes:%s</label>
                                 <button class="btn" type="submit" name="likeBtn" value="like">Like</button>
                                 <br>
-                                <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>
-                                <br>
-                                <br>
-                                <button class="btn" type="submit" name="cmbtn" value="comment">Comments</button>    
+                                <button class="btn" type="submit" name="disbtn" value="dislike">Dislike</button>   
                         </div> 
                         <div class="box-cell box2"> 
                             %s
@@ -248,6 +245,14 @@ def showPost(idd, title,op,cont,likes,imgSrc):
                                
                         </div>
                     </form>
+                    <form method="POST" action="comment.py">
+                        <input type = "hidden" name = "post_id" value = \"%s\"></input>
+                        <input type = "hidden" name = "user_name" value = \"%s\"></input>
+                        <div class="box-cell box1"> 
+                                <button class="btn" type="submit" name="cmbtn" value="comment">Comments</button>    
+                        </div> 
+                    </form>
+
                 </div>                 
             </div> 
         </div>
@@ -255,7 +260,7 @@ def showPost(idd, title,op,cont,likes,imgSrc):
         
     </div>
     <br>   
-    """%(title,op, idd, likes, cont, imgSrc, imgWidth))
+    """%(title,op, idd, likes, cont, imgSrc, imgWidth,idd,op))
 
 def printPost(cursor):
     print("""
@@ -321,26 +326,26 @@ def main():
     
     
 
-    if "cmbtn" in form:
-        print("""<body onLoad="location.href='comment.py'"></body>""")
+    # if "cmbtn" in form:
+    #     print("""<body onLoad="location.href='comment.py'"></body>""")
 
 
-    if "disbtn" in form or "likeBtn" in form:
+    # if "disbtn" in form or "likeBtn" in form:
 
-        idd =  int(form["pname"].value)
-        cursor = conn.cursor()
-        cursor.execute("""SELECT likes FROM post WHERE post_id = %s;""" % idd)
-        results = cursor.fetchall()
+    #     idd =  int(form["pname"].value)
+    #     cursor = conn.cursor()
+    #     cursor.execute("""SELECT likes FROM post WHERE post_id = %s;""" % idd)
+    #     results = cursor.fetchall()
 
-        usrResult = [utuple[0] for utuple in results]
-        user = usrResult[0]
-        if "disbtn" in form:        
-            user = user - 1
+    #     usrResult = [utuple[0] for utuple in results]
+    #     user = usrResult[0]
+    #     if "disbtn" in form:        
+    #         user = user - 1
 
-        if "likeBtn" in form:
-            user = user + 1
+    #     if "likeBtn" in form:
+    #         user = user + 1
         
-        cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
+    #     cursor.execute("""UPDATE post SET likes = %s WHERE post_id = %s""", (user, idd))
 
         # del form["likeBtn"]
         # del form["disbtn"]
