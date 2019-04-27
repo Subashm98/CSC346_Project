@@ -316,23 +316,21 @@ def main():
 
             # Check if a session already exists with the current token, delete the session and reload login page if so
             cursor.execute("""SELECT user_name FROM session WHERE sessionID = '%s';""" % token)
-	    results = cursor.fetchall()
-	
-	    userResults = [usr[0] for usr in results]
-	
-	    if (len(userResults) != 0):
+            results = cursor.fetchall()
+            userResults = [usr[0] for usr in results]
+
+            if (len(userResults) != 0):
                     user = userResults[0]
 
                     cursor.execute("""SELECT userImg FROM user WHERE user_name = \"%s\";""" %user)
                     results = cursor.fetchall()
 
                     userImgResults = [img[0] for img in results]
-
                     userImg = userImgResults[0]
 
                     hNavBar(True, user, userImg)
             else:
-                    hNavBar(False, "", "")
+                hNavBar(False, "", "")
             
     except:
             hNavBar(False, "", "")
@@ -388,3 +386,5 @@ print()
 main()
 
 
+
+			
