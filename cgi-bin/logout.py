@@ -20,26 +20,28 @@ def main():
 
     cursor = conn.cursor()
 
-    try:
-        cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
-        token = cookie["session"].value
+    print("<h1>Hello</h1>")
 
-        # Check if a session already exists with the current token, delete the session and reload login page if so
-        cursor.execute("""SELECT sessionID FROM session WHERE sessionID = '%s';""" % token)
-        results = cursor.fetchall()
-
-        tokenResults = [tok[0] for tok in results]
-
-        if (token in tokenResults):
-            cursor.execute("""DELETE FROM session WHERE sessionID = '%s'""" % token)
-            conn.commit()
-            cursor.close()
-            conn.close()
-		
-            print("""<body onLoad="location.href='loginPage.py'"></body>""")
-            
-    except:
-        print("""<body onLoad="location.href='loginPage.py'"></body>""")
+##    try:
+##        cookie = cookies.SimpleCookie(os.environ["HTTP_COOKIE"])
+##        token = cookie["session"].value
+##
+##        # Check if a session already exists with the current token, delete the session and reload login page if so
+##        cursor.execute("""SELECT sessionID FROM session WHERE sessionID = '%s';""" % token)
+##        results = cursor.fetchall()
+##
+##        tokenResults = [tok[0] for tok in results]
+##
+##        if (token in tokenResults):
+##            cursor.execute("""DELETE FROM session WHERE sessionID = '%s'""" % token)
+##            conn.commit()
+##            cursor.close()
+##            conn.close()
+##		
+##            print("""<body onLoad="location.href='loginPage.py'"></body>""")
+##            
+##    except:
+##        print("""<body onLoad="location.href='loginPage.py'"></body>""")
 
 print("Content-Type: text/html")
 print()
