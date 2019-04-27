@@ -319,7 +319,7 @@ def showPost(isLoggedIn, idd, title,op,cont,likes,imgSrc):
                 
             </div>
             <br>   
-            """%(title,op, idd, likes, cont, imgSrc, imgWidth,idd,op))
+            """%(title,op, likes, cont, imgSrc, imgWidth,idd,op))
 
 def printPost(isLoggedIn, cursor):
     print("""
