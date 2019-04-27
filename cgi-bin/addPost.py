@@ -340,8 +340,9 @@ def main():
             user = userResults[0]
 
             
-    except:
-            print("""<body onLoad="location.href='index.py'"></body>""")
+    except Exception as e:
+            print(e)
+            #print("""<body onLoad="location.href='index.py'"></body>""")
             return
             
 
