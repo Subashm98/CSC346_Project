@@ -349,8 +349,6 @@ def printPost(isLoggedIn, cursor, postId,):
 
 def showComment(userName, cm):
     print("""
-    <br>
-    <br>
     <div class="wrapper wrapper--w680">
         <div class="container"> 
             <div class="box"> 
