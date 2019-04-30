@@ -31,12 +31,12 @@ def main():
         cursor.close()
         conn.close()
 
-        print("""<body onLoad="location.href='loginPage.py'"></body>""")
+        print("""<body onLoad="location.href='index.py'"></body>""")
                 
     except:
         cursor.close()
         conn.close()
-        print("""<body onLoad="location.href='loginPage.py'"></body>""")
+        print("""<body onLoad="location.href='index.py'"></body>""")
 
 
 print("Content-Type: text/html")
